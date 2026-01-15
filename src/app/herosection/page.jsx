@@ -172,20 +172,16 @@ export default function MultiFellowshipHero() {
                                             {/* Gradient Overlay */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/70 transition-all duration-300"></div>
 
-                                            {/* Animated Play Button */}
                                             <div className="absolute inset-0 flex flex-col items-center justify-center">
                                                 <div className="relative mb-8">
-                                                    {/* Ripple Effects */}
                                                     <div className="absolute inset-0 bg-white/30 rounded-full animate-ping"></div>
                                                     <div className="absolute inset-0 bg-white/20 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
 
-                                                    {/* Main Play Button */}
                                                     <div className="relative bg-white rounded-full p-8 md:p-10 shadow-2xl group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-blue-50 transition-all duration-300">
                                                         <Play className="w-14 h-14 md:w-20 md:h-20 text-[#14234d] fill-[#14234d] ml-2" />
                                                     </div>
                                                 </div>
 
-                                                {/* Text Content */}
                                                 <div className="text-center px-6">
                                                     <h2 className="text-white text-3xl md:text-5xl font-bold mb-3 drop-shadow-lg">
                                                         ARIN Fellows Impact Story
@@ -200,13 +196,11 @@ export default function MultiFellowshipHero() {
                                                 </div>
                                             </div>
 
-                                            {/* Duration Badge with Icon */}
                                             <div className="absolute top-6 right-6 bg-black/90 backdrop-blur-md text-white px-4 py-2 rounded-xl text-base font-bold flex items-center gap-2 shadow-lg">
                                                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                                                 8:00
                                             </div>
 
-                                            {/* Bottom Info Bar */}
                                             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent backdrop-blur-sm">
                                                 <div className="flex items-center justify-between text-white text-sm">
                                                     <span className="font-medium">ARIN Fellows Impact Video</span>
@@ -216,7 +210,6 @@ export default function MultiFellowshipHero() {
                                         </div>
                                     </div>
                                 ) : (
-                                    // Video Player
                                     <div className="relative w-full bg-black">
                                         <video
                                             className="w-full h-auto"

@@ -55,7 +55,7 @@ export default function FellowsOverview() {
             bgColor: "from-emerald-500 to-emerald-600",
         },
         {
-            title: "Accountable Fellows",
+            title: "Accountable Adaptation Fellows",
             description:
                 "Discover our fellows working on accountability and governance initiatives for transparent development",
             link: "/fellows/accountable-adaptation",
@@ -64,7 +64,7 @@ export default function FellowsOverview() {
             bgColor: "from-[#030f41] to-[#1a2951]",
         },
         {
-            title: "SDG Fellows",
+            title: "SDG SynergyFellows",
             description: "Meet our fellows dedicated to achieving Sustainable Development Goals across the continent",
             link: "/fellows/sdg",
             icon: Globe,
@@ -168,7 +168,7 @@ export default function FellowsOverview() {
                     </div>
 
                     <div className="text-center mt-16">
-                        <p className="text-gray-600 mb-6">Join our network of over 200 researchers across 38 countries</p>
+                        <p className="text-gray-600 mb-6">Join our network of over 300 researchers across 41 countries</p>
                         <Button
                             onClick={() => setShowEmailModal(true)}
                             className="bg-[#48a4bb] hover:bg-[#9bc8ce] text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"

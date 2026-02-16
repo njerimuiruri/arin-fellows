@@ -40,9 +40,9 @@ const ARINNavbar = () => {
             dropdown: [
                 { name: 'ARIN Fellows', href: '/fellows/arin' },
                 { name: 'Accountable Adaptation Fellows', href: '/fellows/accountable-adaptation' },
-                { name: 'SDG Fellows', href: '/fellows/sdg' },
+                { name: 'SDG Synergy Fellows', href: '/fellows/sdg' },
                 { name: 'LEEPS Fellows', href: '/fellows/leeps' },
-                { name: 'NDC Fellowship', href: '/ndc-fellowship' },
+                { name: 'NDC Finance Fellowship', href: '/ndc-fellowship' },
 
 
             ]
@@ -51,17 +51,17 @@ const ARINNavbar = () => {
             name: 'Summer School',
             href: '#',
             dropdown: [
-                { name: 'Summer School', href: '/summer-school' },
-                { name: 'NDC Academy', href: '/ndc-academy' },
-
-
-
+                {
+                    name: 'Decolonizing Sustainability Research Summer School', href: '/summer-school/Decolonizing-Sustainability-Research-Summer-School'
+                },
+                { name: 'NDC Finance Academy', href: '/ndc-academy' },
+                { name: 'Just Transition Energy Summer School', href: '/summer-school/ojta' },
             ]
         },
 
         { name: 'Mini Grants', href: '/mini-grants' },
         { name: 'Friday Reviews', href: '/friday-reviews' },
-        // { name: 'NDC Academy', href: '/ndc-academy' },
+        { name: 'Published Work', href: '#' },
     ];
 
     return (
@@ -79,8 +79,8 @@ const ARINNavbar = () => {
                         </div>
                         <div className="flex items-center space-x-2">
                             <MapPin size={14} />
-                            <span>ACK Gardens House, 1st Floor,
-                                Bishop Road, 1St Ngong Avenue, Upperhill, Nairobi</span>
+                            <span>ACK Gardens House,
+                                Bishop Road, 1St Ngong Avenue, Upperhill</span>
                         </div>
                     </div>
                     <div className="flex items-center space-x-3">

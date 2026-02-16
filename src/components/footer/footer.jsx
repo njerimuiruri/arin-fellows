@@ -89,7 +89,7 @@ const ArinFellowsFooter = () => {
                                     Fellows
                                 </h4>
                                 <div className="space-y-2 ml-4">
-                                    {['Accountable Adaptation Fellows', 'SDG Fellows', 'ARIN Fellows'].map((fellow, index) => (
+                                    {['Accountable Adaptation Fellows', 'SDG SynergyFellows', 'ARIN Fellows'].map((fellow, index) => (
                                         <a key={fellow}
                                             href="#"
                                             className="block text-sm text-[#9bc8ce]/70 hover:text-[#9bc8ce] transition-all duration-300 hover:translate-x-1 transform"
@@ -146,7 +146,7 @@ const ArinFellowsFooter = () => {
                                 { Icon: Mail, text: "info@arinfellows.org" },
                                 { Icon: Phone, text: "+254 746 130873" },
                                 {
-                                    Icon: MapPin, text: "ACK Gardens House, 1st Floor,Bishop Road, 1St Ngong Avenue, Upperhill, Nairobi"
+                                    Icon: MapPin, text: "ACK Gardens House,Bishop Road, 1St Ngong Avenue, Upperhill"
                                 }
                             ].map(({ Icon, text }, index) => (
                                 <div key={text}

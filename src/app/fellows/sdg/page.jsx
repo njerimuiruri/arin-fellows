@@ -196,14 +196,14 @@ export default function SDGFellowsPage() {
                             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2.5 mb-6 border border-gray-200 shadow-lg">
                                 <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
                                 <span className="text-gray-700 text-sm font-semibold tracking-wide">
-                                    SDG Fellows Program
+                                    SDG SynergyFellows Program
                                 </span>
                                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                             </div>
 
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
                                 <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                                    SDG Fellows
+                                    SDG SynergyFellows
                                 </span>
                             </h1>
 
@@ -211,7 +211,7 @@ export default function SDGFellowsPage() {
                                 Contributing to <span className="font-bold text-blue-600">Sustainable Development Goals</span> across various sectors and communities
                             </p>
 
-                            <div className="flex flex-wrap justify-center gap-6 mb-8">
+                            {/* <div className="flex flex-wrap justify-center gap-6 mb-8">
                                 <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-lg border border-gray-200">
                                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-md">
                                         <Users className="w-6 h-6 text-white" />
@@ -231,7 +231,7 @@ export default function SDGFellowsPage() {
                                         <div className="text-xs text-gray-500">Countries</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="max-w-2xl mx-auto">
                                 <div className="relative">

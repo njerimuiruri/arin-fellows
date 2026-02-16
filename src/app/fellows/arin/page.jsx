@@ -21,7 +21,7 @@ function FellowCard({ fellow, onClick, index }) {
             onClick={() => onClick(fellow)}
         >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-all duration-500"></div>
-            j
+
             <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="relative h-80 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10"></div>
@@ -210,7 +210,7 @@ export default function ARINFellowsPage() {
                                 A network of <span className="font-bold text-blue-600">talented researchers and technocrats</span> promoting research excellence across Africa
                             </p>
 
-                            <div className="flex flex-wrap justify-center gap-6 mb-8">
+                            {/* <div className="flex flex-wrap justify-center gap-6 mb-8">
                                 <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-lg border border-gray-200">
                                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-md">
                                         <Users className="w-6 h-6 text-white" />
@@ -230,7 +230,7 @@ export default function ARINFellowsPage() {
                                         <div className="text-xs text-gray-500">Countries</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="max-w-2xl mx-auto">
                                 <div className="relative">

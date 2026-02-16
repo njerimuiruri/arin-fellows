@@ -28,7 +28,7 @@ export default function MiniGrantsPage() {
     const grantExamples = [
         {
             title: "Accountable Adaptation Fellowship",
-            date: "November 18, 2024",
+            // date: "November 18, 2024",
             description:
                 "Background The Accountable Adaptation Initiative is launching a mini-grants programme. The programme is open to early to mid-career researchers from…",
             id: "accountable-adaptation",
@@ -36,7 +36,7 @@ export default function MiniGrantsPage() {
         },
         {
             title: "Learning Together to Advance Evidence and Equity in Policymaking for achieving the SDGs (LEEPS)",
-            date: "August 8, 2024",
+            // date: "August 8, 2024",
             description:
                 "The Alliance for Evidence and Equity in Policy-making in Africa (AEEPA) is part of the Learning Together to Advance Evidence…",
             id: "leeps",
@@ -44,23 +44,16 @@ export default function MiniGrantsPage() {
         },
         {
             title: "ARIN Governing SDGs Interactions Mini grants – Call for Applications- Readvertisement",
-            date: "September 30, 2024",
+            // date: "September 30, 2024",
             description:
                 "A. About the Project Numerous governments, businesses, and civil society organisations aim to contribute to achieving the 17 Sustainable Development…",
             id: "sdgs-interactions",
             status: "active",
         },
+
         {
-            title: "Leveraging Mathematical Sciences for Climate Resilience Solutions (Math4CCR): Mini-grant",
-            date: "July 30, 2024",
-            description:
-                "The role of mathematical modelling and Artificial Intelligence (AI) is becoming increasingly crucial in strengthening climate information systems and predictions…",
-            id: "math4ccr",
-            status: "upcoming",
-        },
-        {
-            title: "BioCAM Mini-grants",
-            date: "July 30, 2024",
+            title: "Biodiversity Integration in Climate Adaptation and Mitigation Actions for Planet, People, and Human Health (BIOCAM4) Mini-grants",
+            // date: "July 30, 2024",
             description:
                 "The relationship between climate change and biodiversity loss is profound. Climate change accelerates biodiversity decline: Rapid climate shifts challenge species...",
             id: "biocam",
@@ -68,17 +61,17 @@ export default function MiniGrantsPage() {
         },
         {
             title: "Climate Finance Fellowship",
-            date: "Coming Soon",
+            // date: "Coming Soon",
             description:
                 "This fellowship aims to build capacity in climate finance mechanisms and support researchers in developing innovative financing solutions for climate adaptation and mitigation across Africa.",
             id: "climate-finance",
             status: "upcoming",
         },
         {
-            title: "AI Fellowship",
-            date: "Coming Soon",
+            title: "Artificial Intelligence For Climate Resilience",
+            // date: "Coming Soon",
             description:
-                "The AI Fellowship program focuses on leveraging artificial intelligence and machine learning technologies to address critical development challenges across the African continent.",
+                "The Artificial Intelligence For Climate Resilience program focuses on leveraging artificial intelligence and machine learning technologies to address critical development challenges across the African continent.",
             id: "ai-fellowship",
             status: "upcoming",
         },
@@ -174,7 +167,7 @@ export default function MiniGrantsPage() {
                                 <DollarSign className="w-5 h-5 text-blue-400" />
                                 <div>
                                     <div className="text-sm text-slate-400">Grant Range</div>
-                                    <div className="text-lg font-semibold">$2,000 - $5,000</div>
+                                    <div className="text-lg font-semibold">$2,000 - $10,000</div>
                                 </div>
                             </div>
                         </div>
@@ -386,7 +379,7 @@ export default function MiniGrantsPage() {
                                     <h2 className="text-2xl font-bold text-slate-900">Value of the Grants</h2>
                                 </div>
                                 <div className="text-center py-8">
-                                    <div className="text-5xl font-bold text-orange-600 mb-2">$2,000 - $5,000</div>
+                                    <div className="text-5xl font-bold text-orange-600 mb-2">$2,000 - $10,000</div>
                                     <p className="text-slate-700">
                                         ARIN provides mini-grants of between USD2000 and USD5000 to the Fellows.
                                     </p>

@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic';
-import { Users, BookOpen, ArrowRight, Award, Globe, Sparkles, Play, Volume2 } from "lucide-react"
-import peopleData from '../../../public/pdfs/fellows.json';
+import { Users, BookOpen, ArrowRight, Award, Globe, Sparkles, Play, Volume2, MapPin, TrendingUp } from "lucide-react"
 
 // Dynamically import the map component (no SSR for Leaflet)
 const AfricaMap = dynamic(() => import('../people-distribution/Africaleafletmap'), {
@@ -49,10 +48,16 @@ export default function MultiFellowshipHero() {
     };
 
     const stats = [
-        { icon: Users, number: '200+', label: 'Active Fellows', color: 'from-blue-500 to-cyan-500', desc: 'Researchers making impact' },
-        { icon: Globe, number: '38+', label: 'Countries', color: 'from-purple-500 to-pink-500', desc: 'Across Sub-Saharan Africa' },
+        { icon: Users, number: '300+', label: 'Active Fellows', color: 'from-blue-500 to-cyan-500', desc: 'Researchers making impact' },
+        { icon: Globe, number: '41+', label: 'Countries', color: 'from-purple-500 to-pink-500' },
         { icon: BookOpen, number: '5+', label: 'Programs', color: 'from-orange-500 to-red-500', desc: 'Specialized fellowships' },
         { icon: Award, number: '10+', label: 'Years Impact', color: 'from-green-500 to-emerald-500', desc: 'Of transformative work' }
+    ]
+
+    const mapStats = [
+        { icon: MapPin, value: '41+', label: 'Countries Represented', color: 'from-blue-500 to-cyan-500' },
+        { icon: Users, value: '300+', label: 'Active Fellows', color: 'from-purple-500 to-pink-500' },
+        { icon: TrendingUp, value: '5', label: 'Focal Point Countries', color: 'from-orange-500 to-red-500' }
     ]
 
     return (
@@ -112,7 +117,6 @@ export default function MultiFellowshipHero() {
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     </div>
 
-                    {/* Main Title with Gradient Effect */}
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight">
                         <span className="block text-[#14234d] text-4xl md:text-5xl lg:text-6xl bg-clip-text  animate-gradient mb-3">
                             ARIN Fellows
@@ -123,10 +127,9 @@ export default function MultiFellowshipHero() {
                     </h1>
 
                     <p className="text-gray-600 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto mb-10 font-light">
-                        Connecting <span className="font-bold text-[#14234d]">200+ researchers</span> across <span className="font-bold text-[#14234d]">38+ countries</span> to drive transformative research and create lasting impact
+                        Connecting <span className="font-bold text-[#14234d]">300+ researchers</span> across <span className="font-bold text-[#14234d]">41+ countries</span> to drive transformative research and create lasting impact
                     </p>
 
-                    {/* Enhanced CTA Buttons */}
                     <div className="flex flex-wrap gap-4 justify-center items-center mb-8">
                         <button
                             onClick={() => scrollToSection('fellows-overview')}
@@ -152,21 +155,17 @@ export default function MultiFellowshipHero() {
                                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white"></div>
                                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 border-2 border-white"></div>
                             </div>
-                            <span className="font-medium">Join 200+ ARIN Fellows</span>
+                            <span className="font-medium">Join 300+ ARIN Fellows</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Video Section - Enhanced with Glassmorphism */}
+                {/* Video Section */}
                 <div className={`max-w-6xl mx-auto mb-20 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                     <div className="relative">
-
-                        {/* Glow Effect Behind Video */}
                         <div className="absolute -inset-4 bg-gradient-to-r from-[#14234d]/20 via-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-60"></div>
 
-                        {/* Video Container with Glassmorphism */}
                         <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-2 md:p-3 border border-white/20">
-
                             <div className="relative rounded-2xl overflow-hidden">
                                 {!showVideo ? (
                                     <div className="relative cursor-pointer group" onClick={() => setShowVideo(true)}>
@@ -177,7 +176,6 @@ export default function MultiFellowshipHero() {
                                                 className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                             />
 
-                                            {/* Gradient Overlay */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/70 transition-all duration-300"></div>
 
                                             <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -232,7 +230,6 @@ export default function MultiFellowshipHero() {
                             </div>
                         </div>
 
-                        {/* Floating Elements Around Video */}
                         <div className="absolute -top-6 -left-6 w-20 h-20 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-2xl rotate-12 blur-sm animate-float"></div>
                         <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-sm animate-float-delayed"></div>
                         <div className="absolute top-1/2 -right-8 w-16 h-16 bg-gradient-to-br from-orange-400/30 to-red-400/30 rounded-lg rotate-45 blur-sm animate-float-slow"></div>
@@ -249,16 +246,11 @@ export default function MultiFellowshipHero() {
                                 onMouseEnter={() => setActiveCard(index)}
                                 onMouseLeave={() => setActiveCard(null)}
                             >
-                                {/* Card Glow Effect */}
                                 <div className={`absolute -inset-1 bg-gradient-to-r ${stat.color} rounded-2xl blur opacity-0 group-hover:opacity-30 transition-all duration-500`}></div>
 
-                                {/* Card Content */}
                                 <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 overflow-hidden">
-
-                                    {/* Gradient Background on Hover */}
                                     <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
 
-                                    {/* Icon */}
                                     <div className="relative mb-4">
                                         <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${stat.color} p-0.5 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
                                             <div className="w-full h-full bg-white rounded-xl flex items-center justify-center">
@@ -267,18 +259,13 @@ export default function MultiFellowshipHero() {
                                         </div>
                                     </div>
 
-                                    {/* Number */}
                                     <p className="text-5xl font-bold bg-gradient-to-r from-[#14234d] to-blue-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
                                         {stat.number}
                                     </p>
 
-                                    {/* Label */}
                                     <p className="text-[#14234d] font-bold text-lg mb-1">{stat.label}</p>
-
-                                    {/* Description */}
                                     <p className="text-gray-500 text-sm">{stat.desc}</p>
 
-                                    {/* Hover Arrow */}
                                     <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
                                         <ArrowRight className="w-5 h-5 text-[#14234d]" />
                                     </div>
@@ -288,60 +275,109 @@ export default function MultiFellowshipHero() {
                     </div>
                 </div>
 
-                {/* NEW: Interactive Map Section */}
+                {/* COMPACT Map Section - Grid Layout */}
                 <div className={`max-w-7xl mx-auto mb-20 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                     {/* Section Header */}
-                    <div className="text-center mb-12">
-                        <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#14234d]/10 via-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-full px-6 py-2.5 mb-6 border border-white/20 shadow-lg">
+                    <div className="text-center mb-8">
+                        <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#14234d]/10 via-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-full px-6 py-2.5 mb-4 border border-white/20 shadow-lg">
                             <Globe className="w-4 h-4 text-[#14234d]" />
                             <span className="text-[#14234d] text-sm font-semibold tracking-wide">
                                 GLOBAL NETWORK
                             </span>
                         </div>
 
-                        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+                        <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
                             <span className="bg-gradient-to-r from-[#14234d] via-blue-600 to-purple-600 bg-clip-text text-transparent">
                                 Fellows Across Africa
                             </span>
                         </h2>
 
-                        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-                            Explore our interactive map to see where our 200+ fellows are making an impact across 38+ countries
+                        <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
+                            Our network spans 41+ countries with 300+ active fellows
                         </p>
                     </div>
 
-                    {/* Map Container with Enhanced Styling */}
-                    <div className="relative">
-                        {/* Glow Effect Behind Map */}
-                        <div className="absolute -inset-4 bg-gradient-to-r from-[#14234d]/10 via-blue-500/10 to-purple-500/10 rounded-3xl blur-2xl opacity-60"></div>
+                    {/* Compact Grid Container */}
+                    <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-6 md:p-8 border border-white/20">
 
-                        {/* Map Wrapper with Glassmorphism */}
-                        <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl p-4 md:p-6 border border-white/20 overflow-hidden">
-                            {/* Decorative Corner Elements */}
-                            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#14234d]/5 to-transparent rounded-br-full"></div>
-                            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-500/5 to-transparent rounded-tl-full"></div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
-                            {/* Map Content with unique key to prevent re-initialization */}
-                            <div className="relative z-10 rounded-2xl overflow-hidden" style={{ height: '600px' }}>
-                                <AfricaMap peopleData={peopleData} key="hero-africa-map" />
+                            {/* LEFT: Map Image */}
+                            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-white shadow-lg border border-gray-100">
+                                <img
+                                    src="/img/map.jpg"
+                                    alt="ARIN Fellows Distribution Across Africa"
+                                    className="w-full h-auto object-contain"
+                                />
                             </div>
 
-                            {/* Map Legend/Info Bar */}
-                            <div className="mt-6 flex flex-wrap gap-4 justify-center items-center text-sm">
-                                <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg">
-                                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                                    <span className="text-gray-700 font-medium">Fellows Location</span>
+                            {/* RIGHT: Stats & Legend */}
+                            <div className="space-y-6">
+
+                                {/* Quick Stats */}
+                                {/* <div className="grid grid-cols-1 gap-4">
+                                    {mapStats.map((stat, index) => (
+                                        <div
+                                            key={index}
+                                            className="group relative bg-gradient-to-br from-white to-gray-50/50 rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className={`flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br ${stat.color} p-0.5 shadow-md group-hover:scale-105 transition-transform duration-300`}>
+                                                    <div className="w-full h-full bg-white rounded-lg flex items-center justify-center">
+                                                        <stat.icon className="w-6 h-6 text-[#14234d]" />
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex-1">
+                                                    <p className="text-2xl font-bold bg-gradient-to-r from-[#14234d] to-blue-600 bg-clip-text text-transparent">
+                                                        {stat.value}
+                                                    </p>
+                                                    <p className="text-gray-600 text-sm font-medium">
+                                                        {stat.label}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div> */}
+
+                                {/* Legend */}
+                                <div className="p-5 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-100">
+                                    <h3 className="text-base font-bold text-[#14234d] mb-4 flex items-center gap-2">
+                                        <div className="w-1 h-5 bg-gradient-to-b from-[#14234d] to-blue-500 rounded-full"></div>
+                                        Map Legend
+                                    </h3>
+                                    <div className="space-y-3">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-5 h-5 bg-red-500 rounded shadow-sm flex-shrink-0"></div>
+                                            <span className="text-sm font-medium text-gray-700">
+                                                ARIN Focal Points and Fellows
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-5 h-5 bg-cyan-400 rounded shadow-sm flex-shrink-0"></div>
+                                            <span className="text-sm font-medium text-gray-700">
+                                                ARIN Fellows
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-5 h-5 bg-white border-2 border-gray-300 rounded flex-shrink-0"></div>
+                                            <span className="text-sm font-medium text-gray-700">
+                                                Fellow Recruitment Ongoing
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-lg">
-                                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span className="text-gray-700 font-medium">Click countries for details</span>
+
+                                {/* Info Box */}
+                                <div className="p-4 bg-gradient-to-r from-[#14234d]/5 to-blue-500/5 rounded-xl border border-[#14234d]/10">
+                                    <p className="text-sm text-gray-700 leading-relaxed">
+                                        <span className="font-semibold text-[#14234d]">Building Research Excellence:</span> Our fellows are driving innovation across Africa through collaborative research and knowledge sharing.
+                                    </p>
                                 </div>
+
                             </div>
                         </div>
-
-                        {/* Floating Elements Around Map */}
-                        <div className="absolute -top-6 -left-6 w-20 h-20 bg-gradient-to-br from-green-400/30 to-emerald-400/30 rounded-2xl rotate-12 blur-sm animate-float"></div>
-                        <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-sm animate-float-delayed"></div>
                     </div>
                 </div>
             </div>

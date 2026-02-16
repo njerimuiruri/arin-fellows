@@ -15,39 +15,50 @@ export default function ARINFellowshipAbout() {
     const activities = [
         {
             id: 1,
-            title: "Summer School",
-            description: "Intensive research training programs designed to enhance skills and knowledge in various research methodologies and academic writing.",
-            icon: GraduationCap,
+            title: "ARIN Friday Reviews",
+            description:
+                "Weekly flagship sessions where Fellows present research, receive peer feedback, and engage in interdisciplinary discussions across ARIN’s 2026 thematic areas.",
+            icon: Calendar,
+            link: "/friday-reviews",
+            iconBg: "bg-blue-50",
+            iconColor: "text-blue-600",
         },
         {
             id: 2,
-            title: "Mini Grants",
-            description: "Small-scale funding opportunities to support innovative research projects and capacity building initiatives across Africa.",
-            icon: DollarSign,
+            title: "Mentorship & Capacity Building",
+            description:
+                "Structured training programs including monthly workshops with Taylor & Francis, AI for Climate Resilience training, and the Summer School on Just Energy Transition.",
+            icon: GraduationCap,
+            link: "/mentorship",
+            iconBg: "bg-purple-50",
+            iconColor: "text-purple-600",
         },
         {
             id: 3,
-            title: "NDC Fellowship",
-            description: "Specialized fellowship program focusing on Nationally Determined Contributions and climate change research.",
-            icon: Users,
+            title: "Research Mini-Grants",
+            description:
+                "Competitive small grant opportunities supporting policy-relevant research in climate adaptation, AI for climate resilience, biodiversity integration, and SDG governance.",
+            icon: DollarSign,
+            link: "/mini-grants",
+            iconBg: "bg-green-50",
+            iconColor: "text-green-600",
         },
         {
             id: 4,
-            title: "NDC Academy",
-            description: "Educational platform providing comprehensive training on climate policy, NDCs, and sustainable development practices.",
+            title: "Knowledge Products & Publications",
+            description:
+                "Opportunities to contribute to ARIN’s flagship reports, policy briefs, special issues, and book volumes to ensure research informs policy and practice across Africa.",
             icon: BookOpen,
+            link: "/knowledge-products",
+            iconBg: "bg-orange-50",
+            iconColor: "text-orange-600",
         },
-        {
-            id: 5,
-            title: "Friday Reviews",
-            description: "Weekly research review sessions where fellows present their work and receive feedback from peers and mentors.",
-            icon: Calendar,
-        },
+
     ]
 
     const stats = [
-        { icon: Users, number: "200+", label: "Researchers", desc: "Combined team experience in research and policy activities" },
-        { icon: Globe, number: "38", label: "Countries", desc: "Countries represented across Sub-Saharan Africa" },
+        { icon: Users, number: "300+", label: "Researchers", desc: "Combined team experience in research and policy activities" },
+        { icon: Globe, number: "41", label: "Countries", desc: "Countries represented across Africa" },
         { icon: Award, number: "10+", label: "Years Experience", desc: "Years of promoting research excellence" },
     ]
 
@@ -74,17 +85,17 @@ export default function ARINFellowshipAbout() {
                         </h1>
 
                         <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                            Connecting brilliant minds across 38 Sub-Saharan African countries to drive research excellence and create lasting impact in critical sectors
+                            Connecting brilliant minds across 41 countries to drive research excellence and create lasting impact in critical sectors
                         </p>
 
                         <div className="flex flex-wrap items-center justify-center gap-6 mb-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                             <div className="flex items-center gap-2 text-gray-700 bg-gray-50 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105">
                                 <Users className="h-5 w-5 text-[#14234d]" />
-                                <span className="font-medium">200+ Researchers</span>
+                                <span className="font-medium">300+ Researchers</span>
                             </div>
                             <div className="flex items-center gap-2 text-gray-700 bg-gray-50 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105">
                                 <Globe className="h-5 w-5 text-[#14234d]" />
-                                <span className="font-medium">38 Countries</span>
+                                <span className="font-medium">41Countries</span>
                             </div>
                         </div>
 
@@ -120,7 +131,7 @@ export default function ARINFellowshipAbout() {
                                         <p className="italic text-gray-700">&quot;Consequently, there is little understanding of best research practices and impact practices taking place in various African contexts and what works or not.&quot;</p>
                                     </div>
 
-                                    <p className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>It is in this context that the ARIN Network launched the ARIN Fellowship program which brings together over 200 researchers from thirty-eight countries in Sub-Saharan Africa. The fellowship program consists of a network of talented researchers and technocrats across Africa who have been undertaking research in various fields including natural resource management, climate change, agriculture, forestry, energy, water, and cities to leverage their knowledge and experiences in promoting research excellence and impact pathways.</p>
+                                    <p className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>It is in this context that the ARIN Network launched the ARIN Fellowship program which brings together over 200 researchers from thirty-eight countries in . The fellowship program consists of a network of talented researchers and technocrats across Africa who have been undertaking research in various fields including natural resource management, climate change, agriculture, forestry, energy, water, and cities to leverage their knowledge and experiences in promoting research excellence and impact pathways.</p>
                                 </div>
                             </div>
 
@@ -129,10 +140,10 @@ export default function ARINFellowshipAbout() {
 
                                 <div className="space-y-6">
                                     {[
-                                        { icon: Users, title: "200+ Researchers", desc: "Talented researchers and technocrats across 38 Sub-Saharan African countries working in natural resource management, climate change, agriculture, forestry, energy, water, and cities." },
+                                        { icon: Users, title: "300+ Researchers", desc: "Talented researchers and technocrats across 41 countries working in natural resource management, climate change, agriculture, forestry, energy, water, and cities." },
                                         { icon: Target, title: "Mission", desc: "The ARIN Africa Science-Policy Fellowship Programme seeks to identify and leverage on evidence to flexibly and innovatively contribute to Africa&apos;s research transformation, policy analysis and capacity building." },
                                         { icon: Eye, title: "Vision", desc: "The ARIN Africa Science-Policy Fellowship Program envisions a future where scientific advancements are seamlessly integrated into public policy to address Africa&apos;s most pressing development challenges." },
-                                        { icon: Globe, title: "38 Countries", desc: "Spanning across Sub-Saharan Africa, creating platforms for cross-border collaboration and knowledge exchange among researchers and policymakers." }
+                                        { icon: Globe, title: "41 Countries", desc: "Spanning across Africa, creating platforms for cross-border collaboration and knowledge exchange among researchers and policymakers." }
                                     ].map((item, index) => (
                                         <div key={index} className="flex items-start gap-4 group hover:transform hover:translate-x-2 transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
                                             <div className="bg-gray-50 p-3 rounded-xl flex-shrink-0 group-hover:bg-[#14234d] transition-all duration-300">
@@ -154,7 +165,7 @@ export default function ARINFellowshipAbout() {
                 <div className="bg-white py-20 px-4 sm:px-6 lg:px-8">
                     <div className="max-w-6xl mx-auto text-center">
                         <h2 className="text-3xl md:text-4xl font-bold text-[#14234d] mb-4 animate-fade-in">Building the Future Together</h2>
-                        <p className="text-lg md:text-xl text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto animate-fade-in-up">The ARIN Fellowship program brings together over 200 researchers from thirty-eight countries, focused on peer learning and transformative research practices across Africa.</p>
+                        <p className="text-lg md:text-xl text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto animate-fade-in-up">The ARIN Fellowship program brings together over 300 researchers from forty-one countries, focused on peer learning and transformative research practices across Africa.</p>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                             {stats.map((stat, i) => {

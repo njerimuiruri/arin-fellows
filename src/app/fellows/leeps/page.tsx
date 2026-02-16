@@ -210,7 +210,7 @@ export default function LEEPSFellowsPage() {
                                 A network of <span className="font-bold text-blue-600">talented researchers and technocrats</span> promoting research excellence across Africa
                             </p>
 
-                            <div className="flex flex-wrap justify-center gap-6 mb-8">
+                            {/* <div className="flex flex-wrap justify-center gap-6 mb-8">
                                 <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-lg border border-gray-200">
                                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-md">
                                         <Users className="w-6 h-6 text-white" />
@@ -230,7 +230,7 @@ export default function LEEPSFellowsPage() {
                                         <div className="text-xs text-gray-500">Countries</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="max-w-2xl mx-auto">
                                 <div className="relative">

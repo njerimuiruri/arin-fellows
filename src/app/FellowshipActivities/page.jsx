@@ -7,54 +7,45 @@ const ARINFellowshipActivities = () => {
     const activities = [
         {
             id: 1,
-            title: "Summer School",
+            title: "ARIN Friday Reviews",
             description:
-                "Intensive research training programs designed to enhance skills and knowledge in various research methodologies and academic writing.",
-            icon: GraduationCap,
-            link: "/summer-school",
+                "Weekly flagship sessions where Fellows present research, receive peer feedback, and engage in interdisciplinary discussions across ARIN’s 2026 thematic areas.",
+            icon: Calendar,
+            link: "/friday-reviews",
             iconBg: "bg-blue-50",
             iconColor: "text-blue-600",
         },
         {
             id: 2,
-            title: "Mini grants",
+            title: "Mentorship & Capacity Building",
             description:
-                "Small-scale funding opportunities to support innovative research projects and capacity building initiatives across Africa.",
+                "Structured training programs including monthly workshops with Taylor & Francis, AI for Climate Resilience training, and the Summer School on Just Energy Transition.",
+            icon: GraduationCap,
+            link: "/mentorship",
+            iconBg: "bg-purple-50",
+            iconColor: "text-purple-600",
+        },
+        {
+            id: 3,
+            title: "Research Mini-Grants",
+            description:
+                "Competitive small grant opportunities supporting policy-relevant research in climate adaptation, AI for climate resilience, biodiversity integration, and SDG governance.",
             icon: DollarSign,
             link: "/mini-grants",
             iconBg: "bg-green-50",
             iconColor: "text-green-600",
         },
         {
-            id: 3,
-            title: "NDC Fellowship",
-            description:
-                "Specialized fellowship program focusing on Nationally Determined Contributions and climate change research.",
-            icon: Users,
-            link: "/ndc-fellowship",
-            iconBg: "bg-purple-50",
-            iconColor: "text-purple-600",
-        },
-        {
             id: 4,
-            title: "NDC Academy",
+            title: "Knowledge Products & Publications",
             description:
-                "Educational platform providing comprehensive training on climate policy, NDCs, and sustainable development practices.",
+                "Opportunities to contribute to ARIN’s flagship reports, policy briefs, special issues, and book volumes to ensure research informs policy and practice across Africa.",
             icon: BookOpen,
-            link: "/ndc-academy",
+            link: "/knowledge-products",
             iconBg: "bg-orange-50",
             iconColor: "text-orange-600",
         },
-        {
-            id: 5,
-            title: "Friday Reviews",
-            description:
-                "Weekly research review sessions where fellows present their work and receive feedback from peers and mentors.",
-            icon: Calendar,
-            link: "/friday-reviews",
-            iconBg: "bg-pink-50",
-            iconColor: "text-pink-600",
-        },
+
     ]
 
     return (

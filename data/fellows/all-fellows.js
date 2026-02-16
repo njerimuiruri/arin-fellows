@@ -1,4 +1,4 @@
-// Consolidated file with ARIN Fellows, SDG Fellows, and Accountable Adaptation Fellows
+// Consolidated file with ARIN Fellows, SDG SynergyFellows, and Accountable Adaptation Fellows
 export const allFellows = [
   // ARIN Fellows
   {
@@ -26,7 +26,7 @@ export const allFellows = [
     bio: "Dr. Yoksa Mshelia is a Research Fellow at the African Research and Impact Network (ARIN) and holds a Ph.D. in Environmental Planning and Management from Kenyatta University, sponsored by the German Academic Exchange Service (DAAD). His research focuses on climate change, urban planning, and ecological modeling, with expertise in GIS, GeoAI and remote sensing. In his work, Mshelia employs machine learning techniques to model land cover changes, urban heat islands, and their ecological impacts, with the goal of informing sustainable development policies and enhancing urban resilience in rapidly growing cities.Mshelia previously worked as a Research Assistant with the Australian National University (ANU), where he conducted an inventory study on Urban Climate Governance in Lagos (Nigeria) and Dar es Salaam (Tanzania). He holds a Master's in Environmental Planning and Management from Kenyatta University and a Bachelor's in Environmental Biology from the University of Maiduguri, Nigeria.",
     category: "arin",
   },
-  // SDG Fellows
+  // SDG SynergyFellows
   {
     id: "sdg1",
     name: "Vayanga Donzo",

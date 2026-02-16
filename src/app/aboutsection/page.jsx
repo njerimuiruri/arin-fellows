@@ -245,7 +245,7 @@ const ARINFellowshipAbout = () => {
                                             </li>
                                             <li className="flex items-start gap-2">
                                                 <span className="text-[#48a4bb] mt-1">•</span>
-                                                <span>Expertise in one or more of ARIN's thematic areas</span>
+                                                <span>Expertise in one or more of ARIN&apos;s thematic areas</span>
                                             </li>
                                             <li className="flex items-start gap-2">
                                                 <span className="text-[#48a4bb] mt-1">•</span>
@@ -392,7 +392,7 @@ const ARINFellowshipAbout = () => {
                                         </li>
                                         <li className="flex items-start gap-2">
                                             <span className="text-[#48a4bb] mt-1">•</span>
-                                            <span>Contribute to ARIN's annual State of Evidence reports</span>
+                                            <span>Contribute to ARIN&apos;s annual State of Evidence reports</span>
                                         </li>
                                         <li className="flex items-start gap-2">
                                             <span className="text-[#48a4bb] mt-1">•</span>

@@ -89,7 +89,6 @@ export default function BriefsPage() {
                 </div>
             </div>
 
-            {/* Search Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50 mb-12">
                     <div className="relative max-w-2xl mx-auto">

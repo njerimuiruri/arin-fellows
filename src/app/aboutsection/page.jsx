@@ -27,7 +27,7 @@ const ARINFellowshipAbout = () => {
         {
             name: "Jerry Mandela ",
             position: "ARIN Fellowship Cordinator",
-            image: "/img/focalpoints/jerry.webp",
+            image: "/img/focalpoints/jerry.jpeg",
             bio: "Jerry Mandela is a Research Assistant at the Africa Research and Impact Network (ARIN), specializing in climate change and development. He holds a Bachelor's degree in Development Studies from Mount Kenya University and brings an interdisciplinary perspective that connects social, economic, and environmental dimensions to sustainability challenges. At ARIN, Jerry contributes to projects on climate adaptation, finance, AI for resilience and just energy transitions.His expertise spans climate policy analysis, data- driven research and stakeholder mapping with a growing focus on climate governance, adaptation metrics and climate finance.Passionate about inclusive and just climate action, he is committed to amplifying the voices of local communities, youth, and marginalized groups in shaping climate solutions across Africa Jerry is committed to translating research into solutions that amplify the voices of local communities, youth and marginalized groups while advancing sustainable development across Africa.",
         },
     ]

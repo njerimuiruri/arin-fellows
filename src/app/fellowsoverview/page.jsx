@@ -71,6 +71,14 @@ export default function FellowsOverview() {
             color: "from-green-500 to-green-600",
             bgColor: "from-emerald-500 to-emerald-600",
         },
+        {
+            title: "AI for Climate Resilience Fellows",
+            description: "Meet our fellows leveraging artificial intelligence to build climate resilience and advance sustainable solutions across Africa",
+            link: "/fellows/ai",
+            icon: Globe,
+            color: "from-teal-500 to-teal-600",
+            bgColor: "from-teal-500 to-teal-600",
+        },
 
     ]
 
@@ -90,7 +98,7 @@ export default function FellowsOverview() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {sections.map((section, index) => {
                             const IconComponent = section.icon
                             return (

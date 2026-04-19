@@ -1,10 +1,12 @@
 "use client"
 
 import { useState, useMemo, useEffect } from "react"
-import { Search, X, MapPin, BookOpen, Sparkles, Users, Globe } from "lucide-react"
+import { Search, X, MapPin, BookOpen, Sparkles, ChevronLeft, ChevronRight } from "lucide-react"
 import { aiFellows } from "../../../../data/fellows/ai-fellows"
 import ArinFellowsFooter from "@/components/footer/footer"
 import ARINNavbar from "@/components/navbar/navbar"
+
+const FELLOWS_PER_PAGE = 10
 
 function FellowCard({ fellow, onClick, index }) {
     const [isVisible, setIsVisible] = useState(false)
@@ -26,7 +28,7 @@ function FellowCard({ fellow, onClick, index }) {
                     <img
                         src={fellow.image}
                         alt={fellow.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                     />
 
                     {/* Country Badge - Top Right */}
@@ -131,6 +133,7 @@ export default function AIFellowsPage() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [selectedFellow, setSelectedFellow] = useState(null)
     const [searchQuery, setSearchQuery] = useState("")
+    const [currentPage, setCurrentPage] = useState(1)
     const [isVisible, setIsVisible] = useState(false)
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -159,6 +162,7 @@ export default function AIFellowsPage() {
     }
 
     const filteredFellows = useMemo(() => {
+        setCurrentPage(1)
         if (!searchQuery) return aiFellows
         const query = searchQuery.toLowerCase()
         return aiFellows.filter(
@@ -169,6 +173,12 @@ export default function AIFellowsPage() {
                 fellow.bio.toLowerCase().includes(query)
         )
     }, [searchQuery])
+
+    const totalPages = Math.ceil(filteredFellows.length / FELLOWS_PER_PAGE)
+    const paginatedFellows = filteredFellows.slice(
+        (currentPage - 1) * FELLOWS_PER_PAGE,
+        currentPage * FELLOWS_PER_PAGE
+    )
 
     return (
         <>
@@ -243,16 +253,71 @@ export default function AIFellowsPage() {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
                     {filteredFellows.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {filteredFellows.map((fellow, index) => (
-                                <FellowCard
-                                    key={fellow.id}
-                                    fellow={fellow}
-                                    onClick={handleCardClick}
-                                    index={index}
-                                />
-                            ))}
-                        </div>
+                        <>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {paginatedFellows.map((fellow, index) => (
+                                    <FellowCard
+                                        key={fellow.id}
+                                        fellow={fellow}
+                                        onClick={handleCardClick}
+                                        index={index}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Pagination */}
+                            {totalPages > 1 && (
+                                <div className="flex items-center justify-center gap-2 mt-12">
+                                    <button
+                                        onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                                        disabled={currentPage === 1}
+                                        className="flex items-center gap-1 px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-600 font-medium hover:bg-blue-50 hover:border-blue-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200"
+                                    >
+                                        <ChevronLeft className="w-4 h-4" />
+                                        Prev
+                                    </button>
+
+                                    <div className="flex items-center gap-1">
+                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                                            const isActive = page === currentPage
+                                            const isNear = Math.abs(page - currentPage) <= 2 || page === 1 || page === totalPages
+                                            if (!isNear) {
+                                                if (page === currentPage - 3 || page === currentPage + 3) {
+                                                    return <span key={page} className="px-1 text-gray-400">…</span>
+                                                }
+                                                return null
+                                            }
+                                            return (
+                                                <button
+                                                    key={page}
+                                                    onClick={() => { setCurrentPage(page); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                                                    className={`w-9 h-9 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                                                        isActive
+                                                            ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
+                                                            : 'bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-300'
+                                                    }`}
+                                                >
+                                                    {page}
+                                                </button>
+                                            )
+                                        })}
+                                    </div>
+
+                                    <button
+                                        onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                                        disabled={currentPage === totalPages}
+                                        className="flex items-center gap-1 px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-600 font-medium hover:bg-blue-50 hover:border-blue-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200"
+                                    >
+                                        Next
+                                        <ChevronRight className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            )}
+
+                            <p className="text-center text-sm text-gray-400 mt-4">
+                                Showing {(currentPage - 1) * FELLOWS_PER_PAGE + 1}–{Math.min(currentPage * FELLOWS_PER_PAGE, filteredFellows.length)} of {filteredFellows.length} fellows
+                            </p>
+                        </>
                     ) : (
                         <div className="text-center py-20">
                             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 mb-6 shadow-xl">

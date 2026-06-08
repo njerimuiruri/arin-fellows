@@ -681,10 +681,10 @@ export const aiFellows = [
   },
   {
     id: "ai87",
-    name: "Shishay Kiros",
-    image: "/img/ai-fellows/ShishayKiros.GIF",
-    title: " ",
-    bio: "coming soon",
+    name: "Dr. Shishay Kiros Weldegebriel",
+    image: "/img/ai-fellows/drshshay.png",
+    title: "Research Fellow at the African Research and Impact Network (ARIN)",
+    bio: "Dr. Shishay Kiros Weldegebriel is a Research Fellow at the African Research and Impact Network (ARIN) and holds a Ph.D. in Environment and Climate Change Resilience from Ethiopian Civil Service University. His research focuses on climate change, urban and regional planning, environmental economics and project management, with expertise in AI and Machine learning, Econometrics, GIS and remote sensing, ERDAS Imagine, ENVI, IDRISI SELVA, STATA, CluMondo Scenario Simulator, EViews, SPSS, SmartPLS3, EndNote, AMOS, R, Pyton and C++, Atlas ti., NVIVO, SAS, Microsoft Excel software packages (XLSTAT, Analyze-it, Simulacion 5.0, Solver sensitivity, XLRISK etc.. His current responsibilities include policy advising, teaching, conducting research, and engaging in community service. Over the years, He has acquired substantial experience in policy, teaching and research through active involvement in research projects and participation in both national and international programs. He has published 12 articles and books in peer-reviewed journals and contributed for the advancement of science and bring social change in his community.",
     category: "AI",
   },
   {

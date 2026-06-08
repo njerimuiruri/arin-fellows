@@ -14,6 +14,7 @@ export const aiFellows = [
     title: " ",
     bio: "coming soon",
     category: "AI",
+    f,
   },
   {
     id: "ai3",
@@ -164,7 +165,7 @@ export const aiFellows = [
     name: "Faruk Uthman",
     image: "/img/ai-fellows/FarukUthman.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Uthman Faruq is a researcher in Mathematical optimization and Artificial intelligence with a focus on applying data-driven methods to climate resilience, sustainable agriculture, and development challenges in Africa. He is affiliated with the College of Innovation and Computing Technology at Summit University, Offa, Nigeria. His work integrates Machine learning, Optimization and Modelling, and Decision-support systems to address real-world problems such as climate-smart farming, market information systems for smallholder farmers, and climate policy analysis. Faruq is currently pursuing a PhD in Applied Mathematics (Optimization and Modeling), where his research explores machine learning–enhanced interior-point methods for large-scale convex optimization problems. He is passionate about leveraging AI to support resilient communities, sustainable food systems, and evidence-based climate solutions across Africa.",
     category: "AI",
   },
 
@@ -173,7 +174,7 @@ export const aiFellows = [
     name: "  Fayera Bakala",
     image: "/img/ai-fellows/FayeraBakala.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Mr. Fayera is a Researcher at the Policy Studies Institute (PSI), Ethiopia, and an economist specializing in natural resource economics and policy. He holds two master’s degrees—one in Natural Resource Economics and Policy and another in Project Planning and Management—as well as a Bachelor’s degree in Wildlife and Ecotourism Management. With over ten years of professional experience in teaching, research, community service, and consultancy, he has contributed extensively to natural resource management, environmental economics, and development planning. He has taught undergraduate and postgraduate courses, supervised numerous research projects, and published works on different areas. His research interests include environmental and climate change economics, sustainable livelihoods, ecological poverty, biodiversity conservation, and wildlife studies, with strong expertise in land use and land cover change analysis and the socio-economic dimensions of forests, wetlands, and other natural capital systems. He is also experienced in project management and the application of qualitative and quantitative research methods.",
     category: "AI",
   },
   {
@@ -181,7 +182,7 @@ export const aiFellows = [
     name: " Ferede Abuye",
     image: "/img/ai-fellows/FeredeAbuye.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: 'Dr. Ferede Abuye Jeldu is a Fellow at ARIN and senior lecturer at Mettu University, Ethiopia. He holds a PhD in Climate Change and Bioenergy Development, a MSc in Environmental Science, and a BSc in Forest Management and Utilization. Dr. Ferede research work focuses on climate change, energy projects, forest conservation, environmental management, biosphere reserve management and ecosystem restorations. Dr. Ferede has published varies research article, which are focused on climate change, forest conservation, forest carbon stock estimation, the predictive role of woody diversity for biomass carbon predictions, land use dynamics for ecosystem storage dynamics and forest biosphere reserve governance and, presented at different international and national conferences. His research efforts are further supported by prestigious fellowships and grants, including the IPCC 6th Round Scholarships Programme Award and the African Forest Forum (AFF) Research Fellowship fund. He has also received a Certificate of Service from the African Forest Forum (AFF) for his participation in a workshop on forest and tree-based ecosystem services for socio-ecological resilience to climate change in Africa. Dr. Ferede completed a technical writing and publishing scientific papers training course organized by Sokoine University of Agriculture in collaboration with AFF. Currently, Dr. Ferede is serving as the Internship and Laboratory Coordinator at Mettu University, Ethiopia, where he plays a crucial role in bridging theoretical knowledge with practical application in the different programs. Dr. Ferede has been selected for the prestigious "AI in Climate Resilience in Africa Project" fellowship, emphasizing his commitment to creating a greener, sustainable future for generations to come.',
     category: "AI",
   },
   {
@@ -213,7 +214,7 @@ export const aiFellows = [
     name: "Gbêmêmali Castro Hounmenou",
     image: "/img/ai-fellows/GbêmêmaliCastroHounmenou.jpeg",
     title: " ",
-    bio: "coming soon",
+    bio: 'Globally recognized as a "World Top Scientist 2024" in Biostatistics and recipient of the "Best Researcher Award 2025" in Disease Modeling, Dr. Eng. Castro Gbêmêmali HOUNMENOU is a leading figure in Artificial Intelligence applied to Africa’s most vital challenges. With over 15 years of international expertise, he transforms complex Big Data into high-impact strategies that benefit communities, supporting premier global institutions such as the World Bank, FAO, GIZ, IRD, and CIRD. As a key architect of Guinea’s National AI Strategy and a technical leader in the fight against major epidemics (Ebola, COVID-19, Malaria), he seamlessly integrates advanced Machine Learning, geospatial modeling, and social sciences to drive informed public decision-making. His unique multidisciplinary background—spanning AI, Global Health, Agriculture, Environment, Climate, and Psychology—is backed by a distinguished career in teaching, research, and high-level consulting, including over 50 international publications. A pillar of elite networks such as AI4D Africa, AMMnet, and the IBA, this PhD in Statistics-AI combines absolute technical mastery (Python/R/GIS) with a geopolitical vision of data. His ambition is clear: to revolutionize continental health and food security within international organizations through cutting-edge innovation and rigorous data governance.',
     category: "AI",
   },
   {
@@ -221,7 +222,7 @@ export const aiFellows = [
     name: "Gbêmêmali Castro Hounmenou",
     image: "/img/ai-fellows/GbêmêmaliCastroHounmenou.jpeg",
     title: " ",
-    bio: "coming soon",
+    bio: 'Globally recognized as a "World Top Scientist 2024" in Biostatistics and recipient of the "Best Researcher Award 2025" in Disease Modeling, Dr. Eng. Castro Gbêmêmali HOUNMENOU is a leading figure in Artificial Intelligence applied to Africa’s most vital challenges. With over 15 years of international expertise, he transforms complex Big Data into high-impact strategies that benefit communities, supporting premier global institutions such as the World Bank, FAO, GIZ, IRD, and CIRD. As a key architect of Guinea’s National AI Strategy and a technical leader in the fight against major epidemics (Ebola, COVID-19, Malaria), he seamlessly integrates advanced Machine Learning, geospatial modeling, and social sciences to drive informed public decision-making. His unique multidisciplinary background—spanning AI, Global Health, Agriculture, Environment, Climate, and Psychology—is backed by a distinguished career in teaching, research, and high-level consulting, including over 50 international publications. A pillar of elite networks such as AI4D Africa, AMMnet, and the IBA, this PhD in Statistics-AI combines absolute technical mastery (Python/R/GIS) with a geopolitical vision of data. His ambition is clear: to revolutionize continental health and food security within international organizations through cutting-edge innovation and rigorous data governance.',
     category: "AI",
   },
   {
@@ -255,7 +256,7 @@ export const aiFellows = [
     name: "Gloria Chepkirui",
     image: "/img/ai-fellows/GloriaChepkirui.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "A visionary environmental scientist and consultant driving sustainable development, climate resilience and community-led ecosystem conservation.Gloria is an Environmental Scientist with a strong interest in climate change adaptation, conservation and sustainable development goals (SDGs). She holds a Bachelor’s degree in Environmental Science and is currently winding up her Master’s degree in Climate Change Adaptation at the University of Nairobi, Kenya. Her current research focuses on Sustainable Goal 13 (Climate Action) in conservation. Her work involves community-led climate action, stake-holder engagement, conservation and adaptive initiatives among others. She also has major interest in transitioning to just renewable energy in Africa and globally.  She helps in people-centered approaches that support environmental resilience and social equity and believes that protecting our earth is not just environmental stewardship, it is the foundation for climate resilience, thriving communities and a sustainable future.",
     category: "AI",
   },
 
@@ -314,7 +315,7 @@ export const aiFellows = [
     name: "John Okwaro",
     image: "/img/ai-fellows/JohnOkwaro.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "John Okwaro is the Head of the Department of Environment and Disaster Management at Vihiga Municipality, Kenya, where he leads initiatives on environmental sustainability, climate resilience, and disaster risk management. He oversees programs related to solid waste management, environmental planning, climate mitigation and adaptation, and the promotion of sustainable urban development within the municipality. With a background in environmental management and sustainable development, John has extensive experience in municipal environmental governance, policy implementation, and community-based environmental initiatives. His work focuses on strengthening climate-smart urban systems, improving waste management practices, and integrating environmental considerations into urban planning and infrastructure development. John is passionate about advancing circular economy approaches, climate action, and sustainable land management to support resilient communities. Through his leadership, he aims to enhance institutional capacity and promote innovative solutions that contribute to sustainable growth and improved environmental quality in Vihiga Municipality and beyond.",
     category: "AI",
   },
   {
@@ -363,7 +364,7 @@ export const aiFellows = [
     name: "Kipchirchir Kigen",
     image: "/img/ai-fellows/KipchirchirKigen.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Rev. Kigen Kipchirchir Benard is a Kenyan public health specialist, theologian, counseling psychologist, and public policy analyst serving as Assistant Director of Population Health at the National Council for Population and Development (NCPD) under Kenya’s State Department for Economic Planning – The National Treasury and Economic Planning. With over a decade of professional experience, he works at the intersection of population health, climate change, governance, and social justice, advancing evidence-informed policies that promote equity and sustainable development. He is currently a PhD candidate in Public Health Epidemiology at Walden University (USA), where his research focuses on environmental exposures, reproductive health, and planetary health governance in marginalized and climate-vulnerable communities. His interdisciplinary training in theology, psychology, and public policy shapes his holistic and ethics-driven approach to resilience building, mental health integration, and inclusive development. As a Fellow of the Africa Research and Innovation Network (ARIN) under the AI for Climate Resilience Research Fellowship, Kigen explores how artificial intelligence and data-driven systems can strengthen climate adaptation strategies, enhance health systems resilience, and advance data justice in low-resource settings. He is committed to translating research into policy impact, fostering cross-sector collaboration, and championing community-centered innovation across Africa.",
     category: "AI",
   },
 
@@ -395,8 +396,9 @@ export const aiFellows = [
     id: "ai51",
     name: "Letsatsi Lekhooa",
     image: "/img/ai-fellows/LetsatsiLekhooa.jpg",
-    title: " ",
-    bio: "coming soon",
+    title:
+      " Systems Librarian | Climate Technology Researcher | Data and Digital Infrastructure Advocate",
+    bio: "Letsatsi Phinehas Lekhooa is a Systems Librarian at the National University of Lesotho and a climate technology researcher with over a decade of experience in information systems, climate communication, and digital knowledge infrastructures. He is the Founder and Chairperson of the Lesotho Research and Education Network, where he works to strengthen research connectivity, digital infrastructure, and open science in Lesotho. His professional work sits at the intersection of climate change, data governance, and digital innovation. Lekhooa has contributed to several national and international initiatives focused on climate adaptation, data systems, and technology for sustainable development. He serves as an Executive Member of Lesotho’s National Climate Change Committee and participates in several policy and research platforms addressing climate resilience and digital transformation. Lekhooa is currently pursuing a Master’s degree in Sustainable Energy at the National University of Lesotho. His research interests include artificial intelligence for climate action, energy data analytics, and the role of digital infrastructures in supporting sustainable development in Africa.",
     category: "AI",
   },
   {
@@ -420,15 +422,15 @@ export const aiFellows = [
     name: "Lum-Awah-Lum Sonita",
     image: "/img/ai-fellows/Lum-Awah-LumSonita.jpeg",
     title: " ",
-    bio: "coming soon",
+    bio: "Dr. Lum Sonita Awah is a disaster risk reduction and climate adaptation researcher focused on the co-production of climate services to support resilient decision-making in African contexts. She is currently a Postdoctoral Fellow with the World Climate Research Programme’s Regional Information for Society (RIfS) Africa initiative at the Alliance of Bioversity International and CIAT. She holds a Ph.D. in Disaster Management from the University of the Free State, South Africa. Her research applies systems thinking and participatory approaches to understand socio-ecological vulnerability, governance, and adaptation pathways, working closely with communities, policymakers, and stakeholders to co-produce actionable climate information. A well-travelled researcher, she has conducted research and collaborative projects in countries including Sweden, Germany, South Africa, Cameroon, Kenya and across multiple other African contexts. Through her work, she aims to bridge science, policy, and practice, promoting inclusive and evidence-based strategies for climate resilience across diverse African landscapes.",
     category: "AI",
   },
   {
     id: "ai55",
     name: "Lusekelo Mwandosya",
     image: "/img/ai-fellows/LusekeloMwandosya.jpg",
-    title: " ",
-    bio: "coming soon",
+    title: "Registered Dietitian, Sustainable Food Systems Entrepreneur ",
+    bio: "Lusekelo Mwandosya is a Registered Dietitian and Founder of Green Resource Management Enterprise (GREME). Lusekelo Mwandosya dedicates his full passion to implementing sustainable food systems solutions in rural communities. He enjoys supporting rural communities innovate food systems, and enable SMEs adopt eco-sustainable solutions and climate-smart innovations through training, innovation support, and partnership. He is currently leading a community project that helps smallholder beekeepers adopt modern beekeeping practices. Previously, he spearheaded the construction of solar tent fish dryers to reduce post-harvest losses among local fish traders. Lusekelo is a Research Fellow for the Artificial Intelligence for Climate Resilience Solutions in Africa Project at the Africa Research and Impact Network. He works with a mission to enable smallholder farmers leverage Digital solutions to have access to advisory services through AI.",
     category: "AI",
   },
   {
@@ -452,7 +454,7 @@ export const aiFellows = [
     name: "Markmoses Gateiya",
     image: "/img/ai-fellows/MarkmosesGateiya.png",
     title: " ",
-    bio: "coming soon",
+    bio: "Markmoses Kinaiti is a trained Urban and Regional Planner having graduated with a bachelor’s degree from the Technical University of Kenya. He has extensive experience in private and public sectors and is currently working as a researcher at the National Land Commission, Kenya where he conducts research on land and natural resources. His expertise is in Geographic Information Systems (GIS), land use planning and data analytics. Markmoses is engaged in land policy development where he advances data driven decision making and information dissemination through advocacy and community engagement. Markmoses is passionate about sustainable land governance, land use planning, land rights justice and promotion of livelihood resilience for communities. As a data analyst he enjoys working with data and is a proponent of ethical adoption of emerging technologies.",
     category: "AI",
   },
   {
@@ -516,7 +518,7 @@ export const aiFellows = [
     name: "Mustafe Abdulkadir",
     image: "/img/ai-fellows/MustafeAbdulkadir.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Mustafe Abdulkadir Abdurahman is a seasoned humanitarian and development expert with over 12 years of leadership in managing complex, donor-funded projects across education, protection, climate resilience, agriculture, food systems, and livelihoods. He has successfully partnered with major international donors and institutions, including USAID, DFID, EU, UN agencies, World Bank, and GIZ, delivering strategic advisory, monitoring and evaluation, and capacity-building initiatives that strengthen community resilience and institutional capacity. He brings deep expertise in disaster risk management, gender equality, GBV prevention, climate-smart agriculture, agribusiness, and value chain, complemented by strong skills in project planning, policy development, and stakeholder coordination. His career highlights include advising government ministries on humanitarian policy, leading resilience-focused programs, and mentoring staff to achieve results-based impact. Alongside his field and advisory roles, Mustafe is a senior lecturer in education and agriculture, committed to advancing knowledge and empowering future leaders. Multilingual and proficient in digital tools such as GIS, SPSS, Kobo, and ODK, he is recognized for his ability to design evidence-based programs, synthesize technical content for diverse audiences, and advocate for vulnerable populations at national and international forums.",
     category: "AI",
   },
   {
@@ -524,7 +526,7 @@ export const aiFellows = [
     name: "Muunga nalube hansingo",
     image: "/img/ai-fellows/muunganalubehansingo.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Experienced, enthusiastic and engaging Disaster Management Officer in the Office of the vice president in Zambia. Climate Change professional with years of experience in Disaster management, Food Security and livelihoods as well as Humanitarian work. Skilled in implementation of climate change adaptation/ mitigation policies, Disaster Risk Reduction & management, Vulnerability assessment & humanitarian Aid distribution and management, formation & coordination of district disaster satellite committees. An African Water Ambassador, Climate X Youth Trainer and Pioneer (Global Alliance of Universities on Climate - GAUC), Fellow of African Group of Negotiators Expert Support (AGNES-Africa), Fellow of the African Climate stories, A research mentee of the Support for Preparedness of Article 6 Corporation (SPAR6C -Ministry of Green Economy and Environment, UNEP-Copenhagen climate center), Level 1 consultant (GGGI).",
     category: "AI",
   },
   {
@@ -532,7 +534,7 @@ export const aiFellows = [
     name: "Nathalie Molo",
     image: "/img/ai-fellows/NathalieMolo.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Molo Nathalie Sherifa is a PhD candidate and research scholar with the PATH Project, pursuing her doctorate in Precision Agriculture at the University of Rwanda, College of Agriculture, Forestry and Food Science. Her research, conducted in collaboration with the Rwanda Agriculture and Animal Resources Development Board (RAB), focuses on leveraging data-driven and technological solutions to enhance agricultural productivity. She holds a Master’s degree in Plant Biology (Plant Biotechnology) from the University of Yaoundé I, completed at the Plant Genetics and Improvement Unit Laboratory, where she remains an active member. Nathalie has contributed to several peer-reviewed scientific publications during her academic journey. Beyond academia, she has completed professional training in project management, monitoring and evaluation, and data science through the TechWomen Factory Program. She is also an alumna of several international programs and initiatives. Nathalie regularly participates in international conferences, workshops, and seminars, and is a proud member of the African Association for Precision Agriculture and STEM for Development. Professionally, she has worked as a Project Assistant with the Foundation for Development and Environment and the Research and Support Centre for Agropastoral Producers in Cameroon, where she supported research, innovation, and development initiatives.",
     category: "AI",
   },
   {
@@ -580,15 +582,16 @@ export const aiFellows = [
     name: "Oumaima Ben Amor",
     image: "/img/ai-fellows/oumaimabenamor.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Oumaima is an independent consultant in energy systems and sustainability. Her work focuses on assessing the emissions reduction potential of climate solutions, developing data-driven methodologies, and translating complex technical analyses into strategic insights for decision-making. She has experience designing research proposals, contributing to international grant applications, working on climate impact assessments, and developing curriculums and training materials in energy and sustainability. Her interests lie at the intersection of AI, data analytics, and climate resilience, with a particular focus on leveraging digital tools to strengthen mitigation, adaptation, and sustainable development pathways.",
     category: "AI",
   },
   {
     id: "ai75",
     name: "OVIANNE BIRINDWA Vivianne",
     image: "/img/ai-fellows/OVIANNEBIRINDWAVivianne.jpg",
-    title: " ",
-    bio: "coming soon",
+    title:
+      " Geospatial Data Scientist, researcher, and Junior Lecturer at the Université Catholique de Bukavu (UCB), Democratic Republic of Congo",
+    bio: "Jovianne Birindwa is a Geospatial Data Scientist, researcher, and Junior Lecturer at the Université Catholique de Bukavu (UCB), Democratic Republic of Congo, where she teaches Computer Science, geospatial technologies, and Machine Learning. She holds a Bachelor's degree in Computer Science from UCB, a Master's degree in Telecommunication and Computer Networks from MIT University Dakar, and additional credit-seeking studies in Precision Agriculture at the University of Rwanda. As a researcher at the Centre de Recherche en Environnement et Géo-ressources (CREGéR) at UCB, Jovianne applies GIS, remote sensing, and machine learning to address food security and climate resilience challenges in the DRC. She is the founder and project lead of SmartShamba, a mobile platform combining IoT sensors and AI to provide smallholder farmers with early weather forecasts, pest detection, and plant disease alerts. Recognized by the FAO, Dskills East Africa, OIF CapInnovation, and UN eTrade for Women for her innovations, Jovianne is also a STEM Ambassador dedicated to reducing the gender gap in technology across Africa. She is an AI for Climate Resilience Research Fellow at ARIN.",
     category: "AI",
   },
   {
@@ -596,7 +599,7 @@ export const aiFellows = [
     name: "Patricia Baariu",
     image: "/img/ai-fellows/PatriciaBaariu.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Patricia Baariu is a sustainability professional with 15 years work experience spanning the public and private sectors in Kenya. She holds a Bachelor of Landscape Architecture degree of the Jomo Kenyatta University of Agriculture and Technology (JKUAT), Master of Arts in Environmental Policy from the Centre for Advanced Studies in Environmental Law and Policy of the University of Nairobi. She is currently pursuing PhD in Environmental Law at the Faculty of Law, University of Nairobi. In addition, Patricia is registered with the National Environment Management Authority (NEMA) as a Lead EIA/EA expert and is a member of the Environment Institute of Kenya and a corporate member of the Architectural Association of Kenya – Landscape Architects chapter. Moreover, she is a Global Reporting Initiative (GRI) certified sustainability professional. Her professional interests are inclined towards climate action and resilience, green infrastructure and technologies, policy formulation, training and capacity development, nature-based solutions, and environmental & social impact assessments (ESIA)/environmental audits (EA). Specifically, in addition to being a trained trainer, Patricia was an Environmental and Social Safeguards officer for the East Africa Skills for Transformation and Regional Integration Project (EASTRIP) and the Horn of Africa Gateway Development Project (HoAGDP), both of which were anchored in the State Department for Roads, Kenya. Patricia is currently an Assistant Director in the Department of Urban Governance, Management and Resilience, State Department for Housing and Urban Development. Here she is leading the design and implementation of strategic programmes focused on urban governance, climate resilience, circular economy approaches, and sustainable urban infrastructure in Kenya. Patricia is passionate about fostering urban solutions that enhance livability, environmental stewardship, and equitable economic opportunities in rapidly urbanizing contexts. Her professional interests include sustainable urban systems, governance reform, urban resilience, and knowledge-based, data-driven and evidence-anchored policy innovation. Her work centers on advancing inclusive, green, and resilient urban development through research, policy development, capacity building, and multi-stakeholder partnerships. Patricia is contributing to the formulation of national and sub-national strategies addressing urban sustainability challenges, including urban food waste management, green economy transitions, climate financing, and urban environmental management.",
     category: "AI",
   },
   {
@@ -612,7 +615,7 @@ export const aiFellows = [
     name: "Ramadhan Kenga",
     image: "/img/ai-fellows/RamadhanKenga.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Ramadhan Shadrack Kenga is a First Class Honours graduate in Natural Resource Management (73% average) from Masinde Muliro University of Science and Technology (MMUST), Kenya. His training spans ecology, climate change, GIS and remote sensing, quantitative ecology, environmental impact assessment, and natural resource policy. He completed his industrial attachment at the Kenya Forestry Research Institute (KEFRI), Gede Eco-Research Station, gaining hands-on experience in forest ecosystem management, mangrove rehabilitation, seed handling, and nursery and woodlot establishment. For his undergraduate research, he evaluated biochar as a soil conditioner to enhance the growth of Brassica oleracea (sukuma wiki), exploring sustainable soil fertility improvement. Ramadhan is passionate about climate resilience and the integration of AI and data-driven approaches to support evidence-based environmental management and sustainable development in Africa.",
     category: "AI",
   },
   {
@@ -635,8 +638,9 @@ export const aiFellows = [
     id: "ai81",
     name: "Richard Nyoni",
     image: "/img/ai-fellows/RichardNyoni.jpg",
-    title: " ",
-    bio: "coming soon",
+    title:
+      "  Monitoring and Evaluation, Sustainability Practitioner, Climate Analyst, GIS and Remote Sensing",
+    bio: "Richard Nyoni is a Monitoring, Evaluation, and Learning (MEL) specialist with over a decade of experience working with integrated projects involving climate change adaptation and mitigation, natural resource management, restoration, and sustainable development. He holds a Bachelor of Science in Agricultural Economics from the University of Malawi and is completing a Master of Science in Climate Change and Sustainable Development at Lilongwe University of Agriculture and Natural Resources. Richard has led and strengthened MEL systems for large-scale resilience and livelihood programs funded by DFID (now FCDO), the Norwegian Embassy, Irish Aid, and the European Union. His expertise includes managing Management Information Systems (MIS), ensuring data quality assurance, designing digital data collection tools, coordinating district-level implementation teams, and producing high-quality analytical reports, policy briefs, and research papers for donors and stakeholders. His work has directly supported more than 300,000 households across Malawi. Through his extensive engagement in climate resilience–focused projects, Richard has developed a strong commitment to enhancing household adaptive, absorptive, transformative and anticipatory capacities in the face of climate change and variability. He has been instrumental in establishing and monitoring local early warning systems, including the installation and analysis of precipitation data in collaboration with the country’s Department of Climate Change and Meteorological Services. Admission into ARIN offers him a strategic platform to integrate Artificial Intelligence into climate research and practice. He aims to harness AI-driven analytics to develop innovative, evidence-based, and sustainable solutions that strengthen adaptation to climate change and variability at household and community levels. Richard is a member of the Malawi Meteorological Society.",
     category: "AI",
   },
   {
@@ -675,8 +679,8 @@ export const aiFellows = [
     id: "ai86",
     name: "Sharon Rhodah Kaitano",
     image: "/img/ai-fellows/SharonRhodahKaitano.jpg",
-    title: " ",
-    bio: "coming soon",
+    title: "Innovation Ecosystem Strategist",
+    bio: "Sharon Rhodah Kaitano is a systems strategist with over 14 years of experience strengthening innovation ecosystems across Kenya, ranging from grassroots agri-value chains to institutional digital transformation. She is the originator of the CAMEAL (Context-Aware MEAL) and CES+ v2 frameworks, which embed data sovereignty, adaptive learning, and green transition principles into operational systems for public research institutes and civil society organizations. Her work bridges African grassroots innovation with international partners, including Christian Aid and CFAO Motors, while navigating complex regulatory environments. Sharon has designed traceability and logistics tools for smallholder farmers—particularly women—that significantly reduced post-harvest losses and remain in use across six Kenyan counties. She also led enterprise-wide ERP implementation and environmental governance integration at TerraNova Autospares, achieving 100% NEMA compliance. Currently, as Founder & Principal Strategist at Trajectory Strategy & Management Consultants, Sharon advises Kenyan institutions on sovereign digital innovation and responsible AI governance aligned with national regulatory frameworks. She holds a Master of Project Planning & Management from the University of Nairobi and is committed to advancing inclusive, human-centric digital ecosystems that support Africa's green transition and institutional sovereignty.",
     category: "AI",
   },
   {
@@ -756,7 +760,7 @@ export const aiFellows = [
     name: "Upendo Lyimo",
     image: "/img/ai-fellows/Upendolyimo.png",
     title: " ",
-    bio: "coming soon",
+    bio: "Upendo Ernest Lyimo is a climate change researcher, currently a PhD candidate in Climate Change and Sustainable Development at the University of Dar es Salaam. She holds a Master of Science in Geographical Information Systems (GIS) and Remote Sensing and a Bachelor’s degree in Geography and Environmental Studies. Her research focuses on climate-induced Loss and Damage (L&D) among agro-pastoral communities in semi-arid Tanzania. She applies Artificial Intelligence (AI), machine learning, GeoAI, and advanced spatial modelling within GIS and remote sensing environments to analyse climate variability, drought severity and vegetation dynamics, and long-term environmental change. Her work integrates AI-driven climate data analysis, predictive modelling, and geospatial decision-support systems to strengthen evidence-based adaptation planning and resilience strategies. Upendo is also the Founder and Executive Director of Sustainable Futures Initiative (SFI), a Tanzania-based organization advancing climate resilience, community empowerment, environmental sustainability, and data-driven development. Through SFI, she promotes the use of AI, climate data analytics, and participatory research to support vulnerable communities, enhance local adaptive capacity, and inform inclusive climate policy and finance processes. Her work bridges science, technology, and community-centered action, contributing to climate-resilient development pathways grounded in robust data, innovation, and social equity.",
     category: "AI",
   },
   {
@@ -772,7 +776,7 @@ export const aiFellows = [
     name: "Virginia Wamboi",
     image: "/img/ai-fellows/VirginiaWamboi.jpeg",
     title: " ",
-    bio: "coming soon",
+    bio: "Virginia Wamboi Gacuthi is a Water and Environmental Specialist with an MSc in Water Policy and a BSc in Water and Environmental Management. She has practical experience in water supply and sanitation, environmental impact assessment, and infrastructure supervision, with a strong focus on sustainable resource management and climate resilience. Her work spans water governance, climate change adaptation and mitigation, solid waste management, and WASH programming. As a Policy Analyst under the Green Finance Hub, Virginia contributes to policy research and analysis on climate finance, sustainable agriculture, and environmental governance. Her role includes reviewing policy frameworks, conducting evidence-based analysis, and contributing to the development of policy briefs and analytical reports that support sustainable financing mechanisms. Through this work, she supports initiatives that promote climate resilience and environmentally sustainable development, with a particular interest in strengthening the link between scientific research, policy design, and practical implementation. Virginia is also a founding member of Mkulima Care Ltd., where she works with farmers to promote sustainable and climate-smart agricultural practices, particularly through Black Soldier Fly farming as a solution for organic waste recycling. Through this initiative, she trains farmers on BSF production techniques, supports the establishment and management of BSF colonies, and demonstrates how organic waste can be converted into valuable products such as biofertilizer and high-protein animal feed. Her work helps farmers adopt cost-effective waste management solutions while improving soil health and creating additional income opportunities. Her professional interests include water supply and sanitation, climate change adaptation and mitigation, environmental impact assessment and audit, and research, policy analysis, and documentation aimed at advancing sustainable and resilient development in Africa.",
     category: "AI",
   },
   {
@@ -796,7 +800,7 @@ export const aiFellows = [
     name: "Yvan Igor Ahishakiye",
     image: "/img/ai-fellows/YvanIgorAhishakiye.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Yvan Igor AHISHAKIYE is a Software Engineer and Climate Change Engineering specialist with an interdisciplinary interest in applying technology to address environmental and societal challenges. He holds a Bachelor’s degree in Science and Technology with a specialization in Software Engineering and a Master’s degree in Climate Change Engineering. His work focuses on the intersection of digital technologies, data analysis, and climate resilience to support sustainable development and disaster risk reduction. He has experience in full-stack development using modern web technologies and has worked on projects involving web and mobile application development, data analysis, and the integration of geospatial and environmental information systems. His academic interests include climate resilience, disaster risk management, environmental data analysis, and the role of digital innovation in addressing climate-related challenges. Passionate about innovation and sustainability, he aims to bridge the gap between climate science and technology by developing practical solutions that support informed decision-making and resilient communities.",
     category: "AI",
   },
   {

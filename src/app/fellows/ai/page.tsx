@@ -6,7 +6,7 @@ import { aiFellows } from "../../../../data/fellows/ai-fellows"
 import ArinFellowsFooter from "@/components/footer/footer"
 import ARINNavbar from "@/components/navbar/navbar"
 
-const FELLOWS_PER_PAGE = 10
+const FELLOWS_PER_PAGE = 9
 
 function FellowCard({ fellow, onClick, index }) {
     const [isVisible, setIsVisible] = useState(false)

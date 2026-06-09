@@ -14,7 +14,6 @@ export const aiFellows = [
     title: " ",
     bio: "coming soon",
     category: "AI",
-    f,
   },
   {
     id: "ai3",
@@ -157,7 +156,7 @@ export const aiFellows = [
     name: "Edward Chisala",
     image: "/img/ai-fellows/EdwardChisala.jpg ",
     title: " ",
-    bio: "coming soon",
+    bio: "Edward Chisala is a Digital Transformation Specialist and AI researcher focused on applying technology to solve real development challenges across Africa. His work sits at the intersection of artificial intelligence, data systems, and public policy, with a particular interest in building secure digital ecosystems. He is a Junior Lecturer in Computer Science at the Namibia University of Science and Technology (NUST), where he mentors undergraduate students and contributes to academic development while pursuing his PhD in Computer Science. His doctoral research focuses on strengthening internet security frameworks in Sub-Saharan Africa, with an emphasis on translating technical research into practical governance and policy models. He holds a Master of Science in Informatics by Research from NUST, where his thesis focused on developing a mobile application to address social media cyber violence and promote digital safety. With over five years of professional experience across finance, health, and international development, Edward has contributed to AI-powered employment and CV-ranking systems, processed and analysed large-scale health datasets supporting malaria eradication efforts, and supported digital governance and financial technology transformation initiatives. His work consistently bridges technical implementation with development impact. Beyond his formal roles, Edward is actively engaged in regional and global initiatives. Through the SADC Young Professionals platform and the United Nations Volunteers programme, he has collaborated on AI-powered climate resilience modelling and cross-border development research. He is committed to mentorship, knowledge transfer, and strengthening African capacity in emerging technologies. His broader interests include responsible AI governance, digital public infrastructure, climate resilience, and ensuring that Africa’s digital transformation is both locally driven and globally competitive.",
     category: "AI",
   },
   {
@@ -281,8 +280,9 @@ export const aiFellows = [
     id: "ai34",
     name: "  Henok Tadesse Bireda",
     image: "/img/ai-fellows/HenokTadesseBireda.jpg",
-    title: " ",
-    bio: "coming soon",
+    title:
+      "public health researcher and epidemiologist at the Ethiopian Public Health Institute ",
+    bio: "Henok Tadesse is a public health researcher and epidemiologist at the Ethiopian Public Health Institute, working in the Surveillance and Epidemic Intelligence Division. His work focuses on strengthening data-driven surveillance and outbreak response for climate-sensitive infectious diseases, including malaria, dengue, and other vector-borne diseases. Henok has led and contributed to national surveillance analytics during Ethiopia’s recent malaria resurgence, developing automated pipelines for epidemiological reporting, forecasting, and decision support used by the national malaria response team. His research interests include the intersection of climate variability and infectious disease transmission, particularly how climatic drivers influence malaria seasonality and geographic risk patterns in Ethiopia.  He is currently involved in research integrating epidemiology, genomics, and environmental data to better understand disease dynamics. Henok is also an advocate for open-source analytics and has delivered training in R for public health surveillance professionals through regional capacity-building initiatives. Through the AI in Climate & Health Fellowship, he aims to explore how artificial intelligence and advanced data analytics can improve early warning systems and predictive modeling for climate-sensitive diseases in Africa.",
     category: "AI",
   },
 
@@ -299,15 +299,15 @@ export const aiFellows = [
     name: "  Ikogor Mike",
     image: "/img/ai-fellows/IkogorMike.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Ikogor Michael is a Monitoring & Evaluation and Information Management specialist with over nine years of experience leading large-scale data systems across humanitarian and social protection programs. He has overseen data architecture, electronic data collection systems, validation frameworks, and analytics operations for major donor-funded initiatives, including World Bank–supported programs serving tens of thousands of vulnerable households. Beyond information management, he has developed Monitoring and Evaluation frameworks, performance indicators, and data verification protocols to strengthen accountability and results-based management. His expertise spans database administration, statistical analysis using Stata, SQL, and Power BI, dashboard development, and the institutionalization of data quality standards to support evidence-based targeting and transparent decision-making. He has supervised large-scale field enumeration exercises and managed complex beneficiary datasets to enhance program performance and operational integrity. Currently pursuing a Master’s degree in Computer Science, his research focuses on “A Hybrid Machine Learning Approach for Classifying and Recommending Social Services to Poor and Vulnerable Individuals and Households.” His academic and professional work advances the application of machine learning and structured data systems to improve precision targeting and policy decision-making within African development contexts. He serves as a Research Fellow in AI for Climate Resilience with the Africa Research and Impact Network.",
     category: "AI",
   },
   {
     id: "ai38",
     name: "Islamiyyah Arowana",
     image: "/img/ai-fellows/IslamiyyahArowana.png",
-    title: " ",
-    bio: "coming soon",
+    title: " Programmes Director, Environmental Law Research Institute.",
+    bio: "Islamiyyah Arowona is a legal practitioner with over six years of experience at the intersection of law, policy, and climate change. Having completed her master's degree with specialization in Climate Change Law and Governance at the University of Lagos, she has dedicated her career to bridging the gap between theoretical research and practical legislative action. Her expertise lies in developing robust governance frameworks that enable sustainable development and climate resilience across the Africa. As the Programmes Director of Environmental Law Research Institute, she has contributed significantly to the development of the Nigeria Climate Change Act, 2021, and The Gambia’s Climate Change Bill. As an ARIN Fellow, Islamiyyah is pioneering the intersection of Artificial Intelligence (AI) and Climate Justice. Recognizing that legislation alone is insufficient, she has secured certifications in AI application to leverage technology for early warning systems and resource optimization. Her current research focuses on developing adaptive legal and policy frameworks for the ethical integration of AI in African urban centers. Her mission is to ensure that cutting-edge innovations are deployed responsibly and equitably, safeguarding the livelihoods of Africa’s most vulnerable populations.",
     category: "AI",
   },
   {
@@ -406,15 +406,16 @@ export const aiFellows = [
     name: "Lionceau Clovis AGRE",
     image: "/img/ai-fellows/LionceauClovisAGRE.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Lionceau Clovis AGRE is an AI Governance and Responsible AI Specialist with a background in Fundamental Physics and a Master’s degree in Artificial Intelligence & Big Data. His work focuses on the governance, risk management, and responsible deployment of AI systems, particularly within climate resilience and energy systems across African contexts. He currently serves as Team Leader at the Center for AI and Digital Policy, where he contributes to comparative regulatory analysis, national AI strategy assessments, and international AI governance evaluations. He completed the Artificial Intelligence Policy Program at the same institution, strengthening his expertise in global regulatory frameworks and public-interest AI oversight. In parallel, he is engaged with FRIARE Africa, supporting research coordination and institutional partnerships advancing responsible AI governance on the continent. His research and applied work examine AI risk management standards (including ISO/IEC 42001), data governance frameworks, algorithmic accountability, and the integration of ethical safeguards into AI-driven climate and energy systems. He is particularly interested in how governance mechanisms can prevent structural inequalities from being reproduced through automated systems and strengthen institutional resilience in emerging economies.",
     category: "AI",
   },
   {
     id: "ai53",
     name: "Lovisa Kandenge",
     image: "/img/ai-fellows/LovisaKandenge.jpeg",
-    title: " ",
-    bio: "coming soon",
+    title:
+      "Junior Project Technician (Conservation practitioner) at the National Botanical Research Institute (NBRI)",
+    bio: "Lovisa is a conservation practitioner specializing in IUCN Red List assessments, biodiversity data verification, and spatial analysis. She has drafted and contributed to published Red List assessments and supports evidence-based conservation through ecological field surveys, GIS applications, and technical reporting. Her work focuses on strengthening threatened species assessments and promoting scientifically grounded conservation planning.",
     category: "AI",
   },
   {
@@ -462,7 +463,7 @@ export const aiFellows = [
     name: "Martin Emmanuel Komba",
     image: "/img/ai-fellows/MartinEmmanuelKomba.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Mr. Martin is a parastatal researcher with extensive experience in research on agricultural economics and agribusiness with a focus on development and policy implications, currently pursuing a PhD in agricultural economics, holding Master Degree in the agricultural and applied economics. Mr. Martin is proficient in research, development and outreach focal areas include analysis of alternative business models implications for large-scale land investments on smallholder agriculture and rural development, technology adoption, smallholder commercialization, livelihoods analysis, agricultural value chains upgrading, and climate change economics. Mr. Martin has participated in many international and national multidisciplinary teams to accomplish different research and development projects like Agricultural Taxes and Subsidies Research Project, Enhancing Climate Resilience in East Africa (ECREA), Building Equitable Climate Resilient African Bean & Insect Vectors (BRAINS), Rapid Cooking Breed Project (RCBP) and Climate resilient and eco-friendly rice for Africa (CERA) project.",
     category: "AI",
   },
   {
@@ -502,7 +503,7 @@ export const aiFellows = [
     name: "Mohammed Baba-Adamu",
     image: "/img/ai-fellows/MohammedBaba-Adamu.png",
     title: " ",
-    bio: "coming soon",
+    bio: "Dr. Mohammed Baba-Adamu is a Nigerian geographer, climate risk analyst and development practitioner specialising in climate–health interactions, environmental sustainability and resilience programming in fragile and conflict-affected regions. He holds a PhD in Geography (Climatology) from Yobe State University, where his research focused on the geospatial modelling of climate variability and infectious disease dynamics, particularly malaria, in semi-arid northern Nigeria. His work integrated remote sensing, GIS, machine learning and epidemiological frameworks to inform evidence-based policy and public health interventions. Dr. Baba-Adamu is an academic and currently serving as the Research Coordinator at the Centre for Environmental and Geographical Research (CEGRE), Yobe State University. He also leads Zenith Impact Consulting LTD, delivering environmental and social impact assessments, climate risk assessments, hydro-ecological diagnostics and Monitoring, Evaluation, Accountability and Learning (MEAL) services for international and national partners. With extensive field experience across the Lake Chad Basin, he has worked on projects related to WASH, peacebuilding, livelihoods, education resilience and environmental safeguards. A recipient of several competitive fellowships and research trainings, Dr. Baba-Adamu is committed to bridging academic research with practical solutions that advance climate resilience, human security and sustainable development in sub-Saharan Africa.",
     category: "AI",
   },
   {
@@ -510,7 +511,7 @@ export const aiFellows = [
     name: "Mohammed Mahdi",
     image: "/img/ai-fellows/MohammedMahdi.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Mahdi is a PhD researcher at Wageningen University & Research specializing in predictive modeling, artificial intelligence, and food safety risk analysis. His research focuses on developing data-driven Early Warning Systems (EWS) to predict and manage food safety risks, particularly mycotoxin contamination in agricultural supply chains across Africa. His work integrates mechanistic modeling, machine learning, and economics of adoption, causality and risk assessment to support decision-making for farmers, policymakers, and food system stakeholders. He is currently developing a climate-smart and data-driven early warning platform that combines weather data, crop information, and predictive analytics to provide real-time risk alerts and management recommendations. Beyond academia, he is interested in applying artificial intelligence and digital technologies to strengthen agricultural resilience, improve food safety systems, and support smallholder farmers in developing countries. His broader interests include AI-driven risk analytics, disease outbreak prediction, and technology solutions for sustainable agriculture and public health.",
     category: "AI",
   },
   {
@@ -542,15 +543,16 @@ export const aiFellows = [
     name: "Neliah Nyambane",
     image: "/img/ai-fellows/NeliahNyambane.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Neliah Moraa is a strategic climate policy professional with over 7 years of experience at the intersection of environmental research, carbon project development, and international advisory. Currently a Policy Analyst at the Kenya Institute for Public Policy Research and Analysis (KIPPRA), she leads institutional research on emerging policy trends in energy and the circular economy, translating complex data into actionable insights for national government stakeholders. Neliah specializes in filling the gap between international environmental regulations and local context through rigorous Monitoring, Reporting, and Verification (MRV) frameworks and Life Cycle Assessments (LCA). Her expertise spans navigating high-level international reporting standards, including GRI, TCFD, and ICVCM, while ensuring climate projects, such as carbon-negative mining and biofuel initiatives, deliver tangible social and environmental benefits to local communities. A proven resource mobilizer, she has successfully secured over USD $160,000 in international funding for high-impact sustainability projects across Africa. Core Competencies: Expertise in national decarbonization goals, Article 6 of the Paris Agreement, and regional policy harmonization. Proficient in applying GRI, TCFD, and CSRD frameworks and conducting Life Cycle Assessments to mitigate emissions risks. Skilled in designing verification-ready templates and MRV tools aligned with Puro.earth and ICVCM requirements. Accomplished in bridging communication between global green-finance partners, government ministries, and local SMEs. Advanced use of Stata, R, and Python to manage large-scale climate datasets and impact dashboards. Education & Certifications: MSc in Land and Water Management, University of Embu; BSc in Environmental Science, Egerton University; Certified Professional: Google Project Management, ALX Data Analytics, and GRI Standards Reporting.",
     category: "AI",
   },
   {
     id: "ai70",
     name: "Nissily Mushani",
     image: "/img/ai-fellows/NissilyMushani.jpg",
-    title: " ",
-    bio: "coming soon",
+    title:
+      "PhD Candidate, Development Studies | Social Scientist & Policy Researcher | Malawi ",
+    bio: "Nissily Mushani is a passionate social scientist and policy researcher with over eight years of experience shaping evidence-informed development strategies across Africa. She is currently completing a PhD in Development Studies at Maseno University, Kenya, where her doctoral research examines cyclone adaptation strategies and household livelihood capitals in Malawi's cyclone-affected districts of Nsanje and Chikwawa. She also holds a Master's in Economic Policy Management from the University of Zambia and a Bachelor of Social Science from the University of Malawi. Nissily specialises in translating rigorous research into actionable policy and programme solutions, with a strong track record in designing, evaluating, and scaling development initiatives. Her professional portfolio spans leading international organisations, including UNICEF, UNFPA, the World Bank, the European Union, and USAID, as well as national governments. She has served in senior roles including as Research and Evaluation Specialist with UNICEF Malawi, Programme Manager and Development Economist with the European Union Delegation to Malawi, Policy and Advocacy Coordinator at the African Institute for Development Policy (AFIDEP), and Principal Economist at Malawi's Ministry of Economic Planning and Development. She currently serves as a part-time consultant for Palladium's WISH Dividend Policy and Systems Technical Assistance Project in Malawi, focusing on family planning policy advocacy and demographic evidence for decision-making. Nissily also serves as Malawi Country Researcher for the Global Index on Responsible AI (GIRAI), contributing to the assessment of AI governance frameworks across more than 140 countries. A recipient of multiple prestigious fellowships and awards, Nissily holds the AWARD Climate Action Fellowship (2025–2026), the Population Council PERCC Initiative Fellowship, the Moving Minds Alliance Fellowship (2025), the African Research and Data (AfRes-Data) Fellowship from the Union of African Population Studies, and the Data Science to Advance Women’s Health Fellowship (DSAWH). She is a finalist in the 2025 GDN Global Development Awards Competition (Japanese Award for Outstanding Research on Development), with research on strengthening climate-resilient mHealth systems for antenatal care in Malawi. She was also a 2021 winner of the Bill and Melinda Gates Foundation Ingenuity Fund. Her peer-reviewed publication in The Lancet Global Health (2024) reflects her commitment to generating high-impact evidence on maternal and reproductive health. Nissily brings a feminist, equity-driven lens to her research and practice, with particular expertise in mixed-methods approaches, participatory action research, and evidence-to-policy translation. Her thematic interests span climate resilience, sexual and reproductive health and rights (SRHR), gender equality, digital health systems, and youth development. She is a Graduate Teaching Assistant in the Department of Development Studies at Maseno University and is deeply committed to mentoring young women and advancing Afrocentric, inclusive learning in development studies.",
     category: "AI",
   },
   {
@@ -565,8 +567,9 @@ export const aiFellows = [
     id: "ai72",
     name: "Ntui Ebob Ojong Michelline",
     image: "/img/ai-fellows/NtuiEbobOjongMichelline.png",
-    title: " ",
-    bio: "coming soon",
+    title:
+      " Senior Programs Development Manager at Earthworm Foundation (EF), based in Cameroon ",
+    bio: "Michelline is the Senior Programs Development Manager at Earthworm Foundation (EF), based in Cameroon. In this role, she leverages over 12 years of field experience to drive business development and partnership efforts, while formulating targeted community development approaches that generate positive impact for local communities and small-scale farmers across EF’s projects. An agronomic engineer by training, Michelline holds a Master’s degree in Agroforestry and brings a rich blend of technical and operational expertise to her work. She is an ISA61-F2F certified trainer in sustainable agriculture, Scrum certified, and a FAO-certified Knowledge Management Coach, a combination of credentials that reflects her commitment to innovation, continuous learning, and results-driven program delivery. Prior to joining EF, Michelline served as Certification Coordinator and Operations Coordinator for Cameroon and Nigeria at Barry Callebaut (BC), where she managed day-to-day activities across certification, traceability, ESG, GPS mapping, farmer training, gender-sensitive projects (IGAs and VSLAs), cooperative management, and certified bean sourcing. She designed robust Internal Control Systems (ICS) to ensure compliance with multiple certification frameworks including UTZ, Rainforest Alliance, COH, Fairtrade, GAP, ISO, and SMETA.",
     category: "AI",
   },
   {
@@ -574,7 +577,7 @@ export const aiFellows = [
     name: "Oswald Chishanga",
     image: "/img/ai-fellows/OswaldChishanga.jpg",
     title: " ",
-    bio: "coming soon",
+    bio: "Oswald Simbarashe Chishanga is an environmental advocate, development practitioner, and visionary leader with over 13 years of experience working at the intersection of climate resilience, civic engagement, academia and community empowerment. He is the Founding Executive Director of Save Our Environment Trust, an organization committed to building climate-resilient communities across Zimbabwe. As the Zimbabwe Country Coordinator for Good Deeds Day, Oswald has championed inclusive volunteerism by uniting NGOs, government institutions, corporates, churches, schools, and individuals in nationwide initiatives that promote collective action and social good. His coordination efforts have amplified the impact of Good Deeds Day, making it a powerful platform for civic collaboration and sustainable community transformation. Oswald in his PhD current journey has research interests and lectureship focus on climate change, disaster management, project management, natural resource management, multilateral institutions, global governance, and regional integration. His dream is to cultivate a society where humans and nature coexist in harmony for the sustainability of our planet. Notable Fellowships attained to date include: Young Africa Leaders Initiative Pretoria (Business and Entrepreneurship Track) - 2018; Obama Foundation Africa Leaders Fellowship – 2019; Ashoka Changemakers Fellowship – 2020; African Academy for Civic Engagement – 2021; Mandela Washington Fellowship – 2024; Green Institute Fellowship and Country Coordinator – 2025; Jim Leech Mastercard Foundation Fellowship 2025; Beahrs Environmental Leadership Program 2026; AI for Climate Resilience Research Fellowship 2026.",
     category: "AI",
   },
   {
@@ -630,8 +633,8 @@ export const aiFellows = [
     id: "ai80",
     name: "Richard Mulenga",
     image: "/img/ai-fellows/RichardMulenga.png",
-    title: " ",
-    bio: "coming soon",
+    title: " Senior Lecturer and Researcher at ZCAS University, Zambia",
+    bio: "My name is Richard Mulenga, and I am from Zambia. I hold a Ph.D. in International Economics from Dongguk University, South Korea, an MSc in Economics and Finance from the University of Lusaka, and a bachelor’s degree in economics from the University of Zambia. I currently serve as a Senior Lecturer and Researcher in the Department of Economics at ZCAS University in Lusaka. My academic responsibilities include teaching undergraduate and postgraduate courses in International Economics, Monetary Economics, Public Sector Economics, and Development Economics, supervising graduate research, and contributing to curriculum development and policy engagement. My research focuses on digital transformation in finance and trade, climate change and green finance, global financial markets, and open economy macroeconomics, with particular emphasis on African economies. Through the Africa Research Impact Initiative (ARIN) Research Fellowship, I aim to advance policy-relevant research that integrates artificial intelligence, climate resilience, and sustainable finance solutions for emerging economies. I have published in peer-reviewed journals and actively collaborate with academic, policy, and international institutions to strengthen evidence-based economic policymaking. I am committed to rigorous research, interdisciplinary collaboration, and generating high-impact knowledge that contributes to Africa’s sustainable development agenda.",
     category: "AI",
   },
   {
@@ -743,8 +746,9 @@ export const aiFellows = [
     id: "ai93",
     name: "Tesfaye Tessema Gintamo",
     image: "/img/ai-fellows/TesfayeTessemaGintamo.png",
-    title: " ",
-    bio: "coming soon",
+    title:
+      "Postdoctoral Research Fellow at the African Climate and Development Initiative (ACDI), University of Cape Town, South Africa ",
+    bio: "Dr Tesfaye Tessema Gintamo holds a PhD in Environmental and Water Science from the University of the Western Cape, South Africa and a Master of Science in Hydrogeology (Earth Science) from Addis Ababa University, Ethiopia. His current research focuses on understanding how climate change and land use/land cover influence soil moisture dynamics, subsurface runoff, and groundwater recharge, particularly in data-scarce regions of Southern Africa, by integrating JULES model outputs with Earth observation data, geospatial analysis, GIS, machine learning, and statistical techniques. Tesfaye has experience working with geospatial platforms, including QGIS, ArcGIS, Remote sensing, Google Earth Engine, and Python-based spatial analytics, and applies GeoAI tools to analyse complex environmental datasets. He is also developing scalable workflows combining satellite indicators such as vegetation indices, drought indices and soil moisture to monitor drought and water availability in agriculture. Tesfaye has also actively participated in numerous data science challenges (Zindi), applying machine learning to problems including water quality dynamics, crop classification, precipitation forecasting, soil nutrient prediction, landslide detection, and climate impact analysis across Africa. His research aims to translate climate and satellite data into practical decision-support tools for climate resilience, groundwater sustainability, and evidence-based land and water management in Africa. Tesfaye is passionate about leveraging AI and geospatial tools to improve water security and climate resilience. He has authored several peer-reviewed journal articles and conference presentation papers. He is a member of the Golden Key International Honour Society and also a reviewer member for the international journal Earth Sciences (EARTH).",
     category: "AI",
   },
   {
@@ -768,7 +772,7 @@ export const aiFellows = [
     name: "Victor Onyango",
     image: "/img/ai-fellows/VictorOnyango.png",
     title: " ",
-    bio: "coming soon",
+    bio: "Victor Onyango is a development researcher and evidence-informed policy practitioner with over six years of experience working at the intersection of youth employment, governance, and sustainable energy transitions across Africa. He currently serves as a Consultant and Youth Reference Group Member at Pan-African Collective for Evidence, where he provides critical reviews of work plans and outputs from the Youth Employment and Evidence Insights Hub, advising on gender equity, decolonial perspectives, and authentic youth voice representation within evidence ecosystems. Previously, Victor worked as a Research Associate at Partnership for African Social & Governance Research in Nairobi, contributing to the Young Women and Men’s Aspirations and Resilience (AYAR) project. He led literature reviews, developed research tools, coordinated multi-country data collection, and co-authored policy briefs and synthesis reports. He also facilitated evidence-informed policy dialogues through the Utafiti Sera forums, convening policymakers, civil society actors, and academics around youth employment and governance issues. Victor has undertaken research consultancies with Pamoja Trust and the University of Oslo, contributing to evidence-informed policy workshops and conducting in-depth analysis on Africa’s sustainable energy transition, including field-based research on the Lamu Coal Power Station and Lake Turkana Wind Power projects. Earlier in his career, he worked with the Institute for Development Studies, University of Nairobi on governance research under the SADES-K project and with the African Research and Impact Network on sustainable energy and climate action planning at the county level. He began his research career at the African Centre for Technology Studies, supporting climate resilience programming and contributing to a major report on Cooperative Climate Action presented at the UN Climate Action Summit. Victor brings strong expertise in qualitative and mixed-methods research, stakeholder engagement, policy analysis, and youth-centered evidence systems. His work is driven by a commitment to inclusive development, climate resilience, and strengthening the role of African youth in shaping policy and governance processes.",
     category: "AI",
   },
   {

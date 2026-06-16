@@ -9,44 +9,36 @@ export default function SDGsInteractionsMiniGrants() {
     return (
         <>
             <ARINNavbar />
-            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
-                <div className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-cyan-900 text-white overflow-hidden">
-                    <div className="absolute inset-0">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-cyan-500/10 to-teal-400/20"></div>
-                        <div className="absolute top-0 left-0 w-full h-full">
-                            <div className="absolute top-20 left-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl animate-pulse"></div>
-                            <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-                            <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-teal-400/10 rounded-full blur-xl animate-pulse delay-500"></div>
-                        </div>
-                    </div>
+            <div className="min-h-screen bg-white">
+                <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+                    <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
 
-                    <div className="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
+                    <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <Link href="/mini-grants" className="w-full sm:w-auto">
                                 <Button
                                     variant="ghost"
-                                    className="mb-8 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 rounded-full px-8 py-2"
+                                    className="mb-6 text-white/60 hover:text-white hover:bg-white/5 border border-white/10 transition-all duration-300 rounded-lg px-6 py-2"
                                 >
                                     <ArrowLeft className="w-4 h-4 mr-2" />
                                     Back to Mini-grants
                                 </Button>
                             </Link>
 
-                            <div className="mb-8">
-                                <h1 className="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-                                    <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent">
-                                        Governing SDGs
-                                    </span>
-                                    <span className="block text-4xl lg:text-5xl text-cyan-300 mt-2">Interactions Mini-grants</span>
+                            <div className="mb-4">
+                                <h1 className="text-4xl lg:text-5xl font-extrabold mb-3 leading-tight tracking-tight">
+                                    <span className="text-white">Governing SDGs</span>
+                                    <span className="block text-2xl lg:text-3xl text-slate-300 mt-2">Interactions Mini-grants</span>
                                 </h1>
                             </div>
 
-                            <div className="flex flex-wrap justify-center items-center gap-8 text-white/80 mb-12">
-                                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                                    <Calendar className="w-6 h-6 text-cyan-300" />
+                            <div className="flex flex-wrap justify-center items-center gap-4 text-white/80 mb-6">
+                                <div className="flex items-center space-x-3 bg-white/10 border border-white/10 rounded-lg px-5 py-2.5">
+                                    <Calendar className="w-5 h-5 text-white/60" />
                                     <div>
-                                        <div className="text-lg font-semibold text-white">September 30, 2024</div>
-                                        <div className="text-sm text-white/70">Posted</div>
+                                        <div className="text-base font-semibold text-white">September 30, 2024</div>
+                                        <div className="text-xs text-white/50">Posted</div>
                                     </div>
                                 </div>
                             </div>
@@ -54,12 +46,12 @@ export default function SDGsInteractionsMiniGrants() {
                     </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                    <div className="mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Globe className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Globe className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">About the Project</h3>
                             </div>
@@ -96,11 +88,11 @@ export default function SDGsInteractionsMiniGrants() {
                         </div>
                     </div>
 
-                    <div className="mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                    <div className="mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Target className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Target className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Project Aims</h3>
                             </div>
@@ -152,11 +144,11 @@ export default function SDGsInteractionsMiniGrants() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Award className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Award className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Terms of Application</h3>
                             </div>
@@ -177,10 +169,10 @@ export default function SDGsInteractionsMiniGrants() {
                             </div>
                         </div>
 
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Building className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Building className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Thematic Focus</h3>
                             </div>
@@ -205,11 +197,11 @@ export default function SDGsInteractionsMiniGrants() {
                         </div>
                     </div>
 
-                    <div className="mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                    <div className="mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Users className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Users className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Eligibility Criteria</h3>
                             </div>
@@ -247,11 +239,11 @@ export default function SDGsInteractionsMiniGrants() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <HandHeart className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <HandHeart className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Expected Activities</h3>
                             </div>
@@ -305,10 +297,10 @@ export default function SDGsInteractionsMiniGrants() {
                             </div>
                         </div>
 
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Building className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Building className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Application Requirements</h3>
                             </div>
@@ -342,11 +334,11 @@ export default function SDGsInteractionsMiniGrants() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Target className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Target className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Evaluation Process</h3>
                             </div>
@@ -374,10 +366,10 @@ export default function SDGsInteractionsMiniGrants() {
                             </div>
                         </div>
 
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <HandHeart className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <HandHeart className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Gender Equity, Equality and Inclusion</h3>
                             </div>
@@ -396,11 +388,11 @@ export default function SDGsInteractionsMiniGrants() {
                         </div>
                     </div>
 
-                    <div className="mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                    <div className="mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Target className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Target className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-800">Monitoring and Evaluation</h3>
                             </div>
@@ -427,11 +419,11 @@ export default function SDGsInteractionsMiniGrants() {
                         </div>
                     </div>
 
-                    <div className="mb-20">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                    <div className="mb-8">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mr-4">
-                                    <Award className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
+                                    <Award className="w-5 h-5 text-slate-700" />
                                 </div>
                                 <h2 className="text-3xl font-bold text-gray-800">How to Apply</h2>
                             </div>
@@ -461,7 +453,7 @@ export default function SDGsInteractionsMiniGrants() {
                     </div>
 
                     <div className="w-full">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
+                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
                             <Image
                                 src="/img/banner.png"
                                 alt="SDGs Interactions Program"

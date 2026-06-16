@@ -102,9 +102,9 @@ export default function MultiFellowshipHero() {
                 <div className="absolute top-2/3 right-1/4 w-3 h-3 bg-cyan-400/20 rounded-full animate-float-particle"></div>
             </div>
 
-            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 
-                <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                <div className={`text-center mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
 
                     <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#14234d]/10 via-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-full px-6 py-2.5 mb-8 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="relative">
@@ -161,7 +161,7 @@ export default function MultiFellowshipHero() {
                 </div>
 
                 {/* Video Section */}
-                <div className={`max-w-6xl mx-auto mb-20 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+                <div className={`max-w-6xl mx-auto mb-10 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                     <div className="relative">
                         <div className="absolute -inset-4 bg-gradient-to-r from-[#14234d]/20 via-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-60"></div>
 
@@ -237,7 +237,7 @@ export default function MultiFellowshipHero() {
                 </div>
 
                 {/* Interactive Stats Cards */}
-                <div className={`max-w-6xl mx-auto mb-20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                <div className={`max-w-6xl mx-auto mb-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {stats.map((stat, index) => (
                             <div
@@ -276,7 +276,7 @@ export default function MultiFellowshipHero() {
                 </div>
 
                 {/* COMPACT Map Section - Grid Layout */}
-                <div className={`max-w-7xl mx-auto mb-20 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                <div className={`max-w-7xl mx-auto mb-10 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                     {/* Section Header */}
                     <div className="text-center mb-8">
                         <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#14234d]/10 via-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-full px-6 py-2.5 mb-4 border border-white/20 shadow-lg">

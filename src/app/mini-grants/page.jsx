@@ -16,7 +16,6 @@ import {
     Clock,
     Zap,
     ChevronRight,
-    Sparkles,
 } from "lucide-react"
 import ARINNavbar from "@/components/navbar/navbar"
 import ArinFellowsFooter from "@/components/footer/footer"
@@ -69,11 +68,10 @@ export default function MiniGrantsPage() {
         },
         {
             title: "Artificial Intelligence For Climate Resilience",
-            // date: "Coming Soon",
             description:
-                "The Artificial Intelligence For Climate Resilience program focuses on leveraging artificial intelligence and machine learning technologies to address critical development challenges across the African continent.",
+                "Call for Mini-Grants: Leveraging Artificial Intelligence for Climate Resilience Solutions in Africa. Applications are open for researchers working at the intersection of AI and climate adaptation.",
             id: "ai-fellowship",
-            status: "upcoming",
+            status: "active",
         },
     ]
 
@@ -83,28 +81,32 @@ export default function MiniGrantsPage() {
                 return {
                     label: "Completed",
                     icon: CheckCircle,
-                    color: "slate",
+                    bgColor: "bg-slate-100",
+                    textColor: "text-slate-600",
                     dotColor: "bg-slate-400",
                 }
             case "active":
                 return {
                     label: "Active",
                     icon: Zap,
-                    color: "blue",
-                    dotColor: "bg-blue-400",
+                    bgColor: "bg-green-100",
+                    textColor: "text-green-700",
+                    dotColor: "bg-green-500",
                 }
             case "upcoming":
                 return {
                     label: "Upcoming",
                     icon: Clock,
-                    color: "blue",
-                    dotColor: "bg-blue-400",
+                    bgColor: "bg-amber-100",
+                    textColor: "text-amber-700",
+                    dotColor: "bg-amber-500",
                 }
             default:
                 return {
                     label: "Unknown",
                     icon: Calendar,
-                    color: "gray",
+                    bgColor: "bg-gray-100",
+                    textColor: "text-gray-600",
                     dotColor: "bg-gray-400",
                 }
         }
@@ -134,40 +136,31 @@ export default function MiniGrantsPage() {
         <>
             <ARINNavbar />
             <div className="min-h-screen bg-white">
-                {/* Hero Section - Clean Minimalist */}
-                <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-                    <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-
-                    <div className="relative max-w-6xl mx-auto px-6 py-20">
+                {/* Hero Section */}
+                <div className="border-b border-slate-200 bg-white">
+                    <div className="max-w-6xl mx-auto px-6 py-10">
                         <Button
                             variant="ghost"
-                            className="mb-8 text-white/60 hover:text-white hover:bg-white/5 border border-white/10"
+                            className="mb-5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"
                         >
                             ← Back to Home
                         </Button>
 
                         <div className="max-w-3xl">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
-                                <Sparkles className="w-4 h-4 text-blue-400" />
-                                <span className="text-sm font-medium text-blue-400">Science-Policy Mini-grants</span>
-                            </div>
-
-                            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                                ARIN Africa
-                                <span className="block text-blue-400 mt-2">Fellowship Programs</span>
+                            <h1 className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-slate-900">
+                                ARIN Africa Fellowship Programs
                             </h1>
 
-                            <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+                            <p className="text-lg text-slate-500 mb-6 leading-relaxed">
                                 Fostering systematic and coordinated co-generation of evidence within varied African contexts through
                                 small grants and mentorship programs.
                             </p>
 
-                            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-lg">
-                                <DollarSign className="w-5 h-5 text-blue-400" />
+                            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg">
+                                <DollarSign className="w-4 h-4 text-slate-500" />
                                 <div>
-                                    <div className="text-sm text-slate-400">Grant Range</div>
-                                    <div className="text-lg font-semibold">$2,000 - $10,000</div>
+                                    <div className="text-xs text-slate-400">Grant Range</div>
+                                    <div className="text-base font-semibold text-slate-800">$2,000 - $10,000</div>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +168,7 @@ export default function MiniGrantsPage() {
                 </div>
 
                 {/* Main Content */}
-                <div className="max-w-6xl mx-auto px-6 py-16">
+                <div className="max-w-6xl mx-auto px-6 py-10">
                     {/* ARIN Mini Grants Section */}
                     <section className="mb-24">
                         <div className="mb-10">
@@ -202,17 +195,17 @@ export default function MiniGrantsPage() {
                             <button
                                 onClick={() => setSelectedCategory("active")}
                                 className={`px-5 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${selectedCategory === "active"
-                                    ? "bg-blue-600 text-white"
+                                    ? "bg-green-600 text-white"
                                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                                     }`}
                             >
-                                <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                                 Active ({categorizedGrants.active.length})
                             </button>
                             <button
                                 onClick={() => setSelectedCategory("upcoming")}
                                 className={`px-5 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${selectedCategory === "upcoming"
-                                    ? "bg-blue-600 text-white"
+                                    ? "bg-amber-500 text-white"
                                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                                     }`}
                             >
@@ -232,37 +225,41 @@ export default function MiniGrantsPage() {
                         </div>
 
                         {/* Grants Grid */}
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {filteredGrants.map((grant, index) => {
                                 const statusConfig = getStatusConfig(grant.status)
-                                const StatusIcon = statusConfig.icon
 
                                 return (
                                     <div
                                         key={index}
                                         onClick={() => handleGrantClick(grant.id)}
-                                        className="group cursor-pointer bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-500 hover:shadow-lg transition-all duration-300"
+                                        className="group cursor-pointer bg-white border-2 border-slate-200 rounded-xl hover:border-slate-900 hover:shadow-xl transition-all duration-200 flex flex-col overflow-hidden"
                                     >
-                                        <div className="flex items-start justify-between mb-4">
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-3 mb-3">
-                                                    <span
-                                                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-${statusConfig.color}-100 text-${statusConfig.color}-700`}
-                                                    >
-                                                        <div className={`w-2 h-2 rounded-full ${statusConfig.dotColor}`}></div>
-                                                        {statusConfig.label}
-                                                    </span>
-                                                    <span className="text-sm text-slate-500 flex items-center gap-1">
-                                                        <Calendar className="w-4 h-4" />
-                                                        {grant.date}
-                                                    </span>
-                                                </div>
-                                                <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                                                    {grant.title}
-                                                </h3>
-                                                <p className="text-slate-600 leading-relaxed">{grant.description}</p>
+                                        {/* Status bar at top */}
+                                        <div className={`h-1.5 w-full ${statusConfig.dotColor}`} />
+
+                                        <div className="p-6 flex flex-col flex-1">
+                                            <div className="mb-4">
+                                                <span
+                                                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase ${statusConfig.bgColor} ${statusConfig.textColor}`}
+                                                >
+                                                    <div className={`w-1.5 h-1.5 rounded-full ${statusConfig.dotColor}`}></div>
+                                                    {statusConfig.label}
+                                                </span>
                                             </div>
-                                            <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all flex-shrink-0 ml-4" />
+
+                                            <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug group-hover:text-slate-700 transition-colors flex-1">
+                                                {grant.title}
+                                            </h3>
+
+                                            <p className="text-slate-500 text-sm leading-relaxed mb-5 line-clamp-3">
+                                                {grant.description}
+                                            </p>
+
+                                            <div className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors mt-auto pt-4 border-t border-slate-100">
+                                                <span>View details</span>
+                                                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                            </div>
                                         </div>
                                     </div>
                                 )

@@ -84,10 +84,10 @@ export default function FellowsOverview() {
 
     return (
         <>
-            <div id="fellows-overview" className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+            <div id="fellows-overview" className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Header Section */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10">
                         <div className="inline-block px-4 py-2 bg-[#48a4bb]/10 text-[#48a4bb] rounded-full text-sm font-semibold mb-4">
                             Our Community
                         </div>
@@ -175,7 +175,7 @@ export default function FellowsOverview() {
                         })}
                     </div>
 
-                    <div className="text-center mt-16">
+                    <div className="text-center mt-10">
                         <p className="text-gray-600 mb-6">Join our network of over 300 researchers across 41 countries</p>
                         <Button
                             onClick={() => setShowEmailModal(true)}

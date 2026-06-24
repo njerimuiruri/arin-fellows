@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic';
 import { Users, BookOpen, ArrowRight, Award, Globe, Sparkles, Play, Volume2, MapPin, TrendingUp } from "lucide-react"
+import Link from "next/link"
 
 // Dynamically import the map component (no SSR for Leaflet)
 const AfricaMap = dynamic(() => import('../people-distribution/Africaleafletmap'), {
@@ -108,7 +109,6 @@ export default function MultiFellowshipHero() {
 
                     <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#14234d]/10 via-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-full px-6 py-2.5 mb-8 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="relative">
-                            <Sparkles className="w-4 h-4 text-[#14234d] animate-pulse" />
                             <div className="absolute inset-0 bg-[#14234d]/20 blur-md animate-pulse"></div>
                         </div>
                         <span className="text-[#14234d] text-sm font-semibold tracking-wide">
@@ -157,6 +157,49 @@ export default function MultiFellowshipHero() {
                             </div>
                             <span className="font-medium">Join 300+ ARIN Fellows</span>
                         </div>
+                    </div>
+
+                    {/* Open Calls Strip */}
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch max-w-2xl mx-auto mb-2">
+                        {/* LEEPS Phase II */}
+                        <Link
+                            href="/mini-grants/leeps"
+                            className="group relative flex items-center gap-4 bg-slate-50 border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/50 rounded-2xl px-5 py-4 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 text-left flex-1 overflow-hidden"
+                        >
+                            <div className="w-0.5 self-stretch rounded-full bg-indigo-400 flex-shrink-0"></div>
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-[10px] font-bold text-indigo-500 uppercase tracking-widest">LEEPS Phase II</span>
+                                    <span className="px-1.5 py-0.5 bg-indigo-100 text-indigo-600 text-[9px] font-semibold rounded-full">Mini-Grant</span>
+                                </div>
+                                <p className="text-sm font-semibold text-slate-700 leading-snug">Up to USD 4,500</p>
+                                <div className="flex items-center gap-1.5 mt-1">
+                                    <span className="w-1.5 h-1.5 bg-rose-400 rounded-full animate-pulse flex-shrink-0"></span>
+                                    <p className="text-[11px] text-rose-500 font-medium">Deadline 30 Jun 2026</p>
+                                </div>
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                        </Link>
+
+                        {/* AI for Climate */}
+                        <Link
+                            href="/mini-grants/ai-fellowship"
+                            className="group relative flex items-center gap-4 bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/50 rounded-2xl px-5 py-4 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 text-left flex-1 overflow-hidden"
+                        >
+                            <div className="w-0.5 self-stretch rounded-full bg-emerald-400 flex-shrink-0"></div>
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="relative flex h-2 w-2 flex-shrink-0">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    </span>
+                                    <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Open Now</span>
+                                </div>
+                                <p className="text-sm font-semibold text-slate-700 leading-snug">AI for Climate Resilience</p>
+                                <p className="text-[11px] text-slate-400 font-medium mt-1">ARIN / IDRC · Apply Today</p>
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                        </Link>
                     </div>
                 </div>
 

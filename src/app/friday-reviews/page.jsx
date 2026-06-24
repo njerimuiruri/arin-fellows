@@ -1,585 +1,475 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { Button } from '@/components/ui/button';
-import { FileText, Calendar, Users, ExternalLink, ArrowRight, Clock, BookOpen, Globe, X, Filter } from 'lucide-react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { FileText, Calendar, Users, ExternalLink, Clock, BookOpen, Globe, X, ChevronDown, Search, ChevronLeft, ChevronRight, User } from 'lucide-react';
 import ARINNavbar from '@/components/navbar/navbar';
 import ArinFellowsFooter from '@/components/footer/footer';
+import { briefs } from '../../../data/brief/brief';
+import Image from 'next/image';
+import Link from 'next/link';
+
+const MONTH_ORDER = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const ITEMS_PER_PAGE = 12;
+
+function parseDate(dateStr) {
+    if (!dateStr || dateStr.trim() === '2020') return new Date('2020-01-01');
+    const cleaned = dateStr.replace(/(\d+)(st|nd|rd|th)/i, '$1');
+    const d = new Date(cleaned);
+    return isNaN(d.getTime()) ? new Date('2020-01-01') : d;
+}
+
+function FilterDropdown({ label, value, options, onChange, icon: Icon }) {
+    const [open, setOpen] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        function handleClick(e) {
+            if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+        }
+        document.addEventListener('mousedown', handleClick);
+        return () => document.removeEventListener('mousedown', handleClick);
+    }, []);
+
+    const isActive = value !== 'all';
+    const selected = options.find(o => o.value === value);
+
+    return (
+        <div ref={ref} className="relative">
+            <button
+                onClick={() => setOpen(o => !o)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all ${isActive
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                    : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-700'
+                    }`}
+            >
+                {Icon && <Icon className="w-3.5 h-3.5 shrink-0" />}
+                <span>{isActive ? selected?.label || value : label}</span>
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+            </button>
+
+            {open && (
+                <div className="absolute top-full mt-2 left-0 z-50 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden min-w-[180px]">
+                    <button
+                        onClick={() => { onChange('all'); setOpen(false); }}
+                        className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${value === 'all' ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-600 hover:bg-gray-50'}`}
+                    >
+                        {label}
+                    </button>
+                    <div className="border-t border-gray-100" />
+                    {options.map(opt => (
+                        <button
+                            key={opt.value}
+                            onClick={() => { onChange(opt.value); setOpen(false); }}
+                            className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${value === opt.value ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-600 hover:bg-gray-50'}`}
+                        >
+                            {opt.label}
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+const reviews = [
+    { id: 1, title: "Clean energy access in Africa amidst the COVID-19 pandemic by Dr. Joanes Atela", date: "22nd May, 2020", month: "May", year: "2020", description: "This review focused on energy transition in East Africa Countries (EAC) and associated impacts of COVID-19 Pandemic. Studies shows that even though EAC has made progress, the region still experience key challenges including incoherent policy frameworks, low generation of power, uncoordinated partnerships and investment, and limited access to reliable and disaggregated data on energy linkage with socio-economic development.", briefLink: null, blogLink: null, category: "Energy" },
+    { id: 2, title: "Partha Dasgupta Review of the Economics of Biodiversity: Interim Report", date: "15th May, 2020", month: "May", year: "2020", description: "This interim report sets out the scientific and economic concepts and frameworks underpinning the review. The scientific framework captures the link between nature, human health, and social well-being and uses the Covid-19 pandemic to help ground this.", briefLink: "#", blogLink: null, category: "Biodiversity" },
+    { id: 3, title: "The Role of Community Based Organizations (CBOs) in Disaster Risk Reduction in Informal Settlements in Nairobi by Joanes Atela, Asenath Maobe and Linet Mwirigi", date: "27th November, 2020", month: "November", year: "2020", description: "The aim of this study is to establish the position of CBOs in DRR and informing policy changes in the government, and whether the presence of CBOs in the informal settlements makes life better for residents.", briefLink: null, blogLink: null, category: "Disaster Risk" },
+    { id: 4, title: "Transformative Pathways to Sustainability: Learning Across Disciplines, Cultures and Contexts by Victoria Chengo et. al", date: "9th October, 2020", month: "October", year: "2020", description: "This book was put together by the 'Pathways' Transformative Knowledge Network (TKN), to which Africa Sustainability Hub (ASH) is a part. This chapter focuses on enabling sustainable access to Solar Home Systems via mobile-based payment systems.", briefLink: null, blogLink: null, category: "Sustainability" },
+    { id: 5, title: "Strengthening Non-State Actors in Climate Action during Post-COVID19 State by Charles Tonui et.al", date: "2020", month: "Unknown", year: "2020", description: "This paper reviewed non-state actor driven climate actions & response to COVID-19 towards identifying synergies for post-2020 climate & post-COVID-19 period in developing countries.", briefLink: null, blogLink: null, category: "Climate Action" },
+    { id: 6, title: "The role of subnational governments in promoting people-centred COVID-19 response – highlights for Africa by Charles Tonui, Joanes Atela", date: "17th April, 2020", month: "April", year: "2020", description: "The review focused on how the continent's policy setting interplays the COVID-19 experience and more specifically the role of subnational governments in promoting people-centred COVID-19 response.", briefLink: "#", blogLink: null, category: "Governance" },
+    { id: 7, title: "How is COVID-19 shaping Africa's knowledge systems? by Joanes Atela and Nora Ndege", date: "8th May, 2020", month: "May", year: "2020", description: "This paper highlights some lessons that Africa can learn from the COVID-19 experience in the context of strengthening the continent's ST&I systems.", briefLink: "#", blogLink: "#", category: "Knowledge Systems" },
+    { id: 8, title: "'Last Mile' Initiatives: Building Community Networks to Respond to COVID-19 in Africa by Kennedy Mbeva, Victoria Chengo, and Joanes Atela", date: "2020", month: "Unknown", year: "2020", description: "This review was on community networks as part of non-state actors who have notably played a critical role in supporting livelihoods and businesses especially the poor in Africa.", briefLink: "#", blogLink: "#", category: "Community Networks" },
+    { id: 9, title: "Disaster Risk Management in the context of the COVID-19 pandemic in Africa by Nairobi Hub Multihazard team", date: "2020", month: "Unknown", year: "2020", description: "This brief provides key highlights on the current disaster risk management landscape in Africa, and the lessons that can be learnt from the COVID-19 pandemic response.", briefLink: "#", blogLink: "#", category: "Disaster Management" },
+    { id: 10, title: "Lessons for Africa's Research in the face of COVID-19", date: "2020", month: "Unknown", year: "2020", description: "This paper focused on how research and researchers in Africa can contextually support COVID-19 response efforts, including the implications on the post-pandemic research landscape.", briefLink: "#", blogLink: "#", category: "Research" },
+    { id: 11, title: "Policy trade-offs and synergies for low emission dairy development (LEDD) in Kenya by Joel Onyango et al", date: "2020", month: "Unknown", year: "2020", description: "This paper evaluates policy intervention trade-offs and synergies in low emission dairy development, addressing the tripod puzzle of climate sensitivity, reduced emissions, and increased productivity.", briefLink: null, blogLink: null, category: "Agriculture" },
+    { id: 12, title: "Energy transitions and gender gaps in energy access by Benjamin McIntosh-Michaelis", date: "26th June, 2020", month: "June", year: "2020", description: "This research examines the interactions between gender, energy access, and transitions to green and renewable energy through a case study of Pundo Village, Kisumu County.", briefLink: null, blogLink: null, category: "Energy & Gender" },
+    { id: 13, title: "Imaginaries of Energy Transformation in Kenya by Anugrah Saputra", date: "26th June, 2020", month: "June", year: "2020", description: "The aim of the research was to map out energy pathways in the country using the Q-Method to compare different opinions on the energy mix used in Kenya.", briefLink: null, blogLink: null, category: "Energy Transformation" },
+    { id: 14, title: "Fire Risk Assessment: Review of the Current State and Justifying Applicable Methodology for Mukuru by Haron Akala, STEVENS Sam, David Rush, and Tom Randa", date: "28th September, 2020", month: "September", year: "2020", description: "This paper highlights the current state of research in Nairobi on Fire, the existing methodologies used and knowledge gaps therein, and justifies fire risk assessment models.", briefLink: null, blogLink: null, category: "Fire Risk" },
+];
 
 export default function FridayReviewsPage() {
     const [selectedYear, setSelectedYear] = useState('all');
     const [selectedMonth, setSelectedMonth] = useState('all');
     const [selectedCategory, setSelectedCategory] = useState('all');
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
 
-    const reviews = [
-        {
-            id: 1,
-            title: "Clean energy access in Africa amidst the COVID-19 pandemic by Dr. Joanes Atela",
-            date: "22nd May, 2020",
-            month: "May",
-            year: "2020",
-            description: "This review focused on energy transition in East Africa Countries (EAC) and associated impacts of COVID-19 Pandemic. Studies shows that even though EAC has made progress, the region still experience key challenges including incoherent policy frameworks, low generation of power, uncoordinated partnerships and investment, and limited access to reliable and disaggregated data on energy linkage with socio-economic development. Brief will be shared soon.",
-            briefLink: null,
-            blogLink: null,
-            category: "Energy"
-        },
-        {
-            id: 2,
-            title: "Partha Dasgupta Review of the Economics of Biodiversity: Interim Report",
-            date: "15th May, 2020",
-            month: "May",
-            year: "2020",
-            description: "This interim report sets out the scientific and economic concepts and frameworks underpinning the review. The scientific framework of the report, in particular captures the link between nature, human health, and social well-being and uses the Covid-19 pandemic to help ground this. The final Report will be published in advance of the fifteenth meeting of the Conference of the Parties (COP15) to the Convention on Biological Diversity (CBD), which is due to be held in Kunming, China. Find the report here.",
-            briefLink: "#",
-            blogLink: null,
-            category: "Biodiversity"
-        },
-        {
-            id: 3,
-            title: "The Role of Community Based Organization (CBOs) in Disaster Risk Reduction (DRR) in Informal Settlements in Nairobi. Discussion paper authored by Joanes Atela,Asenath Maobe and Linet Mwirigi",
-            date: "27th November, 2020",
-            month: "November",
-            year: "2020",
-            description: "The aim of this study is to establish the position of CBOs in DRR and informing policy changes in the government. To answer the question of whether the presence of CBOs in the informal settlements in any way makes life better and easier for the residents and Secondly, to establish the role they play in the disaster policies in the county in the past, and if not, to make recommendations on how to remedy that.",
-            briefLink: null,
-            blogLink: null,
-            category: "Disaster Risk"
-        },
-        {
-            id: 4,
-            title: "Transformative Pathways to Sustainability: Learning Across Disciplines, Cultures and Contexts by Victoria Chengo et. al",
-            date: "9th October, 2020",
-            month: "October",
-            year: "2020",
-            description: "This is a book has been put together by the 'Pathways' Transformative Knowledge Network (TKN), to which Africa Sustainability Hub(ASH) is a part of. This chapter provides insights from the work that ASH undertook under this project that was funded by the International Science Council (ISC) through the STEPS Centre. This research focused on enabling sustainable and equitable access to Solar Home Systems (SHS) for all via mobile-based payment systems, including those who cannot participate in micro-financing schemes.",
-            briefLink: null,
-            blogLink: null,
-            category: "Sustainability"
-        },
-        {
-            id: 5,
-            title: "Strengthening Non-State Actors in Climate Action during Post-COVID19 State by Charles Tonui et.al",
-            date: "2020",
-            month: "Unknown",
-            year: "2020",
-            description: "This paper reviewed non-state actor driven climate actions & response to COVID-19 towards identifying synergies for post-2020 climate & post-COVID-19 period in the developing countries. The objective of the paper was to assess impact of COVID-19 on the non-state climate actors and actions in developing countries; and to identify lessons for synergies between climate actions and COVID-19 response for post-2020 climate & post-COVID-19 period.",
-            briefLink: null,
-            blogLink: null,
-            category: "Climate Action"
-        },
-        {
-            id: 6,
-            title: "The role of subnational governments in promoting people-centred COVID-19 response – highlights for Africa by Charles Tonui,Joanes Atela",
-            date: "17th April, 2020",
-            month: "April",
-            year: "2020",
-            description: "The review focused on how the continent's policy setting interplays the COVID-19 experience and more specifically the role of subnational governments in promoting people-centred COVID-19 response, highlighting priority lessons for emergency phase and post-pandemic reconstruction. Find the review brief here.",
-            briefLink: "#",
-            blogLink: null,
-            category: "Governance"
-        },
-        {
-            id: 7,
-            title: "How is COVID-19 shaping Africa's knowledge systems? by Joanes Atela and Nora Ndege",
-            date: "8th May, 2020",
-            month: "May",
-            year: "2020",
-            description: "This paper highlights some lessons that Africa can learn from the COVID-19 experience in the context of strengthening the continent's ST&I systems. Find theBrief and blog here.",
-            briefLink: "#",
-            blogLink: "#",
-            category: "Knowledge Systems"
-        },
-        {
-            id: 8,
-            title: "'Last Mile' Initiatives: Building Community Networks to Respond to the COVID-19 Pandemic in Africa by Kennedy Mbeva, Victoria Chengo, and Joanes Atela",
-            date: "2020",
-            month: "Unknown",
-            year: "2020",
-            description: "This review was on community networks as part of non-state actors who have notably played a critical role in supporting livelihoods and businesses especially the poor in Africa. It looked at the role these networks have played in response to COVID-19. Find the review brief here and blog.",
-            briefLink: "#",
-            blogLink: "#",
-            category: "Community Networks"
-        },
-        {
-            id: 9,
-            title: "Disaster Risk management in the context of the COVID-19 pandemic in Africa by Nairobi Hub Multihazard team",
-            date: "2020",
-            month: "Unknown",
-            year: "2020",
-            description: "This brief provides some key highlights on the current disaster risk management landscape in Africa, and the lessons that can be learnt from the COVID-19 pandemic response that could enable a shift from reactive emergency response to a more integrated and proactive disaster risk preparedness and management. Supporting evidence and insights have been adopted from the Tomorrow's Cities Nairobi Risk Hub (https://www.tomorrowscities.org/city/nairobi) supported by the UK' Global Challenge Research Fund (GCRF). Find the Review brief and Blog here.",
-            briefLink: "#",
-            blogLink: "#",
-            category: "Disaster Management"
-        },
-        {
-            id: 10,
-            title: "Lessons for Africa's Research in the face of COVID-19",
-            date: "2020",
-            month: "Unknown",
-            year: "2020",
-            description: "This paper focused on how research and researchers in Africa can contextually support COVID-19 response efforts, including the implications on the post-pandemic research landscape. Review brief and Blog",
-            briefLink: "#",
-            blogLink: "#",
-            category: "Research"
-        },
-        {
-            id: 11,
-            title: "Policy trade-offs and synergies for low emission dairy development (LEDD) in Kenya by Joel Onyango et al",
-            date: "2020",
-            month: "Unknown",
-            year: "2020",
-            description: "This paper evaluates policy intervention trade-offs and synergies in low emission dairy development. The paper focuses on the dairy subsector for three reasons: firstly, the dairy subsector is responsible for significant contribution to GHG emissions (Gerssen-Gondelach et al., 2017; Vellinga et al., 2011) and recommending gaps in policy interventions that would promote low emission pathways is significant in climate mitigation. Secondly, the tripod puzzle in developing the dairy subsector requires climate sensitivity, that promote reduced emission, while encouraging increased productivity and livelihood benefits (Lal, 2016). The third reason is the multiple policy implementation levels with interest in low emission dairy development.",
-            briefLink: null,
-            blogLink: null,
-            category: "Agriculture"
-        },
-        {
-            id: 12,
-            title: "Energy transitions and gender gaps in energy access by Benjamin McIntosh-Michaelis (MSc in International Development at the University of Edinburgh, UK)",
-            date: "26th June, 2020",
-            month: "June",
-            year: "2020",
-            description: "Energy transitions and gender gaps in energy access examines the interactions between gender, energy access, and transitions to green and renewable energy. Through a case study of Pundo Village, Kisumu County, the project assesses how gender gaps are influenced by, and have influence on, energy transitions.",
-            briefLink: null,
-            blogLink: null,
-            category: "Energy & Gender"
-        },
-        {
-            id: 13,
-            title: "Imaginaries of Energy Transformation in Kenya- by Anugrah Saputra (MSc in International Development at the University of Edinburgh, UK)",
-            date: "26th June, 2020",
-            month: "June",
-            year: "2020",
-            description: "The aim of the research was to map out energy pathways in the country. Interviews with energy experts within the field using the Q-Method were undertaken in order to best compare the different opinions on the energy mix currently used in Kenya. This includes energy sources used to power the national grid as well as alternative energy sources, both renewable and non-renewable.",
-            briefLink: null,
-            blogLink: null,
-            category: "Energy Transformation"
-        },
-        {
-            id: 14,
-            title: "Fire Risk Assessment: Review of the Current State and Justifying Applicable Methodology for Mukuru by Haron Akala,STEVENS Sam,David Rush, and Tom Randa",
-            date: "28th September, 2020",
-            month: "September",
-            year: "2020",
-            description: "This paper aims to highlight the current state of research in Nairobi on Fire, the existing methodologies used and knowledge gaps therein, and to justify fire risk assessment models that might be applicable to the city through a literature review.",
-            briefLink: null,
-            blogLink: null,
-            category: "Fire Risk"
-        }
-    ];
+    // Build unified list
+    const allItems = useMemo(() => {
+        const reviewItems = reviews.map(r => ({
+            key: `r-${r.id}`,
+            title: r.title,
+            date: r.date,
+            parsedDate: parseDate(r.date),
+            month: r.month,
+            year: r.year,
+            category: r.category,
+            description: r.description,
+            image: null,
+            author: null,
+            type: 'review',
+            briefLink: r.briefLink,
+            blogLink: r.blogLink,
+            detailHref: null,
+            fullBriefLink: null,
+        }));
 
-    // Get unique years, months, and categories
+        const briefItems = briefs.map(b => {
+            const d = new Date(b.date);
+            const month = isNaN(d.getTime()) ? 'Unknown' : MONTH_ORDER[d.getMonth()];
+            const year = isNaN(d.getTime()) ? 'Unknown' : String(d.getFullYear());
+            return {
+                key: `b-${b.id}`,
+                title: b.title,
+                date: b.date,
+                parsedDate: isNaN(d.getTime()) ? new Date('2020-01-01') : d,
+                month,
+                year,
+                category: b.category,
+                description: b.briefPreview ? b.briefPreview.replace(/<[^>]*>/g, '').slice(0, 200) : (b.shortDescription || ''),
+                image: b.image || null,
+                author: b.author || null,
+                type: 'brief',
+                briefLink: null,
+                blogLink: null,
+                detailHref: `/briefs/${b.id}`,
+                fullBriefLink: b.fullBriefLink || null,
+            };
+        });
+
+        return [...reviewItems, ...briefItems].sort((a, b) => b.parsedDate - a.parsedDate);
+    }, []);
+
     const uniqueYears = useMemo(() => {
-        const years = [...new Set(reviews.map(r => r.year))].sort((a, b) => b.localeCompare(a));
-        return years;
-    }, [reviews]);
+        return [...new Set(allItems.map(i => i.year))].filter(y => y !== 'Unknown').sort((a, b) => b.localeCompare(a));
+    }, [allItems]);
 
     const uniqueMonths = useMemo(() => {
-        const months = [...new Set(reviews.map(r => r.month))].filter(m => m !== 'Unknown');
-        const monthOrder = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        return months.sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
-    }, [reviews]);
+        return [...new Set(allItems.map(i => i.month))].filter(m => m !== 'Unknown').sort((a, b) => MONTH_ORDER.indexOf(a) - MONTH_ORDER.indexOf(b));
+    }, [allItems]);
 
     const uniqueCategories = useMemo(() => {
-        const categories = [...new Set(reviews.map(r => r.category))].sort();
-        return categories;
-    }, [reviews]);
+        return [...new Set(allItems.map(i => i.category))].sort();
+    }, [allItems]);
 
-    // Filter reviews
-    const filteredReviews = useMemo(() => {
-        return reviews.filter(review => {
-            const yearMatch = selectedYear === 'all' || review.year === selectedYear;
-            const monthMatch = selectedMonth === 'all' || review.month === selectedMonth;
-            const categoryMatch = selectedCategory === 'all' || review.category === selectedCategory;
-            return yearMatch && monthMatch && categoryMatch;
+    const filteredItems = useMemo(() => {
+        setCurrentPage(1);
+        return allItems.filter(item => {
+            const yearMatch = selectedYear === 'all' || item.year === selectedYear;
+            const monthMatch = selectedMonth === 'all' || item.month === selectedMonth;
+            const categoryMatch = selectedCategory === 'all' || item.category === selectedCategory;
+            const q = searchQuery.trim().toLowerCase();
+            const searchMatch = q === '' ||
+                item.title.toLowerCase().includes(q) ||
+                item.description.toLowerCase().includes(q) ||
+                item.category.toLowerCase().includes(q) ||
+                (item.author || '').toLowerCase().includes(q);
+            return yearMatch && monthMatch && categoryMatch && searchMatch;
         });
-    }, [selectedYear, selectedMonth, selectedCategory, reviews]);
+    }, [selectedYear, selectedMonth, selectedCategory, searchQuery, allItems]);
 
-    const getCategoryColor = (category) => {
-        const colors = {
-            'Energy': 'from-yellow-500 to-orange-500',
-            'Biodiversity': 'from-green-500 to-teal-500',
-            'Disaster Risk': 'from-red-500 to-pink-500',
-            'Sustainability': 'from-blue-500 to-indigo-500',
-            'Climate Action': 'from-emerald-500 to-cyan-500',
-            'Governance': 'from-purple-500 to-violet-500',
-            'Knowledge Systems': 'from-indigo-500 to-purple-500',
-            'Community Networks': 'from-cyan-500 to-blue-500',
-            'Disaster Management': 'from-orange-500 to-red-500',
-            'Research': 'from-teal-500 to-green-500',
-            'Agriculture': 'from-green-600 to-emerald-600',
-            'Energy & Gender': 'from-pink-500 to-rose-500',
-            'Energy Transformation': 'from-amber-500 to-yellow-500',
-            'Fire Risk': 'from-red-600 to-orange-600'
-        };
-        return colors[category] || 'from-gray-500 to-slate-500';
+    const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+    const pageItems = filteredItems.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+    const goToPage = (page) => {
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const clearFilters = () => {
         setSelectedYear('all');
         setSelectedMonth('all');
         setSelectedCategory('all');
+        setSearchQuery('');
     };
 
-    const hasActiveFilters = selectedYear !== 'all' || selectedMonth !== 'all' || selectedCategory !== 'all';
+    const hasActiveFilters = selectedYear !== 'all' || selectedMonth !== 'all' || selectedCategory !== 'all' || searchQuery.trim() !== '';
+
+    const activeChips = [
+        selectedYear !== 'all' && { label: selectedYear, clear: () => setSelectedYear('all') },
+        selectedMonth !== 'all' && { label: selectedMonth, clear: () => setSelectedMonth('all') },
+        selectedCategory !== 'all' && { label: selectedCategory, clear: () => setSelectedCategory('all') },
+        searchQuery.trim() !== '' && { label: `"${searchQuery.trim()}"`, clear: () => setSearchQuery('') },
+    ].filter(Boolean);
+
+    const categoryBadge = (category) => {
+        const map = {
+            'Energy': 'bg-amber-100 text-amber-800',
+            'Biodiversity': 'bg-green-100 text-green-800',
+            'Disaster Risk': 'bg-red-100 text-red-800',
+            'Sustainability': 'bg-blue-100 text-blue-800',
+            'Climate Action': 'bg-emerald-100 text-emerald-800',
+            'Governance': 'bg-purple-100 text-purple-800',
+            'Knowledge Systems': 'bg-indigo-100 text-indigo-800',
+            'Community Networks': 'bg-cyan-100 text-cyan-800',
+            'Disaster Management': 'bg-orange-100 text-orange-800',
+            'Research': 'bg-teal-100 text-teal-800',
+            'Agriculture': 'bg-lime-100 text-lime-800',
+            'Energy & Gender': 'bg-pink-100 text-pink-800',
+            'Energy Transformation': 'bg-yellow-100 text-yellow-800',
+            'Fire Risk': 'bg-red-100 text-red-900',
+            'Briefs': 'bg-blue-100 text-blue-800',
+            'Friday Reviews': 'bg-emerald-100 text-emerald-800',
+        };
+        return map[category] || 'bg-gray-100 text-gray-700';
+    };
+
+    const placeholderBg = (category) => {
+        const map = {
+            'Energy': 'from-amber-50 to-amber-100',
+            'Biodiversity': 'from-green-50 to-green-100',
+            'Disaster Risk': 'from-red-50 to-red-100',
+            'Sustainability': 'from-blue-50 to-blue-100',
+            'Climate Action': 'from-emerald-50 to-emerald-100',
+            'Governance': 'from-purple-50 to-purple-100',
+            'Knowledge Systems': 'from-indigo-50 to-indigo-100',
+            'Community Networks': 'from-cyan-50 to-cyan-100',
+            'Disaster Management': 'from-orange-50 to-orange-100',
+            'Research': 'from-teal-50 to-teal-100',
+            'Briefs': 'from-blue-50 to-blue-100',
+            'Friday Reviews': 'from-emerald-50 to-teal-100',
+        };
+        return map[category] || 'from-gray-50 to-gray-100';
+    };
 
     return (
         <>
             <ARINNavbar />
-            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
-                <div className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-cyan-900 text-white overflow-hidden">
-                    <div className="absolute inset-0">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-cyan-500/10 to-teal-400/20"></div>
-                        <div className="absolute top-0 left-0 w-full h-full">
-                            <div className="absolute top-20 left-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl animate-pulse"></div>
-                            <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-                            <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-teal-400/10 rounded-full blur-xl animate-pulse delay-500"></div>
-                        </div>
-                    </div>
+            <div className="min-h-screen bg-gray-50">
 
-                    <div className="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
-                        <div className="text-center">
-                            <Button variant="ghost" className="mb-8 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 rounded-full px-8 py-2">
-                                ← Back to Home
-                            </Button>
-
-                            <div className="mb-8">
-                                <h1 className="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-                                    <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent">
-                                        Friday Reviews
-                                    </span>
-                                </h1>
-                            </div>
-
-                            <div className="max-w-4xl mx-auto mb-12">
-                                <p className="text-xl lg:text-2xl text-white/90 leading-relaxed font-light">
-                                    Weekly and monthly research reviews where African scholars and policy makers share their research findings and outputs with reviewers and peers
-                                </p>
-                            </div>
-
-                            <div className="flex flex-wrap justify-center items-center gap-8 text-white/80">
-                                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                                    <Calendar className="w-6 h-6 text-cyan-300" />
-                                    <div>
-                                        <div className="text-lg font-semibold text-white">Weekly & Monthly</div>
-                                        <div className="text-sm text-white/70">Reviews</div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                                    <Users className="w-6 h-6 text-cyan-300" />
-                                    <div>
-                                        <div className="text-lg font-semibold text-white">Virtual Platform</div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                                    <Globe className="w-6 h-6 text-cyan-300" />
-                                    <div>
-                                        <div className="text-lg font-semibold text-white">African Focus</div>
-                                        <div className="text-sm text-white/70">Research & Policy</div>
-                                    </div>
-                                </div>
-                            </div>
+                {/* Hero */}
+                <div className="bg-white border-b border-gray-200 border-t-4 border-t-blue-600">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                        <p className="text-sm text-gray-400 mb-3">← Back to Home</p>
+                        <h1 className="text-4xl font-bold text-blue-900 mb-2">Friday Reviews</h1>
+                        <p className="text-base text-gray-500 max-w-2xl leading-relaxed">
+                            Weekly and monthly research reviews, briefs, and publications from African scholars and policy makers sharing their findings and insights.
+                        </p>
+                        <div className="flex flex-wrap gap-5 mt-5 text-sm text-gray-500">
+                            <span className="flex items-center gap-1.5"><FileText className="w-4 h-4 text-blue-500" /> {allItems.length} Publications</span>
+                            <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-blue-500" /> Virtual Platform</span>
+                            <span className="flex items-center gap-1.5"><Globe className="w-4 h-4 text-blue-500" /> African Focus</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Main Content Area with Sidebar */}
-                <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="flex flex-col lg:flex-row gap-8">
-                        {/* Sidebar Filter Panel */}
-                        <aside className={`lg:sticky lg:top-24 lg:self-start transition-all duration-300 ${sidebarOpen ? 'lg:w-80' : 'lg:w-16'}`}>
-                            <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white/50 overflow-hidden">
-                                {/* Sidebar Header */}
-                                <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 flex items-center justify-between">
-                                    <div className={`flex items-center ${!sidebarOpen && 'lg:hidden'}`}>
-                                        <Filter className="w-6 h-6 text-white mr-3" />
-                                        <h3 className="text-xl font-bold text-white">Filters</h3>
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+                    {/* Info Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-white rounded-xl border border-gray-200 p-5">
+                            <h2 className="text-sm font-semibold text-gray-900 mb-2 pl-3 border-l-4 border-blue-500">About Friday Reviews</h2>
+                            <p className="text-sm text-gray-600 leading-relaxed">
+                                ARIN organizes weekly and monthly research reviews where African scholars and policy makers share their findings with reviewers and peers. The reviews are carried out virtually and provide access to peer learning on research gaps and needs.
+                            </p>
+                        </div>
+                        <div className="bg-white rounded-xl border border-gray-200 p-5">
+                            <h2 className="text-sm font-semibold text-gray-900 mb-3 pl-3 border-l-4 border-blue-500">Expected Outputs</h2>
+                            <div className="grid grid-cols-2 gap-2">
+                                {[
+                                    { icon: Clock, label: 'Weekly news briefs', color: 'text-blue-500' },
+                                    { icon: FileText, label: 'Short video clips', color: 'text-indigo-500' },
+                                    { icon: BookOpen, label: 'Monthly policy briefs', color: 'text-teal-500' },
+                                    { icon: Users, label: 'Policy dialogues', color: 'text-purple-500' },
+                                    { icon: Globe, label: 'Info repository', color: 'text-cyan-500' },
+                                ].map(({ icon: Icon, label, color }) => (
+                                    <div key={label} className="flex items-center gap-2 text-xs text-gray-600">
+                                        <Icon className={`w-3.5 h-3.5 shrink-0 ${color}`} />
+                                        {label}
                                     </div>
-                                    <button
-                                        onClick={() => setSidebarOpen(!sidebarOpen)}
-                                        className="hidden lg:block text-white hover:bg-white/20 p-2 rounded-lg transition-all"
-                                    >
-                                        {sidebarOpen ? '←' : '→'}
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Filter Bar */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-4">
+                        <div className="flex flex-wrap items-center gap-3">
+                            <div className="relative flex-1 min-w-[200px]">
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                                <input
+                                    type="text"
+                                    placeholder="Search publications..."
+                                    value={searchQuery}
+                                    onChange={e => setSearchQuery(e.target.value)}
+                                    className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                />
+                                {searchQuery && (
+                                    <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                                        <X className="w-3.5 h-3.5" />
                                     </button>
-                                </div>
-
-                                {/* Sidebar Content */}
-                                <div className={`p-6 space-y-6 max-h-[calc(100vh-200px)] overflow-y-auto ${!sidebarOpen && 'lg:hidden'}`}>
-                                    {/* Clear All Button */}
-                                    {hasActiveFilters && (
-                                        <button
-                                            onClick={clearFilters}
-                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-50 text-red-600 hover:bg-red-100 rounded-xl font-semibold transition-all"
-                                        >
-                                            <X className="w-4 h-4" />
-                                            Clear All Filters
-                                        </button>
-                                    )}
-
-                                    {/* Results Count */}
-                                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-200">
-                                        <p className="text-center text-sm text-gray-700">
-                                            Showing <span className="font-bold text-indigo-600 text-lg">{filteredReviews.length}</span> of <span className="font-bold">{reviews.length}</span>
-                                        </p>
-                                    </div>
-
-                                    {/* Year Filter */}
-                                    <div>
-                                        <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center">
-                                            <Calendar className="w-4 h-4 mr-2 text-indigo-600" />
-                                            Year
-                                        </h4>
-                                        <div className="space-y-2">
-                                            <button
-                                                onClick={() => setSelectedYear('all')}
-                                                className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all ${selectedYear === 'all'
-                                                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
-                                                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                                                    }`}
-                                            >
-                                                All Years
-                                            </button>
-                                            {uniqueYears.map(year => (
-                                                <button
-                                                    key={year}
-                                                    onClick={() => setSelectedYear(year)}
-                                                    className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all ${selectedYear === year
-                                                        ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
-                                                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                                                        }`}
-                                                >
-                                                    {year}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Month Filter */}
-                                    <div>
-                                        <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center">
-                                            <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-                                            Month
-                                        </h4>
-                                        <div className="space-y-2">
-                                            <button
-                                                onClick={() => setSelectedMonth('all')}
-                                                className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all ${selectedMonth === 'all'
-                                                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
-                                                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                                                    }`}
-                                            >
-                                                All Months
-                                            </button>
-                                            {uniqueMonths.map(month => (
-                                                <button
-                                                    key={month}
-                                                    onClick={() => setSelectedMonth(month)}
-                                                    className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all ${selectedMonth === month
-                                                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
-                                                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                                                        }`}
-                                                >
-                                                    {month}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Category Filter */}
-                                    <div>
-                                        <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center">
-                                            <FileText className="w-4 h-4 mr-2 text-teal-600" />
-                                            Category
-                                        </h4>
-                                        <div className="space-y-2">
-                                            <button
-                                                onClick={() => setSelectedCategory('all')}
-                                                className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all ${selectedCategory === 'all'
-                                                    ? 'bg-gradient-to-r from-teal-500 to-green-500 text-white shadow-lg'
-                                                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                                                    }`}
-                                            >
-                                                All Categories
-                                            </button>
-                                            {uniqueCategories.map(category => (
-                                                <button
-                                                    key={category}
-                                                    onClick={() => setSelectedCategory(category)}
-                                                    className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-all text-sm ${selectedCategory === category
-                                                        ? 'bg-gradient-to-r from-teal-500 to-green-500 text-white shadow-lg'
-                                                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                                                        }`}
-                                                >
-                                                    {category}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Collapsed Sidebar Icon */}
-                                {!sidebarOpen && (
-                                    <div className="hidden lg:flex flex-col items-center py-6 space-y-4">
-                                        <Filter className="w-6 h-6 text-indigo-600" />
-                                    </div>
                                 )}
                             </div>
-                        </aside>
 
-                        {/* Main Content */}
-                        <main className="flex-1 space-y-16">
-                            {/* About Section */}
-                            <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
-                                <div className="flex items-center mb-6">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mr-4">
-                                        <FileText className="w-6 h-6 text-white" />
-                                    </div>
-                                    <h2 className="text-3xl font-bold text-gray-800">About Friday Reviews</h2>
-                                </div>
-                                <div className="text-gray-700 leading-relaxed space-y-4">
-                                    <p>
-                                        The Africa Research and Impact Network (ARIN) organizes weekly and monthly research reviews where African scholars and policy makers share their research findings and outputs with reviewers and peers. Through this platform researchers have access to peer learning that enable them to understand the state of research gaps and needs. The reviews are carried out virtually.
-                                    </p>
-                                </div>
+                            <div className="h-5 w-px bg-gray-200" />
+                            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Filter by</span>
+
+                            <FilterDropdown label="All Years" value={selectedYear} onChange={setSelectedYear} icon={Calendar} options={uniqueYears.map(y => ({ value: y, label: y }))} />
+                            <FilterDropdown label="All Months" value={selectedMonth} onChange={setSelectedMonth} icon={Calendar} options={uniqueMonths.map(m => ({ value: m, label: m }))} />
+                            <FilterDropdown label="All Topics" value={selectedCategory} onChange={setSelectedCategory} icon={FileText} options={uniqueCategories.map(c => ({ value: c, label: c }))} />
+
+                            <div className="ml-auto flex items-center gap-3">
+                                {hasActiveFilters && (
+                                    <button onClick={clearFilters} className="text-xs text-red-500 hover:text-red-700 font-medium transition-colors">
+                                        Clear all
+                                    </button>
+                                )}
+                                <span className="text-sm text-gray-500">
+                                    <span className="font-semibold text-gray-800">{filteredItems.length}</span> of {allItems.length}
+                                </span>
                             </div>
+                        </div>
 
-                            {/* Expected Outputs Section */}
-                            <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
-                                <div className="flex items-center mb-6">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mr-4">
-                                        <BookOpen className="w-6 h-6 text-white" />
-                                    </div>
-                                    <h2 className="text-3xl font-bold text-gray-800">Expected outputs and dissemination</h2>
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200/50">
-                                        <Clock className="w-10 h-10 text-blue-600 mb-3" />
-                                        <h3 className="font-semibold text-gray-800 mb-2">Weekly news briefs</h3>
-                                        <p className="text-sm text-gray-600">highlighting insights from weekly ARIN reviews</p>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200/50">
-                                        <FileText className="w-10 h-10 text-purple-600 mb-3" />
-                                        <h3 className="font-semibold text-gray-800 mb-2">Short video clips</h3>
-                                        <p className="text-sm text-gray-600">on insights</p>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6 border border-green-200/50">
-                                        <BookOpen className="w-10 h-10 text-green-600 mb-3" />
-                                        <h3 className="font-semibold text-gray-800 mb-2">Monthly policy briefs</h3>
-                                        <p className="text-sm text-gray-600">consolidating insights</p>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-200/50">
-                                        <Users className="w-10 h-10 text-orange-600 mb-3" />
-                                        <h3 className="font-semibold text-gray-800 mb-2">Monthly policy dialogues</h3>
-                                        <p className="text-sm text-gray-600">between researchers and policy makers</p>
-                                    </div>
-                                    <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-6 border border-cyan-200/50 md:col-span-2">
-                                        <Globe className="w-10 h-10 text-cyan-600 mb-3" />
-                                        <h3 className="font-semibold text-gray-800 mb-2">Interactive information platform/repository</h3>
-                                        <p className="text-sm text-gray-600">Comprehensive resource hub for research outputs</p>
-                                    </div>
-                                </div>
+                        {activeChips.length > 0 && (
+                            <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
+                                {activeChips.map(chip => (
+                                    <span key={chip.label} className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 border border-blue-200 rounded-full text-xs font-medium">
+                                        {chip.label}
+                                        <button onClick={chip.clear}><X className="w-3 h-3" /></button>
+                                    </span>
+                                ))}
                             </div>
+                        )}
+                    </div>
 
-                            {/* Reviews Section */}
-                            <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50">
-                                <div className="flex items-center justify-between mb-8">
-                                    <div className="flex items-center">
-                                        <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mr-4">
-                                            <Calendar className="w-6 h-6 text-white" />
-                                        </div>
-                                        <h2 className="text-3xl font-bold text-gray-800">
-                                            {hasActiveFilters ? 'Filtered Reviews' : 'Reviews Archive'}
-                                        </h2>
-                                    </div>
-                                </div>
+                    {/* Results count */}
+                    {filteredItems.length > 0 && (
+                        <div className="flex items-center justify-between -mb-2">
+                            <p className="text-sm text-gray-500">
+                                Showing <span className="font-semibold text-gray-700">{(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredItems.length)}</span> of <span className="font-semibold text-gray-700">{filteredItems.length}</span>
+                            </p>
+                            <p className="text-xs text-gray-400">Latest first</p>
+                        </div>
+                    )}
 
-                                {filteredReviews.length === 0 ? (
-                                    <div className="text-center py-16">
-                                        <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                                        <h3 className="text-2xl font-bold text-gray-600 mb-2">No reviews found</h3>
-                                        <p className="text-gray-500 mb-6">Try adjusting your filters to see more results</p>
-                                        <Button
-                                            onClick={clearFilters}
-                                            className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 px-8 py-3 rounded-full"
-                                        >
-                                            <X className="w-4 h-4 mr-2" />
-                                            Clear All Filters
-                                        </Button>
-                                    </div>
-                                ) : (
-                                    <div className="space-y-8">
-                                        {filteredReviews.map((review, index) => (
-                                            <div
-                                                key={review.id}
-                                                className="bg-gradient-to-r from-white to-gray-50/50 rounded-2xl p-8 border border-gray-200/50 hover:shadow-xl transition-all duration-300"
-                                            >
-                                                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-                                                    <div className="flex-1">
-                                                        <div className="flex items-center gap-4 mb-4">
-                                                            <span className={`inline-block px-3 py-1 text-xs font-semibold text-white rounded-full bg-gradient-to-r ${getCategoryColor(review.category)}`}>
-                                                                {review.category}
-                                                            </span>
-                                                            <div className="flex items-center text-gray-500 text-sm">
-                                                                <Calendar className="w-4 h-4 mr-2" />
-                                                                Reviewed on {review.date}
-                                                            </div>
-                                                        </div>
-
-                                                        <h3 className="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
-                                                            {index + 1}. {review.title}
-                                                        </h3>
-
-                                                        <p className="text-gray-700 leading-relaxed mb-6">
-                                                            {review.description}
-                                                        </p>
-
-                                                        <div className="flex flex-wrap gap-4">
-                                                            {review.briefLink && (
-                                                                <Button
-                                                                    variant="outline"
-                                                                    className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0 hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
-                                                                    onClick={() => window.open(review.briefLink, '_blank')}
-                                                                >
-                                                                    <FileText className="w-4 h-4 mr-2" />
-                                                                    Review Brief
-                                                                    <ExternalLink className="w-4 h-4 ml-2" />
-                                                                </Button>
-                                                            )}
-                                                            {review.blogLink && (
-                                                                <Button
-                                                                    variant="outline"
-                                                                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
-                                                                    onClick={() => window.open(review.blogLink, '_blank')}
-                                                                >
-                                                                    <BookOpen className="w-4 h-4 mr-2" />
-                                                                    Blog
-                                                                    <ExternalLink className="w-4 h-4 ml-2" />
-                                                                </Button>
-                                                            )}
-                                                        </div>
-                                                    </div>
+                    {/* Unified Grid */}
+                    {filteredItems.length === 0 ? (
+                        <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
+                            <FileText className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                            <p className="text-gray-500 font-medium mb-1">No results match your filters</p>
+                            <p className="text-sm text-gray-400 mb-4">Try removing one of the active filters</p>
+                            <button onClick={clearFilters} className="text-sm text-blue-600 hover:text-blue-800 font-medium underline">
+                                Clear all filters
+                            </button>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {pageItems.map((item) => (
+                                    <div
+                                        key={item.key}
+                                        className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md hover:border-blue-200 transition-all duration-200 flex flex-col"
+                                    >
+                                        {/* Image / Placeholder */}
+                                        <div className="relative h-40 shrink-0">
+                                            {item.image ? (
+                                                <Image
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    width={400}
+                                                    height={160}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ) : (
+                                                <div className={`w-full h-full bg-gradient-to-br ${placeholderBg(item.category)} flex items-center justify-center`}>
+                                                    <FileText className="w-8 h-8 text-gray-300" />
                                                 </div>
+                                            )}
+                                            <div className="absolute top-2.5 left-2.5">
+                                                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${categoryBadge(item.category)}`}>
+                                                    {item.category}
+                                                </span>
                                             </div>
+                                        </div>
+
+                                        {/* Body */}
+                                        <div className="p-4 flex flex-col flex-1">
+                                            <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-1.5">
+                                                <Calendar className="w-3.5 h-3.5" />
+                                                {item.month !== 'Unknown' ? item.date : <span className="italic">Date not recorded</span>}
+                                            </div>
+
+                                            <h3 className="text-sm font-semibold text-gray-900 leading-snug line-clamp-2 mb-2">
+                                                {item.title}
+                                            </h3>
+
+                                            {item.author && (
+                                                <div className="flex items-start gap-1.5 text-xs text-gray-500 mb-2">
+                                                    <User className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                                                    <span className="line-clamp-1">{item.author}</span>
+                                                </div>
+                                            )}
+
+                                            <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 mb-4 flex-1">
+                                                {item.description}
+                                            </p>
+
+                                            {/* Actions */}
+                                            <div className="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
+                                                {item.detailHref && (
+                                                    <Link href={item.detailHref} className="flex-1">
+                                                        <button className="w-full flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg transition-colors">
+                                                            Read Full Brief <ExternalLink className="w-3 h-3" />
+                                                        </button>
+                                                    </Link>
+                                                )}
+                                                {item.briefLink && (
+                                                    <button
+                                                        onClick={() => window.open(item.briefLink, '_blank')}
+                                                        className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors"
+                                                    >
+                                                        <FileText className="w-3.5 h-3.5" /> Brief <ExternalLink className="w-3 h-3" />
+                                                    </button>
+                                                )}
+                                                {item.blogLink && (
+                                                    <button
+                                                        onClick={() => window.open(item.blogLink, '_blank')}
+                                                        className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-lg border border-purple-200 transition-colors"
+                                                    >
+                                                        <BookOpen className="w-3.5 h-3.5" /> Blog <ExternalLink className="w-3 h-3" />
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Pagination */}
+                            {totalPages > 1 && (
+                                <div className="flex items-center justify-center gap-2 pt-2">
+                                    <button
+                                        onClick={() => goToPage(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                    >
+                                        <ChevronLeft className="w-4 h-4" /> Prev
+                                    </button>
+                                    <div className="flex items-center gap-1">
+                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                            <button
+                                                key={page}
+                                                onClick={() => goToPage(page)}
+                                                className={`w-9 h-9 text-sm font-medium rounded-lg transition-colors ${currentPage === page ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100 border border-gray-200'}`}
+                                            >
+                                                {page}
+                                            </button>
                                         ))}
                                     </div>
-                                )}
-
-                                <div className="mt-12 text-center">
-                                    <Button
-                                        onClick={() => window.location.href = '/briefs'}
-                                        className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-0 hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 px-8 py-4 text-lg rounded-full"
+                                    <button
+                                        onClick={() => goToPage(currentPage + 1)}
+                                        disabled={currentPage === totalPages}
+                                        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                                     >
-                                        <ArrowRight className="w-5 h-5 mr-2" />
-                                        More Briefs
-                                    </Button>
+                                        Next <ChevronRight className="w-4 h-4" />
+                                    </button>
                                 </div>
-                            </div>
-                        </main>
-                    </div>
+                            )}
+                        </>
+                    )}
                 </div>
             </div>
-
             <ArinFellowsFooter />
         </>
     );

@@ -65,7 +65,7 @@ const ARINNavbar = () => {
     ];
 
     return (
-        <div className="w-full">
+        <div className="sticky top-0 z-50 w-full">
             <div className="bg-[#030f41] text-white py-2 px-4 hidden md:block">
                 <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
                     <div className="flex items-center space-x-6">
@@ -100,7 +100,7 @@ const ARINNavbar = () => {
                 </div>
             </div>
 
-            <nav className={`bg-white shadow-lg sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-xl bg-white/95 backdrop-blur-sm' : ''
+            <nav className={`bg-white shadow-lg transition-all duration-300 ${isScrolled ? 'shadow-xl bg-white/95 backdrop-blur-sm' : ''
                 }`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-20">

@@ -1,188 +1,263 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Search, Calendar, User, ArrowRight, FileText, Clock, BookOpen } from "lucide-react"
-import { briefs, getCategoryColor } from "../../../data/brief/brief"
+import { Search, Calendar, User, ArrowRight, FileText, Clock, BookOpen, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { briefs } from "../../../data/brief/brief"
 import Link from "next/link"
 import Image from "next/image"
+import ARINNavbar from "@/components/navbar/navbar"
+import ArinFellowsFooter from "@/components/footer/footer"
+
+const ITEMS_PER_PAGE = 6
+
+function parseDate(dateStr) {
+    if (!dateStr) return new Date(0)
+    const d = new Date(dateStr)
+    return isNaN(d.getTime()) ? new Date(0) : d
+}
+
+const categoryBadge = (category) => {
+    const map = {
+        'Briefs': 'bg-blue-100 text-blue-800',
+        'Friday Reviews': 'bg-emerald-100 text-emerald-800',
+        'Climate': 'bg-emerald-100 text-emerald-800',
+        'Energy': 'bg-amber-100 text-amber-800',
+        'Governance': 'bg-purple-100 text-purple-800',
+        'Biodiversity': 'bg-green-100 text-green-800',
+        'Health': 'bg-rose-100 text-rose-800',
+        'Agriculture': 'bg-lime-100 text-lime-800',
+    }
+    return map[category] || 'bg-gray-100 text-gray-700'
+}
+
+const categoryPlaceholderBg = (category) => {
+    const map = {
+        'Briefs': 'from-blue-100 to-blue-200',
+        'Friday Reviews': 'from-emerald-100 to-teal-200',
+        'Climate': 'from-emerald-100 to-teal-200',
+        'Energy': 'from-amber-100 to-yellow-200',
+        'Governance': 'from-purple-100 to-violet-200',
+        'Biodiversity': 'from-green-100 to-lime-200',
+        'Health': 'from-rose-100 to-pink-200',
+    }
+    return map[category] || 'from-gray-100 to-gray-200'
+}
 
 export default function BriefsPage() {
     const [searchTerm, setSearchTerm] = useState("")
+    const [currentPage, setCurrentPage] = useState(1)
+
+    // Sort by date descending (latest first)
+    const sortedBriefs = useMemo(() => {
+        return [...briefs].sort((a, b) => parseDate(b.date) - parseDate(a.date))
+    }, [])
 
     const filteredBriefs = useMemo(() => {
-        if (!searchTerm) return briefs
-
-        return briefs.filter(
+        setCurrentPage(1)
+        if (!searchTerm.trim()) return sortedBriefs
+        const q = searchTerm.trim().toLowerCase()
+        return sortedBriefs.filter(
             (brief) =>
-                brief.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                brief.shortDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                brief.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                brief.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                brief.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
+                brief.title.toLowerCase().includes(q) ||
+                brief.author.toLowerCase().includes(q) ||
+                brief.category.toLowerCase().includes(q) ||
+                brief.tags.some((tag) => tag.toLowerCase().includes(q)) ||
+                brief.briefPreview?.toLowerCase().includes(q),
         )
-    }, [searchTerm])
+    }, [searchTerm, sortedBriefs])
+
+    const totalPages = Math.ceil(filteredBriefs.length / ITEMS_PER_PAGE)
+    const pageBriefs = filteredBriefs.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+
+    const goToPage = (page) => {
+        setCurrentPage(page)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
-            {/* Hero Section */}
-            <div className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-cyan-900 text-white overflow-hidden">
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-cyan-500/10 to-teal-400/20"></div>
-                    <div className="absolute top-0 left-0 w-full h-full">
-                        <div className="absolute top-20 left-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl animate-pulse"></div>
-                        <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-                        <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-teal-400/10 rounded-full blur-xl animate-pulse delay-500"></div>
-                    </div>
-                </div>
+        <>
+            <ARINNavbar />
+            <div className="min-h-screen bg-gray-50">
 
-                <div className="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
-                    <div className="text-center">
-                        <Button
-                            variant="ghost"
-                            className="mb-8 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 rounded-full px-8 py-2"
-                        >
+                {/* Hero */}
+                <div className="bg-white border-b border-gray-200 border-t-4 border-t-blue-600">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                        <Link href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors mb-3 inline-block">
                             ← Back to Home
-                        </Button>
-
-                        <div className="mb-8">
-                            <h1 className="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-                                <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent">
-                                    Research Briefs
-                                </span>
-                            </h1>
-                        </div>
-
-                        <div className="max-w-4xl mx-auto mb-12">
-                            <p className="text-xl lg:text-2xl text-white/90 leading-relaxed font-light">
-                                In-depth research briefs from African scholars and policy makers sharing their findings and insights
-                            </p>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center items-center gap-8 text-white/80">
-                            <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                                <FileText className="w-6 h-6 text-cyan-300" />
-                                <div>
-                                    <div className="text-lg font-semibold text-white">{briefs.length} Briefs</div>
-                                    <div className="text-sm text-white/70">Available</div>
-                                </div>
-                            </div>
-                            <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                                <BookOpen className="w-6 h-6 text-cyan-300" />
-                                <div>
-                                    <div className="text-lg font-semibold text-white">Research</div>
-                                    <div className="text-sm text-white/70">& Policy Focus</div>
-                                </div>
-                            </div>
-                            <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-                                <Clock className="w-6 h-6 text-cyan-300" />
-                                <div>
-                                    <div className="text-lg font-semibold text-white">Latest</div>
-                                    <div className="text-sm text-white/70">2025 Updates</div>
-                                </div>
-                            </div>
+                        </Link>
+                        <h1 className="text-4xl font-bold text-blue-900 mb-2">Research Briefs</h1>
+                        <p className="text-base text-gray-500 max-w-2xl leading-relaxed">
+                            In-depth research briefs from African scholars and policy makers sharing their findings and insights.
+                        </p>
+                        <div className="flex flex-wrap gap-5 mt-5 text-sm text-gray-500">
+                            <span className="flex items-center gap-1.5"><FileText className="w-4 h-4 text-blue-500" /> {briefs.length} Briefs Available</span>
+                            <span className="flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-blue-500" /> Research &amp; Policy Focus</span>
+                            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-blue-500" /> Latest 2025 Updates</span>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/50 mb-12">
-                    <div className="relative max-w-2xl mx-auto">
-                        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                        <Input
-                            type="text"
-                            placeholder="Search briefs by title, author, category, or keywords..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="pl-12 pr-4 py-4 text-lg rounded-2xl border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 bg-white/80 backdrop-blur-sm"
-                        />
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+                    {/* Search bar */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-4 mb-6">
+                        <div className="relative">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                            <input
+                                type="text"
+                                placeholder="Search by title, author, category or keyword..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="w-full pl-9 pr-10 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            />
+                            {searchTerm && (
+                                <button
+                                    onClick={() => setSearchTerm("")}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                >
+                                    <X className="w-4 h-4" />
+                                </button>
+                            )}
+                        </div>
+                        {searchTerm.trim() && (
+                            <p className="text-xs text-gray-500 mt-2 pl-1">
+                                {filteredBriefs.length} result{filteredBriefs.length !== 1 ? "s" : ""} for &ldquo;{searchTerm}&rdquo;
+                            </p>
+                        )}
                     </div>
-                    {searchTerm && (
-                        <div className="mt-4 text-center text-gray-600">
-                            Found {filteredBriefs.length} brief{filteredBriefs.length !== 1 ? "s" : ""} matching &ldquo;{searchTerm}
-                            &rdquo;
+
+                    {/* Results summary */}
+                    {filteredBriefs.length > 0 && (
+                        <div className="flex items-center justify-between mb-4">
+                            <p className="text-sm text-gray-500">
+                                Showing <span className="font-semibold text-gray-700">{(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredBriefs.length)}</span> of <span className="font-semibold text-gray-700">{filteredBriefs.length}</span> briefs
+                            </p>
+                            <p className="text-xs text-gray-400">Sorted: latest first</p>
                         </div>
                     )}
-                </div>
 
-                {/* Briefs Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredBriefs.map((brief) => (
-                        <Card
-                            key={brief.id}
-                            className="bg-white/70 backdrop-blur-sm border border-white/50 hover:shadow-2xl transition-all duration-300 group overflow-hidden rounded-3xl"
-                        >
-                            <div className="relative overflow-hidden">
-                                <Image
-                                    src={brief.image || "/placeholder.svg"}
-                                    alt={brief.title}
-                                    width={400}
-                                    height={192}
-                                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
-                                <div className="absolute top-4 left-4">
-                                    <Badge className={`bg-gradient-to-r ${getCategoryColor(brief.category)} text-white border-0`}>
-                                        {brief.category}
-                                    </Badge>
-                                </div>
+                    {/* Briefs Grid */}
+                    {filteredBriefs.length === 0 ? (
+                        <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
+                            <FileText className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                            <p className="text-gray-500 font-medium mb-1">No briefs found</p>
+                            <p className="text-sm text-gray-400 mb-4">Try a different search term</p>
+                            <button
+                                onClick={() => setSearchTerm("")}
+                                className="text-sm text-blue-600 hover:text-blue-800 font-medium underline"
+                            >
+                                Clear search
+                            </button>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                                {pageBriefs.map((brief) => (
+                                    <div
+                                        key={brief.id}
+                                        className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md hover:border-blue-200 transition-all duration-200 flex flex-col"
+                                    >
+                                        {/* Image or placeholder */}
+                                        <div className="relative overflow-hidden h-44 shrink-0">
+                                            {brief.image ? (
+                                                <Image
+                                                    src={brief.image}
+                                                    alt={brief.title}
+                                                    width={400}
+                                                    height={176}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ) : (
+                                                <div className={`w-full h-full bg-gradient-to-br ${categoryPlaceholderBg(brief.category)} flex items-center justify-center`}>
+                                                    <FileText className="w-10 h-10 text-gray-300" />
+                                                </div>
+                                            )}
+                                            <div className="absolute top-3 left-3">
+                                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${categoryBadge(brief.category)}`}>
+                                                    {brief.category}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="p-5 flex flex-col flex-1">
+                                            <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-2">
+                                                <Calendar className="w-3.5 h-3.5" />
+                                                {brief.date}
+                                            </div>
+
+                                            <h3 className="text-sm font-semibold text-gray-900 leading-snug line-clamp-3 mb-2">
+                                                {brief.title}
+                                            </h3>
+
+                                            {brief.author && (
+                                                <div className="flex items-start gap-1.5 text-xs text-gray-500 mb-3">
+                                                    <User className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                                                    <span className="line-clamp-2">{brief.author}</span>
+                                                </div>
+                                            )}
+
+                                            {/* Tags */}
+                                            <div className="flex flex-wrap gap-1.5 mb-4 flex-1">
+                                                {brief.tags.slice(0, 2).map((tag, i) => (
+                                                    <span key={i} className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            <Link href={`/briefs/${brief.id}`}>
+                                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">
+                                                    Read Full Brief
+                                                    <ArrowRight className="w-4 h-4" />
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
 
-                            <CardHeader className="pb-4">
-                                <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                                    <Calendar className="w-4 h-4" />
-                                    {brief.date}
-                                </div>
-                                <CardTitle className="text-lg font-bold leading-tight line-clamp-3 group-hover:text-blue-600 transition-colors">
-                                    {brief.title}
-                                </CardTitle>
-                                <div className="flex items-center gap-2 text-sm text-gray-600 mt-2">
-                                    <User className="w-4 h-4" />
-                                    <span className="line-clamp-1">{brief.author}</span>
-                                </div>
-                            </CardHeader>
+                            {/* Pagination */}
+                            {totalPages > 1 && (
+                                <div className="flex items-center justify-center gap-2 mt-8">
+                                    <button
+                                        onClick={() => goToPage(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                        className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                    >
+                                        <ChevronLeft className="w-4 h-4" /> Prev
+                                    </button>
 
-                            <CardContent className="pt-0">
-                                <CardDescription className="text-gray-700 line-clamp-3 mb-4">{brief.shortDescription}</CardDescription>
+                                    <div className="flex items-center gap-1">
+                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                                            <button
+                                                key={page}
+                                                onClick={() => goToPage(page)}
+                                                className={`w-9 h-9 text-sm font-medium rounded-lg transition-colors ${
+                                                    currentPage === page
+                                                        ? 'bg-blue-600 text-white'
+                                                        : 'text-gray-600 hover:bg-gray-100 border border-gray-200'
+                                                }`}
+                                            >
+                                                {page}
+                                            </button>
+                                        ))}
+                                    </div>
 
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {brief.tags.slice(0, 2).map((tag, index) => (
-                                        <Badge key={index} variant="secondary" className="text-xs">
-                                            {tag}
-                                        </Badge>
-                                    ))}
+                                    <button
+                                        onClick={() => goToPage(currentPage + 1)}
+                                        disabled={currentPage === totalPages}
+                                        className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                    >
+                                        Next <ChevronRight className="w-4 h-4" />
+                                    </button>
                                 </div>
-
-                                <Link href={`/briefs/${brief.id}`}>
-                                    <Button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white border-0 transition-all duration-300 rounded-xl">
-                                        Read Full Brief
-                                        <ArrowRight className="w-4 h-4 ml-2" />
-                                    </Button>
-                                </Link>
-                            </CardContent>
-                        </Card>
-                    ))}
+                            )}
+                        </>
+                    )}
                 </div>
-
-                {filteredBriefs.length === 0 && (
-                    <div className="text-center py-16">
-                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl p-12 border border-white/50">
-                            <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                            <h3 className="text-2xl font-bold text-gray-800 mb-2">No briefs found</h3>
-                            <p className="text-gray-600">Try adjusting your search terms or browse all available briefs.</p>
-                            <Button
-                                onClick={() => setSearchTerm("")}
-                                className="mt-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white border-0"
-                            >
-                                Clear Search
-                            </Button>
-                        </div>
-                    </div>
-                )}
             </div>
-        </div>
+            <ArinFellowsFooter />
+        </>
     )
 }

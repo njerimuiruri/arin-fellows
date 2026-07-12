@@ -1,266 +1,314 @@
-import { Button } from "@/components/ui/button"
-import { Calendar, ArrowLeft, Leaf, ExternalLink, AlertTriangle, Search, Target, Users, Award } from "lucide-react"
+import { ArrowLeft, Target, Globe, Award, Download, CheckCircle, Mail, FileText, Users, Calendar, DollarSign, Leaf, Clock } from "lucide-react"
 import ARINNavbar from "@/components/navbar/navbar"
 import ArinFellowsFooter from "@/components/footer/footer"
 import Link from "next/link"
 
-export default function BioCamMiniGrants() {
+const thematicAreas = [
+    "Integrating biodiversity into climate adaptation and mitigation",
+    "Ecosystem-based adaptation and landscape restoration",
+    "Agroecology and biodiversity-friendly agriculture",
+    "Socio-ecological, institutional, and governance dynamics shaping NBCAs",
+    "Co-benefits for ecosystems, livelihoods, and human health",
+    "Locally-led, context-specific evidence generation and policy influence",
+]
+
+const eligibilityCriteria = [
+    "Early-career researcher, practitioner, or policymaker  typically within 5 years of your highest degree, or with comparable professional experience in climate, biodiversity, or related fields",
+    "Affiliated with a recognised academic, research, policy, or practitioner institution at the time of application and throughout the grant period",
+    "Conducting research or implementation activities in Africa, with a clear local, national, or regional focus",
+    "Submitting a two-page (500700 words) concept note that clearly aligns with BioCAM4 priorities, with a feasible methodology and budget",
+    "An existing ARIN Fellow, or willing to join and actively participate in ARIN Fellowship activities",
+    "Not currently receiving another ARIN mini-grant, at application or during the proposed project period",
+    "Able to work across disciplines and engage relevant stakeholders  communities, policymakers, and practitioners (preferred)",
+]
+
+const applicationDocuments = [
+    { icon: FileText, label: "Motivation Letter", desc: "One page  interest, expertise, and fit with NBCAs" },
+    { icon: Users, label: "Curriculum Vitae", desc: "No more than four pages" },
+    { icon: FileText, label: "Concept Note", desc: "Up to two pages (7001,500 words), with methodology and budget" },
+    { icon: Award, label: "Two Reference Letters", desc: "From senior academics or policymakers" },
+]
+
+const expectedOutcomes = [
+    "A refined research proposal incorporating feedback from the selection process",
+    "An 8,000-word case study report (working paper) analysing NBCAs in the fellow's country context, plus a policy brief with actionable recommendations",
+    "Active participation in ARIN webinars, dialogues, and peer-learning sessions",
+]
+
+function ContactBar({ label }) {
+    return (
+        <div className="flex flex-wrap items-center gap-3 py-3 px-4 bg-teal-50 border border-teal-100 rounded-lg">
+            <Mail className="w-4 h-4 text-teal-700 flex-shrink-0" />
+            <span className="text-sm text-slate-600 font-medium">{label}</span>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                <span className="text-slate-500">To:</span>
+                <a href="mailto:a.irungu@arin-africa.org" className="text-teal-700 hover:underline font-semibold">a.irungu@arin-africa.org</a>
+                <span className="text-slate-400">|</span>
+                <span className="text-slate-500">CC:</span>
+                <a href="mailto:a.obonyo@arin-africa.org" className="text-teal-700 hover:underline">a.obonyo@arin-africa.org</a>
+                <a href="mailto:e.akinyi@arin-africa.org" className="text-teal-700 hover:underline">e.akinyi@arin-africa.org</a>
+            </div>
+        </div>
+    )
+}
+
+export default function Biocam4MiniGrants() {
     return (
         <>
             <ARINNavbar />
-            <div className="min-h-screen bg-white">
-                <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-                    <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+            <div className="min-h-screen bg-gray-50">
 
-                    <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                        <div className="text-center">
-                            <Link href="/mini-grants" className="w-full sm:w-auto">
-                                <Button
-                                    variant="ghost"
-                                    className="mb-6 text-white/60 hover:text-white hover:bg-white/5 border border-white/10 transition-all duration-300 rounded-lg px-6 py-2"
-                                >
-                                    <ArrowLeft className="w-4 h-4 mr-2" />
-                                    Back to Mini-grants
-                                </Button>
-                            </Link>
+                {/* Hero */}
+                <div className="bg-white border-b border-gray-200">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8">
+                        <Link href="/mini-grants" className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-800 mb-5 transition-colors">
+                            <ArrowLeft className="w-4 h-4" />
+                            Back to Mini-Grants
+                        </Link>
 
-                            <div className="mb-4">
-                                <h1 className="text-4xl lg:text-5xl font-extrabold mb-3 leading-tight tracking-tight">
-                                    <span className="text-white">BioCAM</span>
-                                    <span className="block text-2xl lg:text-3xl text-slate-300 mt-2">Mini-grants</span>
-                                </h1>
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-teal-100 text-teal-700 text-xs font-semibold rounded-full">
+                                <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse inline-block" />
+                                Applications Open
+                            </span>
+                            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide">BioCAM4  Planet, People &amp; Human Health</span>
+                        </div>
+
+                        <h1 className="text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight mb-1">
+                            Call for Mini-Grants
+                        </h1>
+                        <p className="text-lg text-slate-500 font-medium mb-4">
+                            Advancing Nature-Based Climate Actions (NBCAs) in Africa: A Mini-Grant for Locally-Led Evidence Generation and Policy Influence
+                        </p>
+
+                        {/* Key stats */}
+                        <div className="flex flex-wrap gap-4 mb-5">
+                            <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg">
+                                <Calendar className="w-4 h-4 text-slate-400" />
+                                <span className="text-sm text-slate-500">Deadline:</span>
+                                <span className="text-sm font-bold text-slate-800">22 July, 2026</span>
                             </div>
-
-                            <div className="flex flex-wrap justify-center items-center gap-4 text-white/80 mb-6">
-                                <div className="flex items-center space-x-3 bg-white/10 border border-white/10 rounded-lg px-5 py-2.5">
-                                    <Calendar className="w-5 h-5 text-white/60" />
-                                    <div>
-                                        <div className="text-base font-semibold text-white">July 30, 2024</div>
-                                        <div className="text-xs text-white/50">Posted</div>
-                                    </div>
-                                </div>
+                            <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg">
+                                <DollarSign className="w-4 h-4 text-slate-400" />
+                                <span className="text-sm text-slate-500">Grant value:</span>
+                                <span className="text-sm font-bold text-slate-800">3,000 per fellow</span>
+                            </div>
+                            <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg">
+                                <Clock className="w-4 h-4 text-slate-400" />
+                                <span className="text-sm text-slate-500">Duration:</span>
+                                <span className="text-sm font-bold text-slate-800">8 months</span>
                             </div>
                         </div>
+
+                        <div className="flex flex-wrap gap-3 mb-6">
+                            <a
+                                href="/pdfs/CALLFORMINIGRANTS.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-slate-900 text-white hover:bg-slate-700 font-semibold py-2.5 px-5 rounded-lg text-sm transition-colors"
+                            >
+                                <Download className="w-4 h-4" />
+                                Download Full Call (PDF)
+                            </a>
+                            <a
+                                href="mailto:a.irungu@arin-africa.org"
+                                className="inline-flex items-center gap-2 border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold py-2.5 px-5 rounded-lg text-sm transition-colors"
+                            >
+                                <Mail className="w-4 h-4" />
+                                Apply by Email
+                            </a>
+                        </div>
+
+                        {/* Contact bar in hero */}
+                        <ContactBar label="Submit applications to:" />
                     </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                    <div className="mb-8">
-                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
-                            <div className="flex items-center mb-6">
-                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
-                                    <Leaf className="w-5 h-5 text-slate-700" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-800">Climate-Biodiversity Nexus</h3>
-                            </div>
-                            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-                                <p>
-                                    The relationship between climate change and biodiversity loss is profound. Climate change accelerates
-                                    biodiversity decline: Rapid climate shifts challenge species&apos; adaptability and contribute to
-                                    biodiversity loss. Species extinction or migration disrupt ecosystems, impacting water sources,
-                                    triggering crop failures, vulnerability to extreme weather events, endangering communities.
-                                    Biodiversity loss also intensifies climate breakdown: Large-scale agriculture, urban expansion, and
-                                    industry convert vital ecosystems like wetlands and forests, elevating greenhouse gas emissions. This
-                                    undermines carbon absorption, weakens Earth&apos;s cooling capacity and impairs adaptation. These
-                                    intertwined crises jeopardize food, water, living conditions, and human health. Currently,
-                                    governments&apos; commitments under the Paris Climate Agreement are nowhere near levels needed to
-                                    avert catastrophic climate change.
-                                </p>
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-5">
 
-                                <p>
-                                    Similarly, the Kunming-Montreal Global Biodiversity Framework adopted in December 2022 has a steep
-                                    task of halting mass extinctions. But climate–biodiversity interdependence is also a source of hope.
-                                    According to the Intergovernmental Panel on Climate Change (IPCC) Sixth Assessment Report (AR6),
-                                    safeguarding biodiversity and ecosystems is fundamental to climate-resilient development and
-                                    mitigation. This is at the core of nature-based climate actions (NBCAs), this project&apos;s key
-                                    concept. This concept brings together growing interest in the broad Nature-based Solutions (NbS)
-                                    approach, and in collaborative climate actions by non-state and subnational actors for the
-                                    implementation of the Paris Climate Agreement. Examples of NBCAs include establishing protected areas
-                                    for forest, aquatic and marine ecosystems (e.g. protected watersheds, mangrove forests) and restoring
-                                    and rewilding degraded ecosystems. NBCAs promise important co-benefits to human health and
-                                    livelihoods, including enhanced food security, access to traditional knowledge, recreation and
-                                    tourism. NBCAs are undertaken around the world through collaborations of cities, regional authorities,
-                                    businesses, financial institutions, non-governmental organizations, Indigenous Peoples and networks.
-                                </p>
+                    {/* About */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-6">
+                        <div className="flex items-center gap-3 mb-3">
+                            <Globe className="w-5 h-5 text-slate-500" />
+                            <h2 className="text-base font-bold text-slate-900">About the Project</h2>
+                        </div>
+                        <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                            <strong className="text-slate-800">BioCAM4</strong> (Biodiversity Integration in Climate Adaptation and Mitigation Actions, for Planet, People and Human Health)
+                            is funded by the Government of Canada&apos;s New Frontiers in Research Fund (NFRF), the German Research Foundation (DFG), and UKRI.
+                            The project is led by <strong className="text-slate-800">York University</strong> in partnership with IDOS, Radboud University,
+                            the <strong className="text-slate-800">Africa Research and Impact Network (ARIN)</strong>, the Greater Virunga Transboundary Collaboration, and CATIE.
+                            The mini-grant scheme is funded by DFG through a contract between IDOS and ARIN.
+                        </p>
+                        <p className="text-slate-600 text-sm leading-relaxed">
+                            The <strong className="text-slate-800">BioCAM4 Mini-Grant Fellowship</strong> supports early-career African researchers to conduct
+                            high-quality, policy-relevant case studies on Nature-Based Climate Actions (NBCAs)  approaches that use ecosystem management,
+                            conservation, and restoration to address climate change while improving biodiversity and human well-being.
+                        </p>
+                    </div>
+
+                    {/* Grant Overview */}
+                    <div className="grid grid-cols-3 gap-4">
+                        <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
+                            <div className="text-3xl font-extrabold text-slate-900 mb-1">3,000</div>
+                            <div className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Per Fellow</div>
+                            <p className="text-xs text-slate-400 mt-1">Catalytic funding</p>
+                        </div>
+                        <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
+                            <div className="text-3xl font-extrabold text-slate-900 mb-1">8 mo</div>
+                            <div className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Fellowship Length</div>
+                            <p className="text-xs text-slate-400 mt-1">Research + reporting</p>
+                        </div>
+                        <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
+                            <div className="text-3xl font-extrabold text-slate-900 mb-1">22 Jul</div>
+                            <div className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Deadline 2026</div>
+                            <p className="text-xs text-slate-400 mt-1">Incomplete applications not considered</p>
+                        </div>
+                    </div>
+
+                    {/* Thematic Areas */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                            <Leaf className="w-5 h-5 text-slate-500" />
+                            <div>
+                                <h2 className="text-base font-bold text-slate-900">Thematic Focus Areas</h2>
+                                <p className="text-xs text-slate-400">Concept notes should align with BioCAM4 priorities</p>
+                            </div>
+                        </div>
+                        <div className="grid sm:grid-cols-2 gap-2">
+                            {thematicAreas.map((area, i) => (
+                                <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                                    <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                                    <span className="text-slate-700 text-sm leading-snug">{area}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Eligibility */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                            <CheckCircle className="w-5 h-5 text-slate-500" />
+                            <div>
+                                <h2 className="text-base font-bold text-slate-900">Eligibility Criteria</h2>
+                                <p className="text-xs text-slate-400">All criteria must be met unless marked preferred</p>
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            {eligibilityCriteria.map((criterion, i) => (
+                                <div key={i} className="flex items-start gap-2.5 py-2 border-b border-gray-100 last:border-0">
+                                    <CheckCircle className="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" />
+                                    <span className="text-slate-600 text-sm leading-snug">{criterion}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-gray-100">
+                            <p className="text-xs text-slate-500 mb-2">Questions about eligibility? Contact us:</p>
+                            <div className="flex flex-wrap gap-3 text-sm">
+                                <a href="mailto:a.obonyo@arin-africa.org" className="flex items-center gap-1.5 text-teal-700 hover:underline font-medium">
+                                    <Mail className="w-3.5 h-3.5" /> a.obonyo@arin-africa.org
+                                </a>
+                                <a href="mailto:e.akinyi@arin-africa.org" className="flex items-center gap-1.5 text-teal-700 hover:underline">
+                                    <Mail className="w-3.5 h-3.5" /> e.akinyi@arin-africa.org
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
-                            <div className="flex items-center mb-6">
-                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
-                                    <AlertTriangle className="w-5 h-5 text-slate-700" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-800">NBCA Challenges</h3>
-                            </div>
-                            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-                                <p>
-                                    While not the sole solution, NBCAs are potent approaches that cannot be ignored. While NBCAs are
-                                    powerful, they are not always straightforward. When badly designed, they can harm biodiversity and
-                                    people. Some climate change mitigation strategieson land, freshwater, or marine areashinder
-                                    biodiversity objectives. Hasty carbon-focused tree-planting and monocultures can weaken local
-                                    biodiversity. Hydropower schemes may negatively affect aquatic biodiversity and have severe negative
-                                    social impacts. Rapid environmental shifts make predicting and managing conservation and restoration
-                                    outcomes more challenging. The rush for rapid action can obscure considerations of equity, inclusion,
-                                    and the rights of communities most at risk. Furthermore, NBCAs demand well-coordinated collaboration
-                                    among diverse actors, often across boundaries. Typically small in scale, NBCAs are nowhere near the
-                                    scale and urgency of climate and biodiversity crises and chronically underfunded, as with conservation
-                                    globally.
-                                </p>
-                            </div>
+                    {/* Expected Outcomes */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                            <Target className="w-5 h-5 text-slate-500" />
+                            <h2 className="text-base font-bold text-slate-900">Expected Outcomes</h2>
                         </div>
-
-                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
-                            <div className="flex items-center mb-6">
-                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
-                                    <Search className="w-5 h-5 text-slate-700" />
+                        <div className="space-y-2">
+                            {expectedOutcomes.map((outcome, i) => (
+                                <div key={i} className="flex items-start gap-2.5 py-2 border-b border-gray-100 last:border-0">
+                                    <span className="w-5 h-5 rounded-full bg-teal-100 text-teal-700 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                                    <span className="text-slate-600 text-sm leading-snug">{outcome}</span>
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-800">The Overlooked Component</h3>
-                            </div>
-                            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-                                <p>
-                                    To mobilize credible actions by cities, businesses, NGOs, and networks for climate adaptation and
-                                    mitigation, global institutions have established frameworks such as the Race to Zero Expert Group and
-                                    the UN High-Level Expert Group. While beginning to highlight biodiversity integration, their calls to
-                                    action remain broad and disconnected from local communities and Indigenous Peoples. We know little
-                                    about NBCAs globally (e.g., their distribution, patterns, and performance) and much less about optimal
-                                    NBCA deployment with equitable collaboration among diverse actors for context-relevant actions or how
-                                    to assess their progress. This constrains the scaling-up of NBCAs and limits evidence-based policy
-                                    recommendations for effective funding flow to local actors that could deliver these outcomes.
-                                </p>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
-                    <div className="mb-8">
-                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
-                            <div className="flex items-center mb-6">
-                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
-                                    <Target className="w-5 h-5 text-slate-700" />
+                    {/* How to Apply */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                            <FileText className="w-5 h-5 text-slate-500" />
+                            <div>
+                                <h2 className="text-base font-bold text-slate-900">How to Apply</h2>
+                                <p className="text-xs text-slate-400">Submit all documents as a single combined PDF by 22 July, 2026</p>
+                            </div>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-2 mb-5">
+                            {applicationDocuments.map(({ icon: Icon, label, desc }, i) => (
+                                <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 border border-gray-100 rounded-lg">
+                                    <Icon className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
+                                    <div>
+                                        <div className="text-sm font-semibold text-slate-800">{label}</div>
+                                        <div className="text-xs text-slate-500">{desc}</div>
+                                    </div>
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-800">BioCAM4 Project Goal</h3>
+                            ))}
+                        </div>
+
+                        {/* Submission contact */}
+                        <div className="bg-teal-50 border border-teal-100 rounded-lg p-4">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Mail className="w-4 h-4 text-teal-700" />
+                                <span className="text-sm font-bold text-slate-800">Submit by email  Deadline: 22 July, 2026</span>
                             </div>
-                            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-                                <p>
-                                    The overarching goal for this consortium project  which we call BioCAM4  is to develop methodologies
-                                    for mapping NBCA trends worldwide and assessing local opportunities and challenges for NBCAs with
-                                    dedicated deep-dive studies in two world regions: East Africa and Central America. Interdisciplinary
-                                    and cross-sectoral research will strengthen capacity for NBCAs promising to address the following
-                                    three key climate-related risks, which affect vulnerable communities in biodiversity rich areas whose
-                                    livelihoods depend on the local environment.
-                                </p>
+                            <div className="space-y-1.5 text-sm">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-slate-500 w-8 flex-shrink-0 text-xs">To:</span>
+                                    <a href="mailto:a.irungu@arin-africa.org" className="text-teal-700 hover:underline font-semibold">a.irungu@arin-africa.org</a>
+                                </div>
+                                <div className="flex items-start gap-2">
+                                    <span className="text-slate-500 w-8 flex-shrink-0 text-xs">CC:</span>
+                                    <div className="flex flex-wrap gap-x-4 gap-y-0.5">
+                                        <a href="mailto:a.obonyo@arin-africa.org" className="text-teal-700 hover:underline">a.obonyo@arin-africa.org</a>
+                                        <a href="mailto:e.akinyi@arin-africa.org" className="text-teal-700 hover:underline">e.akinyi@arin-africa.org</a>
+                                    </div>
+                                </div>
                             </div>
+                            <p className="text-xs text-slate-500 mt-3 pt-3 border-t border-teal-100">
+                                Use the subject line: <strong>BioCAM4 Mini-Grant Application  [Your Full Name]</strong>. Incomplete applications will not be considered.
+                            </p>
                         </div>
                     </div>
 
-                    <div className="mb-8">
-                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
-                            <div className="flex items-center mb-6">
-                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
-                                    <Users className="w-5 h-5 text-slate-700" />
+                    {/* Final CTA */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                            <div>
+                                <h3 className="text-base font-bold text-slate-900 mb-1">Ready to Apply?</h3>
+                                <p className="text-sm text-slate-500">
+                                    Download the full call for complete guidelines. Submit your package by <strong className="text-slate-800">22 July, 2026</strong>.
+                                </p>
+                                <div className="flex flex-wrap gap-3 mt-3 text-sm">
+                                    <a href="mailto:a.irungu@arin-africa.org" className="flex items-center gap-1.5 text-teal-700 hover:underline font-semibold">
+                                        <Mail className="w-3.5 h-3.5" /> a.irungu@arin-africa.org
+                                    </a>
+                                    <a href="mailto:a.obonyo@arin-africa.org" className="flex items-center gap-1.5 text-teal-700 hover:underline">
+                                        <Mail className="w-3.5 h-3.5" /> a.obonyo@arin-africa.org
+                                    </a>
+                                    <a href="mailto:e.akinyi@arin-africa.org" className="flex items-center gap-1.5 text-teal-700 hover:underline">
+                                        <Mail className="w-3.5 h-3.5" /> e.akinyi@arin-africa.org
+                                    </a>
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-800">BioCAM4 Objectives & Implementation</h3>
                             </div>
-                            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-                                <p>
-                                    Integrating mixed, participatory methods with a custom interdisciplinary and trans-sectoral approach,
-                                    BioCAM4 will achieve its overarching goal via three specific objectives: 1. Global mapping and
-                                    analysis: A comprehensive global mapping and analysis of NBCAs will be co-produced by social
-                                    scientists, biologists, and stakeholders. The resulting open-access database will offer insights on
-                                    global NBCA distribution, patterns, and performance. 2. Context-specific exploration of action
-                                    situations for NBCAs in focus areas in the Global South: We will complement the global analysis with
-                                    deep-dive studies that engage stakeholders and communities in four countries: Rwanda (Virunga region)
-                                    and Kenya (Lake Victoria region) in East Africa, Costa Rica (Brunca region) and Guatemala (Trifinio
-                                    Region) in Central America. The vulnerable groups for BioCAM4 are communities surrounding conservation
-                                    and restoration sites in the above regional focus areas. We understand vulnerability in terms of
-                                    exposure, sensitivity, and adaptive capacity. The communities in the focus areas are among the most
-                                    affected by climate impacts, least responsible for it, and have reduced adaptive capacity due to
-                                    social-economic fragility.
-                                </p>
-
-                                <p>
-                                    We will explore existing and potential NBCAs in focus areas, identifying facilitating and hindering
-                                    factors, to understand their outputs, outcomes, and impacts. Participatory design with practitioners,
-                                    social scientists, vulnerable populations, and local and regional research end-users in our focus
-                                    areas will engage local actors to implement effective and inclusive NBCAs, while providing bottom-up
-                                    insights for improving indicators for tracking outcomes and impacts for the global database. Ethicists
-                                    and biologists will support integration of justice principles and sound conservation science and
-                                    social science perspectives with attention to local relevance. Research translation and policy
-                                    guidance: Leveraging community-based and international partnerships, science-policy specialists with
-                                    expertise in biology, political science and science diplomacy will translate research insights from
-                                    both global and local analyses into actionable recommendations for growing and scaling-up NBCAs. These
-                                    recommendations will guide implementers (local authorities, governments, UN Climate Change, and UN
-                                    Biodiversity processes) and global funders (Global Environment Facility, Green Climate Fund) to direct
-                                    funding and resources effectively toward NBCAs, and enhance capacity at community level.
-                                </p>
-                            </div>
+                            <a
+                                href="/pdfs/CALLFORMINIGRANTS.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-slate-900 text-white hover:bg-slate-700 font-semibold py-2.5 px-6 rounded-lg text-sm transition-colors whitespace-nowrap"
+                            >
+                                <Download className="w-4 h-4" />
+                                Download PDF
+                            </a>
                         </div>
                     </div>
 
-                    <div>
-                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
-                            <div className="flex items-center mb-6">
-                                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mr-4">
-                                    <Award className="w-5 h-5 text-slate-700" />
-                                </div>
-                                <h2 className="text-3xl font-bold text-gray-800">About the BioCAM4 Mini-grants</h2>
-                            </div>
-                            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-                                <p>
-                                    BioCAM4 research comprises three work packages. Specifically, Work Package 2 relates to the
-                                    context-specific explorations of local action situations through deep-dive studies. The project will
-                                    conduct deep-dive studies in selected focus areas to probe socio-ecological factors influencing
-                                    decision-making and implementation of NBCAs. Using participatory and mixed methodologies the deep
-                                    dives will be co-created with vulnerable communities and regional stakeholders, and Indigenous
-                                    Peoples. Our approach draws from the Networks of Actions Situations (NAS) method, which expanded upon
-                                    the Institutional Analysis and Development (IAD) framework. This adapted NAS framework reveals
-                                    context-specific drivers and outcomes of local decision-making on natural resource use, as evidenced
-                                    in prior studies on groundwater overuse, and the water-energy-food nexus. The NAS framework will
-                                    uncover how biophysical, cultural and institutional factors affect community action for implementing
-                                    NBCAs in the study regions, understand action situations and actor interactions therein, and their
-                                    outputs, outcomes, and impacts. We will concurrently unpack ethics, equity, inclusivity and human
-                                    rights principles in the design, implementation, analyses of NBCAs, generating insights for their
-                                    integration in decision-making.
-                                </p>
-
-                                <p>
-                                    Deep-dive studies will: (1) co-design a method for monitoring drivers and outcomes, (2) assess jointly
-                                    with stakeholders whether NBCAs produce ecosystem-service outcomes that mitigate risks to ecosystems,
-                                    livelihoods, and human health, (3) identify drivers that hinder or foster outcomes (behavioral
-                                    changes) and impacts (long-term changes). The participatory bottom-up approach will (4) concurrently
-                                    co-create capacity-strengthening and training for NBCAs; and (5) improve indicators for global NBCA
-                                    assessment beyond inputs and outputs towards gauging outcomes and impacts across ecological,
-                                    livelihood, and health indicators.
-                                </p>
-
-                                <p>
-                                    Thus, the deep-dives will contribute to improving data collection and enhance the progress assessment
-                                    framework, providing comprehensive data and analysis from input through to impact. Concurrently,
-                                    multi-level governance analyses will advance understanding of the global governance and initiatives
-                                    that affect local NBCAs (or not) and the respective insights will inform policy guidance for global
-                                    actors as described below.
-                                </p>
-
-                                <p className="mb-8">
-                                    The deep-dive studies will be funded. A call for application for mini-grants to conduct the deep-dive
-                                    studies of this project is coming soon.
-                                </p>
-
-                                <div className="bg-slate-900 rounded-xl p-8 text-center">
-                                    <h3 className="text-2xl font-bold text-white mb-4">More Information</h3>
-                                    <p className="text-slate-300 mb-6 text-lg">For more information on the project please see</p>
-                                    <Link href="/mini-grants/biocam-subpage" className="w-full sm:w-auto">
-                                        <button className="bg-white hover:bg-slate-100 text-slate-900 font-bold py-3 px-8 rounded-lg text-base inline-flex items-center gap-2 transition-all duration-200 shadow">
-                                            this link
-                                            <ExternalLink className="w-4 h-4" />
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <ArinFellowsFooter />

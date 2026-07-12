@@ -54,9 +54,9 @@ export default function MiniGrantsPage() {
             title: "Biodiversity Integration in Climate Adaptation and Mitigation Actions for Planet, People, and Human Health (BIOCAM4) Mini-grants",
             // date: "July 30, 2024",
             description:
-                "The relationship between climate change and biodiversity loss is profound. Climate change accelerates biodiversity decline: Rapid climate shifts challenge species...",
+                "CALL FOR MINIGRANTS: ADVANCING NATURE-BASED CLIMATE ACTIONS (NBCAS) IN AFRICA: A MINI-GRANT FOR LOCALLY- LED Evidence Generation AND POLICY INFLUENCE",
             id: "biocam",
-            status: "upcoming",
+            status: "active",
         },
         {
             title: "Climate Finance Fellowship",
@@ -73,6 +73,7 @@ export default function MiniGrantsPage() {
             id: "ai-fellowship",
             status: "active",
         },
+       
     ]
 
     const getStatusConfig = (status) => {

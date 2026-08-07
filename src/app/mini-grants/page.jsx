@@ -47,7 +47,7 @@ export default function MiniGrantsPage() {
             description:
                 "A. About the Project Numerous governments, businesses, and civil society organisations aim to contribute to achieving the 17 Sustainable Development…",
             id: "sdgs-interactions",
-            status: "active",
+            status: "Completed",
         },
 
         {
@@ -56,7 +56,7 @@ export default function MiniGrantsPage() {
             description:
                 "CALL FOR MINIGRANTS: ADVANCING NATURE-BASED CLIMATE ACTIONS (NBCAS) IN AFRICA: A MINI-GRANT FOR LOCALLY- LED Evidence Generation AND POLICY INFLUENCE",
             id: "biocam",
-            status: "active",
+            status: "Completed",
         },
         {
             title: "Climate Finance Fellowship",
@@ -71,7 +71,7 @@ export default function MiniGrantsPage() {
             description:
                 "Call for Mini-Grants: Leveraging Artificial Intelligence for Climate Resilience Solutions in Africa. Applications are open for researchers working at the intersection of AI and climate adaptation.",
             id: "ai-fellowship",
-            status: "active",
+            status: "completed",
         },
        
     ]

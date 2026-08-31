@@ -3,7 +3,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Users, Building2, Globe, ArrowRight, Mail, Copy, Check } from "lucide-react"
+import { Users, Building2, Globe, ArrowRight, Mail, Copy, Check,Landmark } from "lucide-react"
 
 export default function FellowsOverview() {
     const [showEmailModal, setShowEmailModal] = useState(false)
@@ -33,54 +33,63 @@ export default function FellowsOverview() {
         }
     }
 
-    const sections = [
+ const sections = [
 
-        {
-            title: "ARIN Fellows",
-            description:
-                "Explore our ARIN fellowship program participants dedicated to advancing research excellence across Africa",
-            link: "/fellows/arin",
-            icon: Users,
-            color: "from-blue-500 to-blue-600",
-            bgColor: "from-[#48a4bb] to-[#9bc8ce]",
-            featured: true,
+    {
+        title: "ARIN Fellows",
+        description:
+            "Explore our ARIN fellowship program participants dedicated to advancing research excellence across Africa",
+        link: "/fellows/arin",
+        icon: Users,
+        color: "from-blue-500 to-blue-600",
+        bgColor: "from-[#48a4bb] to-[#9bc8ce]",
+        featured: true,
 
-        },
-        {
-            title: "LEEPS Fellows ",
-            description: "Meet our Africa LEEPS Fellows contributing to evidence-informed policymaking and sustainable development across Africa"
-            , link: "/fellows/leeps",
-            icon: Globe,
-            color: "from-green-500 to-green-600",
-            bgColor: "from-emerald-500 to-emerald-600",
-        },
-        {
-            title: "Accountable Adaptation Fellows",
-            description:
-                "Discover our fellows working on accountability and governance initiatives for transparent development",
-            link: "/fellows/accountable-adaptation",
-            icon: Building2,
-            color: "from-purple-500 to-purple-600",
-            bgColor: "from-[#030f41] to-[#1a2951]",
-        },
-        {
-            title: "SDG SynergyFellows",
-            description: "Meet our fellows dedicated to achieving Sustainable Development Goals across the continent",
-            link: "/fellows/sdg",
-            icon: Globe,
-            color: "from-green-500 to-green-600",
-            bgColor: "from-emerald-500 to-emerald-600",
-        },
-        {
-            title: "AI for Climate Resilience Fellows",
-            description: "Meet our fellows leveraging artificial intelligence to build climate resilience and advance sustainable solutions across Africa",
-            link: "/fellows/ai",
-            icon: Globe,
-            color: "from-teal-500 to-teal-600",
-            bgColor: "from-teal-500 to-teal-600",
-        },
+    },
+    {
+        title: "LEEPS Fellows ",
+        description: "Meet our Africa LEEPS Fellows contributing to evidence-informed policymaking and sustainable development across Africa"
+        , link: "/fellows/leeps",
+        icon: Globe,
+        color: "from-green-500 to-green-600",
+        bgColor: "from-emerald-500 to-emerald-600",
+    },
+    {
+        title: "Accountable Adaptation Fellows",
+        description:
+            "Discover our fellows working on accountability and governance initiatives for transparent development",
+        link: "/fellows/accountable-adaptation",
+        icon: Building2,
+        color: "from-purple-500 to-purple-600",
+        bgColor: "from-[#030f41] to-[#1a2951]",
+    },
+    {
+        title: "Climate Finance Fellows",
+        description:
+            "Meet our fellows advancing innovative financing mechanisms and climate finance solutions across Africa",
+        link: "/fellows/Climate-Finance",
+        icon: Landmark,
+        color: "from-amber-500 to-amber-600",
+        bgColor: "from-amber-500 to-orange-600",
+    },
+    {
+        title: "SDG SynergyFellows",
+        description: "Meet our fellows dedicated to achieving Sustainable Development Goals across the continent",
+        link: "/fellows/sdg",
+        icon: Globe,
+        color: "from-green-500 to-green-600",
+        bgColor: "from-emerald-500 to-emerald-600",
+    },
+    {
+        title: "AI for Climate Resilience Fellows",
+        description: "Meet our fellows leveraging artificial intelligence to build climate resilience and advance sustainable solutions across Africa",
+        link: "/fellows/ai",
+        icon: Globe,
+        color: "from-teal-500 to-teal-600",
+        bgColor: "from-teal-500 to-teal-600",
+    },
 
-    ]
+]
 
     return (
         <>

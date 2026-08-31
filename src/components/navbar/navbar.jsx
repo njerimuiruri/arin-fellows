@@ -40,6 +40,7 @@ const ARINNavbar = () => {
             dropdown: [
                 { name: 'ARIN Fellows', href: '/fellows/arin' },
                 { name: 'Accountable Adaptation Fellows', href: '/fellows/accountable-adaptation' },
+                { name: 'Climate Finance Fellows', href: '/fellows/Climate-Finance' },
                 { name: 'SDG Synergy Fellows', href: '/fellows/sdg' },
                 { name: 'LEEPS Fellows', href: '/fellows/leeps' },
                 { name: 'NDC Finance Fellowship', href: '/ndc-fellowship' },

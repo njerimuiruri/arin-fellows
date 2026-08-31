@@ -58,6 +58,8 @@ const ARINFellowshipAbout = () => {
             name: "Dr. Merham Keleg",
             position: "North Africa Focal Point",
             image: "/img/focalpoints/merham.webp",
+                bio: "Merham Keleg is Assistant Professor of Urban Design and Planning at Ain Shams University. She is Trustee and Research Coordinator of the Landscape Research Group and Associate Editor of Landscape Research Journal. Since 2025, she has served as the African Research and Impact Network (ARIN) Focal Point for North Africa and was awarded the 2025 ARIN–UCL Accountable Adaptation Research Mini-Grant. Her research focuses on placemaking, green infrastructure, and landscape governance in under-studied urban contexts, particularly in Cairo and across Africa. Her work explores participatory climate action, people–nature relationships, and public space, with a focus on connecting communities, landscapes, and policy in rapidly transforming cities.",
+
 
         },
         {

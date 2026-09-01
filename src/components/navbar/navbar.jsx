@@ -62,7 +62,9 @@ const ARINNavbar = () => {
 
         { name: 'Mini Grants', href: '/mini-grants' },
         { name: 'Friday Reviews', href: '/friday-reviews' },
+                 { name: 'Reports', href: '/reports' },
         { name: 'Published Work', href: '#' },
+
     ];
 
     return (

@@ -23,12 +23,12 @@ function FellowCard({ fellow, onClick, index }) {
             {/* Card */}
             <div className="relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100">
                 {/* Image Section */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
                     {fellow.image ? (
                         <img
                             src={fellow.image}
                             alt={fellow.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-top"
                         />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center">
@@ -98,7 +98,7 @@ function FellowDetailModal({ fellow, isOpen, onClose }) {
                             <img
                                 src={fellow.image}
                                 alt={fellow.name}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-top"
                             />
                         ) : (
                             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">

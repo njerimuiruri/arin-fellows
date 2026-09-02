@@ -1,5 +1,14 @@
 export const arinFellows = [
   {
+    id: "arinf0",
+    name: "Dr. David Ssekamatte",
+    image: "/img/arin-fellows/david.jpg",
+    title:
+      "Lecturer and Coordinator of Climate Change and Sustainability Management at the Uganda Management Institute",
+    bio: "Dr. Ssekamatte is a dedicated development management scholar and practitioner with over 20 years of dedicated research, teaching and consultancy experience in development work, strategic planning and management, policy-related expert services, climate change and sustainability education, applied research, as well as Monitoring, Evaluation and Learning (MEL)-related work. He is currently a Lecturer and Coordinator of Climate Change and Sustainability Management at the Uganda Management Institute. He is a Certified Expert in Climate Adaptation Finance by the Frankfurt School of Finance and maintains a robust record of high-impact, peer-reviewed scholarship related to development management (climate change and sustainability education, MEL, and gender issues), published in leading international journals and publishers, complemented by a commitment to translating academic rigour into development policy and practice. My work has been focused on designing and delivering training and capacity-building interventions for managers, including policymakers across the public, private, and NGO sectors. He has provided expert services in various areas, including MEL, knowledge management, policy advocacy and analysis, strategic planning and management, climate change adaptation and resilience planning, and development of frameworks and systems for the public, private and NGO sectors. He holds a PhD in Education and Social Sciences from Carl von Ossietzky University of Oldenburg, Germany, and a Master of Arts in Economics from the University of Lucknow in India. ",
+    category: "arin",
+  },
+  {
     id: "arinf1",
     name: "Shida Nestory",
     image: "/img/arin-fellows/Shida M. Nestory.webp",

@@ -108,7 +108,7 @@ export const climatefinanceFellows = [
     id: "f12",
     name: "Vayanga DONZO",
     image: "/img/sdg-fellows/vayanga-donzo.webp",
-    bio: "",
+    bio: "Vayanga DONZO is a Guinean environmental researcher and development practitioner specializing in climate governance, sustainable development, climate finance, and community resilience. He is an Executive Director of the Association des Jeunes Dynamiques pour le Développement Durable (AJD-DD) and has extensive experience working with communities and civil society organizations on climate action, ecosystem restoration, sustainable natural resource management, and locally led development. As a researcher and consultant, he has contributed to analytical work on the Sustainable Development Goals (SDGs), climate-smart agriculture, and the links between climate change, livelihoods, and resilience in Africa. He also contributed as a researcher and co-author to the African Climate Finance Outlook work coordinated by ARIN, including the analysis of the BEAC Green Window Initiative in the CEMAC Region, examining its opportunities, challenges and potential contribution to strengthening regional climate finance and sustainable investment in Central Africa.",
     category: "accountable",
   },
   {

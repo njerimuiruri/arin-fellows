@@ -63,8 +63,8 @@ export default function MiniGrantsPage() {
             // date: "Coming Soon",
             description:
                 "This fellowship aims to build capacity in climate finance mechanisms and support researchers in developing innovative financing solutions for climate adaptation and mitigation across Africa.",
-            id: "climate-finance",
-            status: "upcoming",
+            id: "#",
+            status: "completed",
         },
         {
             title: "Artificial Intelligence For Climate Resilience",

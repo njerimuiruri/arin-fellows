@@ -189,11 +189,11 @@ export default function MultiFellowshipHero() {
                             <div className="w-0.5 self-stretch rounded-full bg-emerald-400 flex-shrink-0"></div>
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
-                                    <span className="relative flex h-2 w-2 flex-shrink-0">
+                                    {/* <span className="relative flex h-2 w-2 flex-shrink-0">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50"></span>
                                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                    </span>
-                                    <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Open Now</span>
+                                    </span> */}
+                                    <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Closed</span>
                                 </div>
                                 <p className="text-sm font-semibold text-slate-700 leading-snug">AI for Climate Resilience</p>
                                 <p className="text-[11px] text-slate-400 font-medium mt-1">ARIN / IDRC · Apply Today</p>

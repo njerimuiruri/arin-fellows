@@ -191,50 +191,38 @@ export default function AccountableAdaptationFellowsPage() {
 
                 {/* Header Section */}
                 <div className="relative z-10">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
-                        <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                            {/* Badge */}
-                            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-1.5 mb-3 border border-gray-200 shadow-md">
-                                <Sparkles className="w-3 h-3 text-blue-600 animate-pulse" />
-                                <span className="text-gray-700 text-xs font-semibold tracking-wide">
-                                    Accountable Adaptation Fellowship
-                                </span>
-                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-4">
+                        <div className={`flex flex-col md:flex-row md:items-end md:justify-between gap-3 border-b border-gray-200 pb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                            <div>
+                                <h1 className="text-2xl md:text-3xl font-bold leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                                    Accountable Adaptation Fellows
+                                </h1>
+                                <p className="text-gray-500 text-sm">
+                                    Dedicated researchers driving <span className="font-semibold text-blue-600">innovative solutions</span> for climate resilience across Africa
+                                </p>
                             </div>
-
-                            {/* Title */}
-                            <h1 className="text-2xl md:text-3xl font-bold mb-1 leading-tight">
-                                <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-                                    Meet Our Fellows
-                                </span>
-                            </h1>
-
-                            <p className="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto mb-4">
-                                Dedicated researchers driving <span className="font-semibold text-blue-600">innovative solutions</span> for climate resilience across Africa
-                            </p>
-
-                            {/* Search */}
-                            <div className="max-w-lg mx-auto">
+                            <div className="w-full md:w-80 shrink-0">
                                 <div className="relative">
-                                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 z-10" />
+                                    <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 z-10" />
                                     <input
                                         type="text"
                                         placeholder="Search by name, country, or expertise..."
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="w-full pl-11 pr-11 py-2.5 bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl shadow-md focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm"
+                                        className="w-full pl-10 pr-10 py-2 bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm"
                                     />
                                     {searchQuery && (
                                         <button
                                             onClick={() => setSearchQuery("")}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                                            aria-label="Clear search"
+                                            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                                         >
                                             <X className="w-4 h-4" />
                                         </button>
                                     )}
                                 </div>
                                 {searchQuery && (
-                                    <p className="mt-2 text-gray-500 text-xs">
+                                    <p className="mt-1 text-gray-500 text-xs">
                                         Found <span className="font-bold text-blue-600">{filteredFellows.length}</span> {filteredFellows.length === 1 ? 'fellow' : 'fellows'}
                                     </p>
                                 )}
@@ -243,8 +231,7 @@ export default function AccountableAdaptationFellowsPage() {
                     </div>
                 </div>
 
-                {/* Fellows Grid */}
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-2">
                     {filteredFellows.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {filteredFellows.map((fellow, index) => (

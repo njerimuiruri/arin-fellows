@@ -1,12 +1,166 @@
 "use client"
 
 import { useState, useMemo, useEffect } from "react"
-import { Search, X, MapPin, BookOpen, Sparkles, ChevronLeft, ChevronRight } from "lucide-react"
+import { Search, X, MapPin, BookOpen, Users, ChevronLeft, ChevronRight, Award, Building2, Briefcase, ArrowRight, Trophy } from "lucide-react"
 import { aiFellows } from "../../../../data/fellows/ai-fellows"
+import { aiAwardees } from "../../../../data/fellows/ai-awardees"
 import ArinFellowsFooter from "@/components/footer/footer"
 import ARINNavbar from "@/components/navbar/navbar"
 
 const FELLOWS_PER_PAGE = 9
+
+type Tab = "fellows" | "awardees"
+
+const aiFellowsById = Object.fromEntries(aiFellows.map((f) => [f.id, f]))
+
+// Merge awardee entries with their AI Fellow profile (photo + bio) when linked
+const awardees = aiAwardees.map((a) => {
+    const fellow: any = (a as any).fellowId ? aiFellowsById[(a as any).fellowId] || {} : {}
+    return {
+        ...a,
+        name: (a.name || fellow.name || "").trim(),
+        image: (a.image || fellow.image || "").trim(),
+        bio: a.bio || fellow.bio || "",
+    }
+})
+
+function initials(name = "") {
+    return name
+        .replace(/^(Dr\.|Prof\.)\s*/i, "")
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((w) => w[0]?.toUpperCase())
+        .join("")
+}
+
+function AwardeeAvatar({ src, name, className = "" }) {
+    if (src) return <img src={src} alt={name || "Awardee"} className={`object-cover ${className}`} />
+    return (
+        <div className={`flex items-center justify-center bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700 font-bold ${className}`}>
+            {name ? initials(name) : <Award className="w-1/2 h-1/2" />}
+        </div>
+    )
+}
+
+function AwardeeCard({ awardee, onClick, index }) {
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsVisible(true), index * 60)
+        return () => clearTimeout(timer)
+    }, [index])
+
+    return (
+        <article
+            onClick={() => onClick(awardee)}
+            className={`group cursor-pointer bg-white rounded-2xl border border-gray-200 hover:border-blue-400 hover:shadow-xl transition-all duration-500 flex flex-col overflow-hidden ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
+            <div className="relative aspect-[4/3] bg-slate-100">
+                <AwardeeAvatar src={awardee.image} name={awardee.name} className="w-full h-full object-top text-5xl" />
+                <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-full shadow">
+                    <Trophy className="w-3 h-3" /> Awardee
+                </span>
+                {awardee.country && (
+                    <span className="absolute top-3 right-3 flex items-center gap-1 bg-white/95 px-2.5 py-1 rounded-full shadow text-xs font-semibold text-gray-700">
+                        <MapPin className="w-3 h-3 text-blue-600" /> {awardee.country}
+                    </span>
+                )}
+            </div>
+
+            <div className="p-4 flex flex-col flex-1">
+                {awardee.name && <h3 className="text-lg font-bold text-gray-900 leading-tight">{awardee.name}</h3>}
+                <p className={`text-sm ${awardee.name ? "text-gray-600" : "text-gray-900 font-bold"}`}>{awardee.position}</p>
+                <p className="text-xs text-gray-400 mb-3 line-clamp-1">{awardee.institution}</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-amber-700 mb-1">Awarded Project</p>
+                <p className="text-sm font-semibold text-blue-900 leading-snug line-clamp-3 mb-3">{awardee.projectTitle}</p>
+                <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 group-hover:gap-2.5 transition-all">
+                    View profile <ArrowRight className="w-4 h-4" />
+                </span>
+            </div>
+        </article>
+    )
+}
+
+function AwardeeDetailModal({ awardee, onClose }) {
+    if (!awardee) return null
+
+    return (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={onClose}>
+            <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
+                <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 px-6 md:px-8 pt-8 pb-7 text-white">
+                    <button onClick={onClose} className="absolute top-5 right-5 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors" aria-label="Close">
+                        <X className="w-5 h-5" />
+                    </button>
+                    <div className="flex items-center gap-5 pr-10">
+                        <AwardeeAvatar src={awardee.image} name={awardee.name} className="w-20 h-20 rounded-2xl ring-2 ring-white/30 shrink-0 text-2xl" />
+                        <div className="min-w-0">
+                            <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-300 mb-1.5">
+                                <Trophy className="w-3.5 h-3.5" /> AI for Climate Resilience · Mini-Grant Awardee
+                            </p>
+                            {awardee.name && <h2 className="text-xl md:text-2xl font-bold leading-tight">{awardee.name}</h2>}
+                            <p className={`text-blue-100 ${awardee.name ? "text-sm mt-1" : "text-lg font-semibold text-white"}`}>{awardee.position}</p>
+                            {awardee.country && (
+                                <p className="flex items-center gap-1.5 text-sm text-blue-200 mt-1">
+                                    <MapPin className="w-3.5 h-3.5" /> {awardee.country}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex-1 overflow-y-auto px-6 md:px-8 py-7 space-y-7">
+                    <div className="rounded-2xl border border-amber-100 bg-gradient-to-br from-amber-50/80 to-white p-5">
+                        <p className="text-[11px] font-bold uppercase tracking-widest text-amber-700 mb-2">Awarded Project</p>
+                        <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-snug">{awardee.projectTitle}</h3>
+                        {awardee.theme && (
+                            <span className="inline-block mt-3 text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-full">
+                                {awardee.theme}
+                            </span>
+                        )}
+                    </div>
+
+                    {awardee.overview && (
+                        <div>
+                            <div className="flex items-center gap-2 mb-3">
+                                <div className="h-1 w-8 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full" />
+                                <h4 className="text-base font-bold text-gray-900">Project Overview</h4>
+                            </div>
+                            <p className="text-gray-700 leading-relaxed whitespace-pre-line">{awardee.overview}</p>
+                        </div>
+                    )}
+
+                    <div className="grid sm:grid-cols-2 gap-3">
+                        {[
+                            { Icon: Briefcase, label: "Current position", value: awardee.position },
+                            { Icon: Building2, label: "Institution", value: awardee.institution },
+                        ].map(({ Icon, label, value }) => (
+                            <div key={label} className="flex items-start gap-3 bg-slate-50 border border-gray-100 rounded-xl p-3.5">
+                                <div className="w-8 h-8 rounded-lg bg-white border border-gray-100 flex items-center justify-center shrink-0">
+                                    <Icon className="w-4 h-4 text-blue-600" />
+                                </div>
+                                <div className="min-w-0">
+                                    <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">{label}</p>
+                                    <p className="text-sm text-gray-800 font-medium leading-snug">{value}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {awardee.bio && (
+                        <div>
+                            <div className="flex items-center gap-2 mb-3">
+                                <div className="h-1 w-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+                                <h4 className="text-base font-bold text-gray-900">Biography</h4>
+                            </div>
+                            <p className="text-gray-700 leading-relaxed whitespace-pre-line">{awardee.bio}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    )
+}
 
 function FellowCard({ fellow, onClick, index }) {
     const [isVisible, setIsVisible] = useState(false)
@@ -130,6 +284,8 @@ function FellowDetailModal({ fellow, isOpen, onClose }) {
 }
 
 export default function AIFellowsPage() {
+    const [tab, setTab] = useState<Tab>("fellows")
+    const [selectedAwardee, setSelectedAwardee] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [selectedFellow, setSelectedFellow] = useState(null)
     const [searchQuery, setSearchQuery] = useState("")
@@ -139,6 +295,7 @@ export default function AIFellowsPage() {
 
     useEffect(() => {
         setIsVisible(true)
+        if (window.location.hash === "#awardees") setTab("awardees")
 
         const handleMouseMove = (e) => {
             setMousePosition({
@@ -174,6 +331,22 @@ export default function AIFellowsPage() {
         )
     }, [searchQuery])
 
+    const filteredAwardees = useMemo(() => {
+        const query = searchQuery.trim().toLowerCase()
+        if (!query) return awardees
+        return awardees.filter((a) =>
+            [a.name, a.country, a.theme, a.position, a.institution, a.projectTitle].some(
+                (v) => v && v.toLowerCase().includes(query)
+            )
+        )
+    }, [searchQuery])
+
+    const switchTab = (next: Tab) => {
+        setTab(next)
+        setSearchQuery("")
+        history.replaceState(null, "", next === "awardees" ? "#awardees" : window.location.pathname)
+    }
+
     const totalPages = Math.ceil(filteredFellows.length / FELLOWS_PER_PAGE)
     const paginatedFellows = filteredFellows.slice(
         (currentPage - 1) * FELLOWS_PER_PAGE,
@@ -202,57 +375,89 @@ export default function AIFellowsPage() {
                 </div>
 
                 <div className="relative z-10">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
-                        <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-1.5 mb-3 border border-gray-200 shadow-md">
-                                <Sparkles className="w-3 h-3 text-blue-600 animate-pulse" />
-                                <span className="text-gray-700 text-xs font-semibold tracking-wide">
-                                    AI Fellows Network
-                                </span>
-                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                            </div>
-
-                            <h1 className="text-2xl md:text-3xl font-bold mb-1 leading-tight">
-                                <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-                                    AI Fellows
-                                </span>
-                            </h1>
-
-                            <p className="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto mb-4">
-                                A network of <span className="font-semibold text-blue-600">talented researchers and technocrats</span> promoting research excellence across Africa
-                            </p>
-
-                            <div className="max-w-lg mx-auto">
-                                <div className="relative">
-                                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 z-10" />
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-3">
+                        <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+                                <div>
+                                    <h1 className="text-2xl md:text-3xl font-bold leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                                        AI Fellows
+                                    </h1>
+                                    <p className="text-gray-500 text-sm">
+                                        {tab === "fellows"
+                                            ? "A network of talented researchers and technocrats promoting research excellence across Africa"
+                                            : "Fellows awarded AI for Climate Resilience mini-grants to tackle climate challenges across Africa"}
+                                    </p>
+                                </div>
+                                <div className="relative w-full md:w-80 shrink-0">
+                                    <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 z-10" />
                                     <input
                                         type="text"
-                                        placeholder="Search by name, country, or expertise..."
+                                        placeholder={tab === "fellows" ? "Search by name, country, or expertise..." : "Search by project, institution, or theme..."}
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="w-full pl-11 pr-11 py-2.5 bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl shadow-md focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm"
+                                        className="w-full pl-10 pr-10 py-2 bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm"
                                     />
                                     {searchQuery && (
                                         <button
                                             onClick={() => setSearchQuery("")}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                                            aria-label="Clear search"
+                                            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                                         >
                                             <X className="w-4 h-4" />
                                         </button>
                                     )}
                                 </div>
+                            </div>
+
+                            {/* Tab switcher */}
+                            <div className="flex flex-wrap items-center gap-2 mt-4 border-b border-gray-200" role="tablist">
+                                {[
+                                    { key: "fellows", label: "AI Fellows", Icon: Users, count: aiFellows.length },
+                                    { key: "awardees", label: "Mini-Grant Awardees", Icon: Trophy, count: awardees.length },
+                                ].map(({ key, label, Icon, count }) => {
+                                    const active = tab === key
+                                    return (
+                                        <button
+                                            key={key}
+                                            role="tab"
+                                            aria-selected={active}
+                                            onClick={() => switchTab(key as Tab)}
+                                            className={`-mb-px inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold border-b-2 transition-colors ${active ? "border-blue-600 text-blue-700" : "border-transparent text-gray-500 hover:text-gray-800"}`}
+                                        >
+                                            <Icon className="w-4 h-4" />
+                                            {label}
+                                            <span className={`text-xs px-1.5 py-0.5 rounded-full ${active ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-500"}`}>{count}</span>
+                                        </button>
+                                    )
+                                })}
                                 {searchQuery && (
-                                    <p className="mt-2 text-gray-500 text-xs">
-                                        Found <span className="font-bold text-blue-600">{filteredFellows.length}</span> {filteredFellows.length === 1 ? 'fellow' : 'fellows'}
-                                    </p>
+                                    <span className="ml-auto text-xs text-gray-500 pb-2">
+                                        Found <span className="font-bold text-blue-600">{tab === "fellows" ? filteredFellows.length : filteredAwardees.length}</span>{" "}
+                                        {tab === "fellows" ? (filteredFellows.length === 1 ? "fellow" : "fellows") : (filteredAwardees.length === 1 ? "awardee" : "awardees")}
+                                    </span>
                                 )}
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-                    {filteredFellows.length > 0 ? (
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-3">
+                    {tab === "awardees" ? (
+                        <>
+                            {filteredAwardees.length > 0 ? (
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {filteredAwardees.map((a, index) => (
+                                        <AwardeeCard key={a.id} awardee={a} onClick={setSelectedAwardee} index={index} />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="text-center py-16">
+                                    <p className="text-lg font-semibold text-gray-700 mb-4">No awardees match your search</p>
+                                    <button onClick={() => setSearchQuery("")} className="text-blue-600 font-semibold hover:underline">Clear search</button>
+                                </div>
+                            )}
+                        </>
+                    ) : filteredFellows.length > 0 ? (
                         <>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {paginatedFellows.map((fellow, index) => (
@@ -338,6 +543,7 @@ export default function AIFellowsPage() {
                 </div>
 
                 <FellowDetailModal fellow={selectedFellow} isOpen={isModalOpen} onClose={handleCloseModal} />
+                <AwardeeDetailModal awardee={selectedAwardee} onClose={() => setSelectedAwardee(null)} />
             </div>
             <ArinFellowsFooter />
 

@@ -45,6 +45,7 @@ const ARINNavbar = () => {
                 { name: 'LEEPS Fellows', href: '/fellows/leeps' },
                 { name: 'NDC Finance Fellowship', href: '/ndc-fellowship' },
                 { name: 'AI Fellows', href: '/fellows/ai' },
+                { name: 'BioCAM4 Fellows', href: '/fellows/biocam' },
 
             ]
         },

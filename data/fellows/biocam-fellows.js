@@ -24,10 +24,11 @@ export const biocamFellows = [
     name: "Dorothy Khasisi",
     institution: "Africa Research Universities Alliance (ARUA)",
     country: "Kenya",
-    image: "",
-    projectTitle: "",
+    image: "/biocam/dorothy.jpg",
+    projectTitle:
+      " Beyond Sea Defences: Ecosystem-Based Coastal Adaptation in Ghanas Peri-Urban Fishing Communities",
     summary: "",
-    document: "",
+    document: "/biocam/dorothy.pdf",
     bio: "",
   },
   {
@@ -61,7 +62,7 @@ export const biocamFellows = [
     name: "Soremi Paul",
     institution: "Federal University of Agriculture, Abeokuta (FUNAAB)",
     country: "Nigeria",
-    image: "",
+    image: "/biocam/1.jpg",
     projectTitle:
       "Biodiversity-Smart Inland-Valley Rice Landscapes: Participatory Evidence on Farmer-Led Nature-Based Climate Actions in Ogun State, Nigeria",
     summary:
@@ -69,4 +70,4 @@ export const biocamFellows = [
     document: "/biocam/soremi-paul-biocam4-proposal.pdf",
     bio: "",
   },
-]
+];

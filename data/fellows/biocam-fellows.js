@@ -36,7 +36,7 @@ export const biocamFellows = [
     name: "Danmore Matutu",
     institution: "Science for Africa Foundation, University of Zimbabwe",
     country: "Zimbabwe",
-    image: "",
+    image: "/biocam/danmore.jpg",
     projectTitle:
       "Integrating Biodiversity into Climate Adaptation for Urban Habitability: A Case Study of Lake Chivero Catchment, Harare, Zimbabwe",
     summary:

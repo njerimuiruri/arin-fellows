@@ -45,6 +45,7 @@ function FellowModal({ fellow, onClose }) {
                         </button>
                         <p className="text-[11px] font-bold uppercase tracking-widest text-emerald-700 mb-1">BioCAM4 Fellow</p>
                         <h2 className="text-2xl font-bold text-gray-900 pr-10">{fellow.name}</h2>
+                        {fellow.position && <p className="text-sm font-medium text-emerald-700 mt-1">{fellow.position}</p>}
                         <p className="flex items-start gap-1.5 text-sm text-gray-600 mt-2">
                             <Building2 className="w-4 h-4 mt-0.5 text-gray-400 shrink-0" /> {fellow.institution}
                         </p>
@@ -153,6 +154,7 @@ export default function BioCAMFellowsPage() {
                                     </div>
                                     <div className="p-4 flex flex-col flex-1">
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">{f.name}</h3>
+                                        {f.position && <p className="text-sm font-medium text-emerald-700">{f.position}</p>}
                                         <p className="flex items-start gap-1.5 text-sm text-gray-500 mt-1 mb-3">
                                             <Building2 className="w-4 h-4 mt-0.5 text-gray-400 shrink-0" /> {f.institution}
                                         </p>

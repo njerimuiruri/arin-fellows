@@ -1,4 +1,5 @@
 // BioCAM4 Mini-Grant Fellows (Planet, People & Human Health)
+//   position     → optional current position/title
 //   image        → headshot in /public/img/biocam-fellows/
 //   projectTitle → title from the fellow's project concept
 //   summary      → short overview of the awarded project
@@ -21,12 +22,14 @@ export const biocamFellows = [
   },
   {
     id: "biocam2",
-    name: "Dorothy Khasisi",
-    institution: "Africa Research Universities Alliance (ARUA)",
+    name: "Dr Dorothy Khasisi Lukhabi",
+    position: "Research Fellow",
+    institution:
+      "Centre for Coastal Management, University of Cape Coast, Ghana",
     country: "Kenya",
     image: "/biocam/dorothy.jpg",
     projectTitle:
-      " Beyond Sea Defences: Ecosystem-Based Coastal Adaptation in Ghanas Peri-Urban Fishing Communities",
+      "Beyond Sea Defences: Ecosystem-Based Coastal Adaptation in Ghana's Peri-Urban Fishing Communities",
     summary: "",
     document: "/biocam/dorothy.pdf",
     bio: "",
